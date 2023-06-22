@@ -7,17 +7,18 @@
     font-size: 17px;
     display: inline-block;
     border-spacing: 0px;
+    border-right: none;
 }
-td{
+td, 
+.topo{
     border: 1px solid rgba(0,0,0, .8);
     padding: 5px;
     text-align: center;
-    justify-content: center
+    justify-content: center;
 }
 .tdInput{
-    padding: 5px;
+    padding: 0px;
     width: 60px;
-    border-bottom: none;
     border-right: none;
 }
 #ingredientes{
@@ -28,5 +29,6 @@ input{
     height: 30px;
     background-color: none;
     border: none;
-    border-bottom: 1px solid black;
+    outline: none;
+    text-align: center;
 }
