@@ -8,39 +8,34 @@
     <title>Calculadora de custos -- Ficha técnica.</title>
 </head>
 <body>
-    <section class="corpo">
-        <h1>Calculadora de custos.</h1>
-        <h2>Ficha técnica.</h2>
-        <table class="tblFicha">
-            <thead class="cabecalho">
-                <tr>
-                    <td class="topo">Ingredientes</td>
-                    <td class="topo">Embalagem</td>
-                    <td class="topo">Preço Embalagem</td>
-                    <td class="topo">Uso na Receita</td>
-                    <td class="topo">Custo</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="tdInput"><input type="text" class="txtIngredientes" id="ingredientes"></td>
-                    <td class="tdInput"><input type="number" class="txtEmbalagem" id="embalagem"></td>
-                    <td class="tdInput"><input type="number" class="txtPreco" id="precoEmba"></td>
-                    <td class="tdInput"><input type="number" class="txtUso" id="usoReceita" onkeyup="somar()"></td>
-                    <td class="tdInput" id="custo" style="border-right: 1px solid rgba(0,0,0, .8);"><input type="text" class="result" id="resultado" value="0" disabled></td>
-                </tr>
-                <tr>
-                    <td class="tdInput"><input type="text" class="txtIngredientes" id="ingredientes"></td>
-                    <td class="tdInput"><input type="number" class="txtEmbalagem" id="embalagem"></td>
-                    <td class="tdInput"><input type="number" class="txtPreco" id="precoEmba"></td>
-                    <td class="tdInput"><input type="number" class="txtUso" id="usoReceita" onkeyup="somar()"></td>
-                    <td class="tdInput" id="custo" style="border-right: 1px solid rgba(0,0,0, .8);"><input type="text" class="result" id="resultado" value="0" disabled></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <footer class="rodape">
+    <h1>Calculando Receita</h1>
+    <p>Adicione os dados de cada ingrediente usado na receita para calcular seu custo.<br/>
+        OBS: Embalagem: Se refere a embalagem que você compra no supermercado <br/>
+        Preço: Se refere ao valor que você pagou na embalagem. <br/>
+        Uso: Quantidade que se usa na receita
+    </p>
+    <div class="adc">
+        <input type="text" class="inputs" id="txtIngrediente" placeholder="Ingredientes">
+        <input type="number" class="inputs" id="txtEmba" placeholder="Embalagem">
+        <input type="number" class="inputs" id="txtPreco" placeholder="Preço">
+        <input type="number" class="inputs" id="txtUso" placeholder="Uso receita">
+        <button class="btnAdicionar">Adicionar</button>
+    </div>
 
+    <h2>Ficha Técnica</h2>
+    <table class="tbFicha">
+        <thead class="topoFicha">
+            <tr>
+                <td class="tbIngrediente">Ingredientes</td>
+                <td class="tbEmba">Embalagem: kg/g/L/Uni</td>
+                <td class="tbPreco">Preço</td>
+                <td class="tbUso">Uso na Receita: Kg/g/L/Uni</td>
+                <td class="tbCusto">Custo</td>
+            </tr>
+        </thead>
+    </table>
+    <footer class="rodape">
+        &copy; Manaure Vasconcelos
     </footer>
 </body>
 </html>

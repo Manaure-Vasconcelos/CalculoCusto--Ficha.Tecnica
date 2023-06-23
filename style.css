@@ -1,34 +1,32 @@
-.corpo{
+body{
     text-align: center;
-    margin: auto;
+    align-items: center;
     font-size: 20px;
 }
-.tblFicha{
-    font-size: 17px;
+.tbFicha{
     display: inline-block;
+    border: 1px solid black;
     border-spacing: 0px;
-    border-right: none;
-}
-td, 
-.topo{
-    border: 1px solid rgba(0,0,0, .8);
+    font-size: 15px;
+ }
+td{
+    border: 1px solid black;
     padding: 5px;
+    width: 80px;
+}
+.inputs{
+    width: 85px;
     text-align: center;
     justify-content: center;
-}
-.tdInput{
-    padding: 0px;
-    width: 60px;
-    border-right: none;
-}
-#ingredientes{
-    width: 150px;
-}
-input{
-    width: 90px;
-    height: 30px;
-    background-color: none;
-    border: none;
     outline: none;
+    border: none;
+    border-bottom: 1px solid;
+}
+#txtIngrediente,
+.tbIngrediente{
+    width: 130px;
+}
+footer{
+    margin-top: 100px;
     text-align: center;
 }
