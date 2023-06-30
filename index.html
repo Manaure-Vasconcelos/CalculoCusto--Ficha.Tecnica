@@ -8,31 +8,32 @@
     <title>Calculadora de custos -- Ficha técnica.</title>
 </head>
 <body>
-    <h1>Calculando Receita</h1>
-    <p>Adicione os dados de cada ingrediente usado na receita para calcular seu custo.<br/>
-        OBS: Embalagem: Se refere a embalagem que você compra no supermercado <br/>
-        Preço: Se refere ao valor que você pagou na embalagem. <br/>
-        Uso: Quantidade que se usa na receita
-    </p>
-    <div class="adc">
-        <input type="text" class="inputs" id="txtIngrediente" placeholder="Ingredientes">
-        <input type="number" class="inputs" id="txtEmba" placeholder="Embalagem">
-        <input type="number" class="inputs" id="txtPreco" placeholder="Preço">
-        <input type="number" class="inputs" id="txtUso" placeholder="Uso receita">
-        <button class="btnAdicionar">Adicionar</button>
-    </div>
-
-    <h2>Ficha Técnica</h2>
-    <table class="tbFicha">
-        <thead class="topoFicha">
-            <tr>
-                <td class="tbIngrediente">Ingredientes</td>
-                <td class="tbEmba">Embalagem: kg/g/L/Uni</td>
-                <td class="tbPreco">Preço</td>
-                <td class="tbUso">Uso na Receita: Kg/g/L/Uni</td>
-                <td class="tbCusto">Custo</td>
-            </tr>
-        </thead>
+    <h1>Food Inventory</h1>
+        
+    <table id="foodForm">
+        <tr>
+            <th><label for="ingredients">Ingrediente:</label></th>
+            <th><label for="marketWeight">Tamanho da embalagem: (L/Uni/g) </label></th>
+            <th><label for="marketPrice">Preço no mercado: (R$)</label></th>
+            <th><label for="grossWeight">Uso na receita: (L/Uni/g) </label></th>
+        </tr>
+        <tr>
+            <th><input type="text" id="ingredients" required></th>
+            <th><input type="number" id="marketWeight" required></th>
+            <th><input type="number" id="marketPrice" required></th>
+            <th><input type="number" id="grossWeight" required></th>
+        </tr>
+    </table>
+    <button type="button" id="btnAdd" onclick="addFood()">Add</button>
+        
+    <table id="foodTable">
+        <tr id="lineOne">
+            <th class="lineOne">Ingrediente</th>
+            <th class="lineOne">Tamanho da embalagem (g/mL)</th>
+            <th class="lineOne">Preço no mercado (R$)</th>
+            <th class="lineOne">Uso na receita (g/mL)</th>
+            <th class="lineOne">Custo real</th>
+        </tr>
     </table>
     <footer class="rodape">
         &copy; Manaure Vasconcelos
