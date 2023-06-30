@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
     <title>Calculadora de custos -- Ficha técnica.</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Food Inventory</h1>
-        
-    <table id="foodForm">
+    <article id="articleTable">
+      <table id="foodForm">
         <tr>
-            <th><label for="ingredients">Ingrediente:</label></th>
-            <th><label for="marketWeight">Tamanho da embalagem: (L/Uni/g) </label></th>
-            <th><label for="marketPrice">Preço no mercado: (R$)</label></th>
-            <th><label for="grossWeight">Uso na receita: (L/Uni/g) </label></th>
+          <th><label for="ingredients">Ingrediente:</label></th>
+          <th>
+            <label for="marketWeight">Tamanho da embalagem: (L/Uni/g) </label>
+          </th>
+          <th><label for="marketPrice">Preço no mercado: (R$)</label></th>
+          <th><label for="grossWeight">Uso na receita: (L/Uni/g) </label></th>
         </tr>
         <tr>
-            <th><input type="text" id="ingredients" required></th>
-            <th><input type="number" id="marketWeight" required></th>
-            <th><input type="number" id="marketPrice" required></th>
-            <th><input type="number" id="grossWeight" required></th>
+          <th><input type="text" id="ingredients" required /></th>
+          <th><input type="number" id="marketWeight" required /></th>
+          <th><input type="number" id="marketPrice" required /></th>
+          <th><input type="number" id="grossWeight" required /></th>
         </tr>
-    </table>
-    <button type="button" id="btnAdd" onclick="addFood()">Add</button>
-        
-    <table id="foodTable">
+        <button type="button" id="btnAdd" onclick="addFood()">
+          <span class="material-icons"> add_circle </span>
+        </button>
+      </table>
+
+      <table id="foodTable">
         <tr id="lineOne">
-            <th class="lineOne">Ingrediente</th>
-            <th class="lineOne">Tamanho da embalagem (g/mL)</th>
-            <th class="lineOne">Preço no mercado (R$)</th>
-            <th class="lineOne">Uso na receita (g/mL)</th>
-            <th class="lineOne">Custo real</th>
+          <th class="lineOne">Ingrediente</th>
+          <th class="lineOne">Tamanho da embalagem (g/mL)</th>
+          <th class="lineOne">Preço no mercado (R$)</th>
+          <th class="lineOne">Uso na receita (g/mL)</th>
+          <th class="lineOne">Custo real</th>
         </tr>
-    </table>
-    <footer class="rodape">
-        &copy; Manaure Vasconcelos
-    </footer>
-</body>
+        <tr id="custoTotal">
+          <th colspan="4" class="custoTotal">Custo total:</th>
+          <th class="resultado">resultado</th>
+        </tr>
+      </table>
+    </article>
+    <footer class="rodape">&copy; Manaure Vasconcelos</footer>
+  </body>
 </html>
