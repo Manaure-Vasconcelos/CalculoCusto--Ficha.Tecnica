@@ -1,13 +1,16 @@
+let total = 0;
 function addFood() {
   // Retrieve form input values
   const ingredients = document.getElementById("ingredients").value;
-  const marketWeight = document.getElementById("marketWeight").value;
-  const marketPrice = document.getElementById("marketPrice").value;
-  const grossWeight = document.getElementById("grossWeight").value;
+  const marketWeight = Number(document.getElementById("marketWeight").value);
+  const marketPrice = Number(document.getElementById("marketPrice").value);
+  const grossWeight = Number(document.getElementById("grossWeight").value);
+  const lineCostTot = document.getElementById("custoTotal");
+  const result = document.getElementById("resultado");
 
   // Create a new table row
   const table = document.getElementById("foodTable");
-  const newRow = table.insertRow(-1);
+  const newRow = table.insertRow(1);
 
   if ((ingredients, marketWeight, marketPrice, grossWeight === "")) {
     alert("Preencha os dados corretamente.");
@@ -27,12 +30,12 @@ function addFood() {
     cell4.innerHTML = grossWeight;
 
     const cell5 = newRow.insertCell(4);
-    cell5.innerHTML = costReal(marketPrice, marketWeight, grossWeight);
+    let costUni = costReal(marketPrice, marketWeight, grossWeight);
+    total += costUni;
+    cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
+
+    lineCostTot.style.opacity = 1;
+    result.innerHTML = `R$ ${total.toFixed(2)}`;
   }
   // Clear value inputs and focus
-  ingredients.innerHTML = "";
-  marketWeight.value = "";
-  marketPrice.value = "";
-  grossWeight.value = "";
-  ingredients.focus();
 }
