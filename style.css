@@ -14,14 +14,22 @@ input {
   border: none;
   border-bottom: 1px solid;
 }
+#typeFood {
+  border: none;
+  box-shadow: 1px 1px 1px black;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 5px 5px 5px;
+}
 #articleTable {
   display: block;
-  width: 550px;
+  width: 600px;
   border: 1px solid;
 }
 #foodForm {
   display: inline-block;
-  width: 500px;
+  width: 550px;
   padding: 0px 10px 10px 10px;
 }
 #foodTable {
@@ -34,12 +42,16 @@ input {
 #btnAdd {
   display: block;
   position: relative;
-  top: 40px;
-  left: 500px;
+  top: 50px;
+  left: 550px;
   border: none;
   cursor: pointer;
   background-color: transparent;
   color: blue;
+  transition: 0, 5 ease-in-out;
+}
+#btnAdd:hover {
+  transform: scale(1.1);
 }
 .lineOne {
   padding: 10px;

@@ -16,11 +16,16 @@
       <table id="foodForm">
         <tr>
           <th><label for="ingredients">Ingrediente:</label></th>
-          <th>
-            <label for="marketWeight">Tamanho da embalagem (L/Uni/g)</label>
+          <th class="typeFood" rowspan="2">
+            <select id="typeFood" onchange="changeTable()">
+              <option disabled selected>Selecione</option>
+              <option value="1">Sólido</option>
+              <option value="2">Líquido</option>
+            </select>
           </th>
+          <th id="embalagem"><label for="marketWeight">Tamanho da embalagem (Gramas)</label></th>
           <th><label for="marketPrice">Preço no mercado (R$)</label></th>
-          <th><label for="grossWeight">Uso na receita (L/Uni/g) </label></th>
+          <th id="usoReceita"><label for="grossWeight">Uso na receita (Gramas)</label></th>
         </tr>
         <tr>
           <th><input type="text" id="ingredients" required /></th>
@@ -36,9 +41,9 @@
       <table id="foodTable">
         <tr id="lineOne">
           <th class="lineOne">Ingrediente</th>
-          <th class="lineOne">Tamanho da embalagem (g/mL)</th>
+          <th class="lineOne">Tamanho da embalagem (g/L)</th>
           <th class="lineOne">Preço no mercado (R$)</th>
-          <th class="lineOne">Uso na receita (g/mL)</th>
+          <th class="lineOne">Uso na receita (g/L)</th>
           <th class="lineOne">Custo real</th>
         </tr>
         <tr id="custoTotal">
