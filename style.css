@@ -49,13 +49,31 @@ input {
 #btnAdd:hover {
   transform: scale(1.1);
 }
+#btnEdit {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  color: thistle;
+  background-color: transparent;
+  scale: 0.6;
+  cursor: pointer;
+}
+#btnEdit:hover {
+  transform: scale(1.2);
+  color: blue;
+}
 .lineOne {
-  padding: 10px;
+  padding: 5px;
+  width: 500px;
 }
 #trCustoTotal {
   opacity: 0;
 }
-.custoTotal, .custoPorcao {
+#thBtn {
+  width: 50px;
+}
+.custoTotal,
+.custoPorcao {
   text-align: right;
   padding-right: 15px;
 }

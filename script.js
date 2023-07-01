@@ -10,12 +10,16 @@ function addFood() {
   //const trCustoPorcao = document.getElementById("trCustoPorcao");
   const result = document.getElementById("custoTotal");
 
-
   // Create a new table row
   const table = document.getElementById("foodTable");
   const newRow = table.insertRow(1);
 
-  if ((ingredients, marketWeight, marketPrice, grossWeight === "" || typeFood === "0")) {
+  if (
+    (ingredients,
+    marketWeight,
+    marketPrice,
+    grossWeight === "" || typeFood === "0")
+  ) {
     alert("Preencha os dados corretamente.");
   } else {
     let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
@@ -24,23 +28,33 @@ function addFood() {
     cell1.innerHTML = ingredients;
 
     const cell2 = newRow.insertCell(1);
-    cell2.innerHTML = typeFood === "1" ? `${marketWeight} g` : `${marketWeight} L`;
-    
+    cell2.innerHTML =
+      typeFood === "1" ? `${marketWeight} g` : `${marketWeight} L`;
 
     const cell3 = newRow.insertCell(2);
     cell3.innerHTML = `R$ ${marketPrice.toFixed(2)}`;
 
     const cell4 = newRow.insertCell(3);
-    cell4.innerHTML = typeFood === "1" ? `${grossWeight} g` : `${grossWeight} L`;
+    cell4.innerHTML =
+      typeFood === "1" ? `${grossWeight} g` : `${grossWeight} L`;
 
     const cell5 = newRow.insertCell(4);
     const costUni = costReal(marketPrice, marketWeight, grossWeight);
     total += costUni;
     cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
 
+    const btnEdit = document.createElement("button");
+    btnEdit.setAttribute("id", "btnEdit");
+    btnEdit.innerHTML = `<span class="material-icons">
+    edit
+    </span>`;
+    const cell6 = newRow.insertCell(5);
+    cell6.appendChild(btnEdit);
+
     trCustoTotal.style.opacity = 1;
     //trCustoPorcao.style.opacity = 1;
     result.innerHTML = `R$ ${total.toFixed(2)}`;
+    
   }
   // Clear value inputs and focus
 }
