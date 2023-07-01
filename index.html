@@ -18,14 +18,19 @@
           <th><label for="ingredients">Ingrediente:</label></th>
           <th class="typeFood" rowspan="2">
             <select id="typeFood" onchange="changeTable()">
-              <option disabled selected>Selecione</option>
-              <option value="1">Sólido</option>
-              <option value="2">Líquido</option>
+              <option disabled selected value="0">Selecione</option>q
+              <option value="1">Gramas</option>
+              <option value="2">Litros</option>
             </select>
           </th>
           <th id="embalagem"><label for="marketWeight">Tamanho da embalagem (Gramas)</label></th>
           <th><label for="marketPrice">Preço no mercado (R$)</label></th>
           <th id="usoReceita"><label for="grossWeight">Uso na receita (Gramas)</label></th>
+          <th rowspan="2">
+            <button type="button" id="btnAdd" onclick="addFood()">
+              <span class="material-icons"> add_circle </span>
+            </button>
+          </th>
         </tr>
         <tr>
           <th><input type="text" id="ingredients" required /></th>
@@ -33,9 +38,6 @@
           <th><input type="number" id="marketPrice" required /></th>
           <th><input type="number" id="grossWeight" required /></th>
         </tr>
-        <button type="button" id="btnAdd" onclick="addFood()">
-          <span class="material-icons"> add_circle </span>
-        </button>
       </table>
 
       <table id="foodTable">
@@ -46,9 +48,9 @@
           <th class="lineOne">Uso na receita (g/L)</th>
           <th class="lineOne">Custo real</th>
         </tr>
-        <tr id="custoTotal">
+        <tr id="trCustoTotal">
           <th colspan="4" class="custoTotal">Custo total:</th>
-          <th id="resultado"></th>
+          <th id="custoTotal"></th>
         </tr>
       </table>
     </article>
