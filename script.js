@@ -45,6 +45,7 @@ function addFood() {
 
     const btnEdit = document.createElement("button");
     btnEdit.setAttribute("id", "btnEdit");
+    btnEdit.setAttribute("onclick", "editElement()");
     btnEdit.innerHTML = `<span class="material-icons">
     edit
     </span>`;
@@ -52,7 +53,6 @@ function addFood() {
     cell6.appendChild(btnEdit);
 
     trCustoTotal.style.opacity = 1;
-    //trCustoPorcao.style.opacity = 1;
     result.innerHTML = `R$ ${total.toFixed(2)}`;
     
   }
@@ -70,6 +70,24 @@ function changeTable() {
     embalagem.innerHTML = "Tamanho da embalagem (Litros)";
     uso.innerHTML = "Uso na receita (Litros)";
   }
+}
+
+function editElement(){
+    /*const btnEdit = document.getElementById("btnEdit");
+    btnEdit.style.display = "none";
+    const btnDone = document.createElement("button");
+    btnDone.setAttribute("id", "btnDone");
+    btnDone.setAttribute("onclick", "addFood()");
+    btnDone.innerHTML = `<span class="material-icons">
+    done
+    </span>`;
+    const btnDelete = document.createElement("button");
+    btnDelete.setAttribute("id", "btnDelete");
+    btnDelete.setAttribute("onclick", "deleteElement()");
+    btnDelete.innerHTML = `<span class="material-icons">
+    delete
+    </span>`;*/
+
 }
 
 /*function CostPor(){
