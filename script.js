@@ -7,7 +7,7 @@ function addFood() {
   const marketPrice = Number(document.getElementById("marketPrice").value);
   const grossWeight = Number(document.getElementById("grossWeight").value);
   const trCustoTotal = document.getElementById("trCustoTotal");
-  //const trCustoPorcao = document.getElementById("trCustoPorcao");
+  const Lucro = document.getElementById("Lucro");
   const result = document.getElementById("custoTotal");
 
   // Create a new table row
@@ -29,14 +29,14 @@ function addFood() {
 
     const cell2 = newRow.insertCell(1);
     cell2.innerHTML =
-      typeFood === "1" ? `${marketWeight} g` : `${marketWeight} L`;
+      typeFood === "1" ? `${marketWeight} g` : `${marketWeight} mL`;
 
     const cell3 = newRow.insertCell(2);
     cell3.innerHTML = `R$ ${marketPrice.toFixed(2)}`;
 
     const cell4 = newRow.insertCell(3);
     cell4.innerHTML =
-      typeFood === "1" ? `${grossWeight} g` : `${grossWeight} L`;
+      typeFood === "1" ? `${grossWeight} g` : `${grossWeight} mL`;
 
     const cell5 = newRow.insertCell(4);
     const costUni = costReal(marketPrice, marketWeight, grossWeight);
@@ -54,7 +54,7 @@ function addFood() {
 
     trCustoTotal.style.opacity = 1;
     result.innerHTML = `R$ ${total.toFixed(2)}`;
-    
+    Lucro.innerHTML = `R$ ${total.toFixed(2)}`;
   }
   // Clear value inputs and focus
 }
@@ -64,11 +64,11 @@ function changeTable() {
   const embalagem = document.getElementById("embalagem");
   const uso = document.getElementById("usoReceita");
   if (typeFood === "1") {
-    embalagem.innerHTML = "Tamanho da embalagem (Gramas)";
-    uso.innerHTML = "Uso na receita (Gramas)";
+    embalagem.innerHTML = "Tamanho da embalagem (g)";
+    uso.innerHTML = "Uso na receita (g)";
   } else if (typeFood === "2") {
-    embalagem.innerHTML = "Tamanho da embalagem (Litros)";
-    uso.innerHTML = "Uso na receita (Litros)";
+    embalagem.innerHTML = "Tamanho da embalagem (mL)";
+    uso.innerHTML = "Uso na receita (mL)";
   }
 }
 
