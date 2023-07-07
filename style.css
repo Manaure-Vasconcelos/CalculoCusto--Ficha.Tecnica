@@ -35,6 +35,21 @@ p{
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
+#iframe{
+  width: 600px;
+  height: 300px;
+  align-items: center;
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+#btnsIframe{
+  display: block;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center;
+
+}
 /*Inputs*/
 #ingredients {
   width: 100px;
@@ -58,7 +73,7 @@ input {
   background-color: transparent;
 }
 /*Tabela custos*/
-#articleTable {
+#divTable {
   background: linear-gradient(white, rgb(233, 233, 233));
   margin: 50px;
   display: block;
@@ -102,7 +117,7 @@ input {
   text-align: right;
   padding-right: 15px;
 }
-#articleLucro{
+#divLucro{
   display: block;
   margin: 50px;
   border: 1px solid;
