@@ -19,76 +19,68 @@
         gastando ao fazer essa receita?”, “Trabalho em casa, preciso pagar os
         custos fixos iguais se tivesse em um ponto alugado?”.
       </p>
-
       <!-- Iframe infos -->
-      <iframe src="conteudoIframe.html" id="iframe"></iframe>
-      <div class="btnsIframe">
-        <button>Importância da precificação.</button>
-        <button>O que é ficha técnica?</button>
-        <button>Custos fixos.</button>
-        <button>Margem de lucro.</button>
+      <div id="conteinerIframe">
+        <iframe src="conteudoIframe.html" name="janela" id="iframe"></iframe>
+        <div class="btnsIframe">
+          <button>Importância da precificação.</button>
+          <button>O que é ficha técnica?</button>
+          <button>Custos fixos.</button>
+          <button>Margem de lucro.</button>
+        </div>
       </div>
       <!-- Tabela de custos -->
+
       <h1>Ficha Técnica:</h1>
       <p>
         Adicione os dados da sua receita corretamente e obtenha o Custo unitário
         e total da receita.
       </p>
       <p>Todos os ingrediente devem ser em Gramas (g) ou Mililitros (mL).</p>
+      <div id="conteinerTable">
+        <div id="divHeaderTable">
+          <table id="foodForm">
+            <tr>
+              <th><label for="ingredients">Ingrediente:</label></th>
+              <th>
+                <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+              </th>
+              <th><label for="marketPrice">Preço no mercado (R$)</label></th>
+              <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+              <th rowspan="2" id="thBtn">
+                <button type="button" id="btnAdd" onclick="addFood()">
+                  <span class="material-icons"> add_circle </span>
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th><input type="text" id="ingredients" required /></th>
+              <th><input type="number" id="marketWeight" required /></th>
+              <th><input type="number" id="marketPrice" required /></th>
+              <th><input type="number" id="grossWeight" required /></th>
+            </tr>
+          </table>
 
-      <div id="divTable">
-        <table id="foodForm">
-          <tr>
-            <th><label for="ingredients">Ingrediente:</label></th>
-            <th>Unidade de medida:</th>
-            <th id="embalagem">
-              <label for="marketWeight">Tamanho da embalagem:</label>
-            </th>
-            <th><label for="marketPrice">Preço no mercado (R$)</label></th>
-            <th id="usoReceita">
-              <label for="grossWeight">Uso na receita:</label>
-            </th>
-            <th rowspan="2">
-              <button type="button" id="btnAdd" onclick="addFood()">
-                <span class="material-icons"> add_circle </span>
-              </button>
-            </th>
-          </tr>
-          <tr>
-            <th><input type="text" id="ingredients" required /></th>
-            <th class="typeFood">
-              <select id="typeFood" onchange="changeTable()">
-                <option disabled selected value="0">Selecione</option>
-                q
-                <option value="1">Gramas</option>
-                <option value="2">Litros</option>
-              </select>
-            </th>
-            <th><input type="number" id="marketWeight" required /></th>
-            <th><input type="number" id="marketPrice" required /></th>
-            <th><input type="number" id="grossWeight" required /></th>
-          </tr>
-        </table>
+          <table id="foodTable">
+            <thead id="lineOne">
+              <th class="lineOne">Ingrediente</th>
+              <th class="lineOne">Tamanho da embalagem (g/mL)</th>
+              <th class="lineOne">Preço no mercado (R$)</th>
+              <th class="lineOne">Uso na receita (g/mL)</th>
+              <th class="lineOne">Custo real</th>
+            </thead>
+            <tr id="trCustoTotal">
+              <th colspan="4" class="custoTotal">Custo total:</th>
+              <th id="custoTotal"></th>
+            </tr>
+          </table>
+        </div>
 
-        <table id="foodTable">
-          <thead id="lineOne">
-            <th class="lineOne">Ingrediente</th>
-            <th class="lineOne">Tamanho da embalagem (g/mL)</th>
-            <th class="lineOne">Preço no mercado (R$)</th>
-            <th class="lineOne">Uso na receita (g/mL)</th>
-            <th class="lineOne">Custo real</th>
-          </thead>
-          <tr id="trCustoTotal">
-            <th colspan="4" class="custoTotal">Custo total:</th>
-            <th id="custoTotal"></th>
-          </tr>
-        </table>
-      </div>
-
-      <div id="divLucro">
-        <h2>Margem de lucro:</h2>
-        10%<input type="range" />100%
-        <div id="Lucro">resul</div>
+        <div id="divLucro">
+          <h2>Margem de lucro:</h2>
+          10%<input type="range" />100%
+          <div id="Lucro">resul</div>
+        </div>
       </div>
 
       <h2>Conclusão:</h2>

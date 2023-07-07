@@ -20,20 +20,23 @@ h1{
   font-size: 17px;
   padding: 10px;
   color: #333;
-  margin-top: 20px;
+  margin: 10px;
 }
 h2{
   font-size: 16px;
   padding: 10px;
   color: #333;
-  margin-top: 20px;   
 }
 p{
-  
   text-indent: 30pt;
   text-align: justify;
   font-size: 15px;
   margin: 10px 20px 0px 20px;
+}
+#conteinerIframe{
+  display:grid;
+  justify-content: center;
+  align-items: center;
 }
 #iframe{
   width: 600px;
@@ -42,13 +45,10 @@ p{
   margin-top: 20px;
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
-#btnsIframe{
-  display: block;
-  margin: auto;
-  justify-content: space-around;
+.btnsIframe{
   align-items: center;
-
 }
 /*Inputs*/
 #ingredients {
@@ -63,33 +63,21 @@ input {
   background-color: transparent;
   border-bottom: 1px solid;
 }
-/*Select*/
-#typeFood {
-  box-shadow: 1px 1px 1px black;
-  outline: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 0px 5px 5px 5px;
-  background-color: transparent;
-}
 /*Tabela custos*/
-#divTable {
-  background: linear-gradient(white, rgb(233, 233, 233));
-  margin: 50px;
-  display: block;
-  width: 600px;
-  border: 1px solid;
+#conteinerTable{
+  display: flex;
+  justify-content: space-between;
 }
-#foodForm th:first-child,
-#foodForm th:nth-child(2),
-#foodForm th:nth-child(3),
-#foodForm th:nth-child(4),
-#foodForm th:nth-child(5) {
-  width: 20%;
+#divHeaderTable {
+  background: linear-gradient(white, rgb(233, 233, 233));
+  margin-top: 50px;
+  display: block;
+  width: 550px;
+  border: 1px solid;
 }
 #foodForm { /* campo de inputs */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0px 10px 10px 10px;
 }
 #foodTable { /* tabela de custos */
@@ -99,7 +87,7 @@ input {
   text-align: center;
   padding: 5px;
 }
- td {
+td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
 }
@@ -109,9 +97,6 @@ input {
 }
 #trCustoTotal {
   opacity: 0;
-}
-#thBtn {
-  width: 50px;
 }
 .custoTotal {
   text-align: right;
