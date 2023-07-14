@@ -1,12 +1,12 @@
-/* Geral */ 
-*{
+/* Geral */
+* {
   margin: auto;
   font-family: Verdana, sans-serif;
 }
-body{
-  background-color:skyblue;
+body {
+  background-color: skyblue;
 }
-section{
+main {
   align-items: center;
   align-content: center;
   font-size: 13px;
@@ -16,29 +16,29 @@ section{
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-h1{
+h1 {
   font-size: 17px;
   padding: 10px;
   color: #333;
   margin: 10px;
 }
-h2{
+h2 {
   font-size: 16px;
   padding: 10px;
   color: #333;
 }
-p{
+p {
   text-indent: 30pt;
   text-align: justify;
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
-#conteinerIframe{
-  display:grid;
+#conteinerIframe {
+  display: grid;
   justify-content: center;
   align-items: center;
 }
-#iframe{
+#iframe {
   width: 600px;
   height: 300px;
   align-items: center;
@@ -47,7 +47,7 @@ p{
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 }
-.btnsIframe{
+.btnsIframe {
   align-items: center;
 }
 /*Inputs*/
@@ -64,23 +64,25 @@ input {
   border-bottom: 1px solid;
 }
 /*Tabela custos*/
-#conteinerTable{
+#conteinerTable {
   display: flex;
   justify-content: space-between;
 }
-#divHeaderTable {
+#divTable {
   background: linear-gradient(white, rgb(233, 233, 233));
   margin-top: 50px;
   display: block;
   width: 550px;
   border: 1px solid;
 }
-#foodForm { /* campo de inputs */
+#foodForm {
+  /* campo de inputs */
   display: flex;
   justify-content: space-around;
   padding: 0px 10px 10px 10px;
 }
-#foodTable { /* tabela de custos */
+#foodTable {
+  /* tabela de custos */
   display: table;
   border-top: 1px solid black;
   border-spacing: 0px;
@@ -91,7 +93,8 @@ td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
 }
-.lineOne { /* header tabela de custos */
+.lineOne {
+  /* header tabela de custos */
   padding: 5px;
   width: 500px;
 }
@@ -102,7 +105,7 @@ td {
   text-align: right;
   padding-right: 15px;
 }
-#divLucro{
+#divLucro {
   display: block;
   margin: 50px;
   border: 1px solid;
@@ -121,7 +124,9 @@ td {
 #btnAdd:hover {
   transform: scale(1.1);
 }
-#btnEdit, #btnDelete, #btnDone{
+#btnEdit,
+#btnDelete,
+#btnDone {
   padding: 0px;
   margin: 0px;
   border: none;
@@ -139,4 +144,20 @@ footer {
   padding: 10px;
   background-color: skyblue;
   color: black;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 600px) {
+  main {
+    padding: 10px;
+  }
+
+  #conteinerTable {
+    flex-direction: column;
+  }
+
+  #divTable,
+  #divLucro {
+    width: 100%;
+  }
 }

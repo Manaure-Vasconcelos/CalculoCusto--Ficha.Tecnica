@@ -1,4 +1,11 @@
 let total = 0;
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addFood();
+  }
+})
+
 function addFood() {
   // Retrieve form input values
   const ingredients = document.getElementById("ingredients").value;
@@ -15,9 +22,9 @@ function addFood() {
 
   if (
     (ingredients,
-    marketWeight,
-    marketPrice,
-    grossWeight === "")
+      marketWeight,
+      marketPrice,
+      grossWeight == "")
   ) {
     alert("Preencha os dados corretamente.");
   } else {
@@ -53,30 +60,43 @@ function addFood() {
     result.innerHTML = `R$ ${total.toFixed(2)}`;
     Lucro.innerHTML = `R$ ${total.toFixed(2)}`;
   }
-  // Clear value inputs and focus
+  clearInputs();
 }
 
-function editElement(){
-    /*const btnEdit = document.getElementById("btnEdit");
-    btnEdit.style.display = "none";
-    const btnDone = document.createElement("button");
-    btnDone.setAttribute("id", "btnDone");
-    btnDone.setAttribute("onclick", "addFood()");
-    btnDone.innerHTML = `<span class="material-icons">
+function clearInputs() {
+  const ingredients = document.getElementById("ingredients")
+  const marketWeight = document.getElementById("marketWeight")
+  const marketPrice = document.getElementById("marketPrice")
+  const grossWeight = document.getElementById("grossWeight")
+
+  ingredients.value = "";
+  marketWeight.value = "";
+  marketPrice.value = "";
+  grossWeight.value = "";
+  ingredients.focus();
+}
+
+function showArticle(src) {
+  const iframe = document.getElementById("iframe");
+  iframe.src = `conteudoIframe.html#${src}`;
+}
+
+/* function editElement() {
+  const table = document.getElementById("foodTable")
+  const btnEdit = document.getElementById("btnEdit");
+  btnEdit.style.display = "none";
+  const btnDone = document.createElement("button");
+  btnDone.setAttribute("id", "btnDone");
+  btnDone.setAttribute("onclick", "addFood()");
+  btnDone.innerHTML = `<span class="material-icons">
     done
     </span>`;
-    const btnDelete = document.createElement("button");
-    btnDelete.setAttribute("id", "btnDelete");
-    btnDelete.setAttribute("onclick", "deleteElement()");
-    btnDelete.innerHTML = `<span class="material-icons">
+  const btnDelete = document.createElement("button");
+  btnDelete.setAttribute("id", "btnDelete");
+  btnDelete.setAttribute("onclick", "deleteElement()");
+  btnDelete.innerHTML = `<span class="material-icons">
     delete
-    </span>`;*/
+    </span>`;
 
-}
+} */
 
-/*function CostPor(){
-  const porcao = Number(document.getElementById("porcao").value);
-  const resultPor = document.getElementById("custoPorcao");
-
-  resultPor.innerHTML = total / porcao;
-}*/

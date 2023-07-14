@@ -12,25 +12,31 @@
     <title>Calculadora de custos -- Ficha técnica.</title>
   </head>
   <body>
-    <section>
+    <main>
+      <h1>Calculando o preço ideal.</h1>
       <p>
         Quando somos pequenos empresario existem inúmeras dificuldades no
         caminho, uma delas é: “Quanto vendo meu produto?”, “Quanto exatamente to
         gastando ao fazer essa receita?”, “Trabalho em casa, preciso pagar os
         custos fixos iguais se tivesse em um ponto alugado?”.
       </p>
+
       <!-- Iframe infos -->
       <div id="conteinerIframe">
         <iframe src="conteudoIframe.html" name="janela" id="iframe"></iframe>
         <div class="btnsIframe">
-          <button>Importância da precificação.</button>
-          <button>O que é ficha técnica?</button>
-          <button>Custos fixos.</button>
-          <button>Margem de lucro.</button>
+          <button onclick="showArticle('topo')">
+            Importância da precificação.
+          </button>
+          <button onclick="showArticle('fichaTecnica')">
+            O que é ficha técnica?
+          </button>
+          <button onclick="showArticle('custos')">Custos fixos.</button>
+          <button onclick="showArticle('topo')">Margem de lucro.</button>
         </div>
       </div>
-      <!-- Tabela de custos -->
 
+      <!-- Tabela de custos -->
       <h1>Ficha Técnica:</h1>
       <p>
         Adicione os dados da sua receita corretamente e obtenha o Custo unitário
@@ -38,7 +44,7 @@
       </p>
       <p>Todos os ingrediente devem ser em Gramas (g) ou Mililitros (mL).</p>
       <div id="conteinerTable">
-        <div id="divHeaderTable">
+        <div id="divTable">
           <table id="foodForm">
             <tr>
               <th><label for="ingredients">Ingrediente:</label></th>
@@ -100,7 +106,7 @@
         cálculo de preços e fichas técnicas, por isso é importante adaptar as
         informações e metodologias às necessidades específicas de sua empresa.
       </p>
-    </section>
+    </main>
     <footer class="rodape">&copy; Manaure Vasconcelos</footer>
   </body>
 </html>
