@@ -21,10 +21,10 @@ function addFood() {
   const newRow = table.insertRow(1);
 
   if (
-    (ingredients,
-      marketWeight,
-      marketPrice,
-      grossWeight == "")
+    !!ingredients,
+    !!marketWeight,
+    !!marketPrice,
+    !!grossWeight === false
   ) {
     alert("Preencha os dados corretamente.");
   } else {
@@ -76,7 +76,9 @@ function clearInputs() {
   ingredients.focus();
 }
 
-function showArticle(src) {
+function showArticle(src, event) {
+  event.preventDefault();
+
   const iframe = document.getElementById("iframe");
   iframe.src = `conteudoIframe.html#${src}`;
 }

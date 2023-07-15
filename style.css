@@ -49,6 +49,16 @@ p {
 }
 .btnsIframe {
   align-items: center;
+  max-width: 650px;
+}
+
+.btnIframe {
+  cursor: pointer;
+  transition: transform 0.1 ease-in-out;
+}
+
+.btnIframe:hover {
+  transform: scale(1.02);
 }
 /*Inputs*/
 #ingredients {
@@ -144,20 +154,4 @@ footer {
   padding: 10px;
   background-color: skyblue;
   color: black;
-}
-
-/* Estilos responsivos */
-@media screen and (max-width: 600px) {
-  main {
-    padding: 10px;
-  }
-
-  #conteinerTable {
-    flex-direction: column;
-  }
-
-  #divTable,
-  #divLucro {
-    width: 100%;
-  }
 }

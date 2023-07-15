@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabela de conversão de medidas.</title>
+    <style>
+      body {
+        margin: 0 auto;
+        padding: 0px;
+        background: skyblue;
+      }
+      main {
+        text-align: center;
+        margin: auto;
+        margin-top: 100px;
+        width: 600px;
+        height: 300px;
+        border: 1px solid black;
+        background-color: #fff;
+      }
+      p{
+        text-align: left;
+      }
+      #conteinerConversao {
+        display: flexbox;
+        justify-content: space-around;
+        align-items: start;
+        margin: auto;
+        border: 1px solid;
+        width: 450px;
+      }
+      #conteinerForm {
+        margin-top: 10px;
+        width: 100%;
+      }
+      #conteinerInputValue {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        width: 100%;
+      }
+      .conteiner{
+        display: flex;
+        flex-direction: column;
+      }
+      #selectUnidade {
+        width: 100%;
+        padding: 5px;
+      }
+      input {
+        width: 140px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Tabela de conversão de medidas.</h1>
+      <div id="conteinerConversao">
+        <select name="unidadeMedida" id="selectUnidade">
+          <option value="1" selected>Massa: (Kg/g)</option>
+          <option value="2">Volume: (L/mL)</option>
+        </select>
+          <div id="conteinerInputValue">
+            <div class="conteiner">
+              <input type="number" id="inputNumber" value="1" /> Kilo
+            </div>
+            <div class="conteiner"><strong>=</strong></div>
+            <div class="conteiner">
+              <input type="number" id="resultConversao" /> Grama
+            </div>
+          </div>
+        <p>Formula</p>
+      </div>
+    </main>
+
+    <script>
+      const inputElement = document.querySelector("#inputNumber");
+      inputElement.addEventListener("onkeyup", convertValue);
+
+      function convertValue() {}
+    </script>
+  </body>
+</html>

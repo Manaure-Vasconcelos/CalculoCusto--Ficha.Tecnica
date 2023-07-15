@@ -16,33 +16,33 @@
       <h1>Calculando o preço ideal.</h1>
       <p>
         Quando somos pequenos empresario existem inúmeras dificuldades no
-        caminho, uma delas é: “Quanto vendo meu produto?”, “Quanto exatamente to
+        caminho, uma delas é: “Por quanto vendo meu produto?”, “Quanto exatamente to
         gastando ao fazer essa receita?”, “Trabalho em casa, preciso pagar os
         custos fixos iguais se tivesse em um ponto alugado?”.
       </p>
 
       <!-- Iframe infos -->
       <div id="conteinerIframe">
-        <iframe src="conteudoIframe.html" name="janela" id="iframe"></iframe>
+        <iframe src="conteudoIframe.html" name="janela" id="iframe" scrolling="no"></iframe>
         <div class="btnsIframe">
-          <button onclick="showArticle('topo')">
+          <button class="btnIframe" onclick="showArticle('topo', event)">
             Importância da precificação.
           </button>
-          <button onclick="showArticle('fichaTecnica')">
+          <button class="btnIframe" onclick="showArticle('fichaTecnica', event)">
             O que é ficha técnica?
           </button>
-          <button onclick="showArticle('custos')">Custos fixos.</button>
-          <button onclick="showArticle('topo')">Margem de lucro.</button>
+          <button class="btnIframe" onclick="showArticle('custos', event)">Custos fixos.</button>
+          <button class="btnIframe" onclick="showArticle('topo', event)">Margem de lucro.</button>
         </div>
       </div>
 
       <!-- Tabela de custos -->
       <h1>Ficha Técnica:</h1>
       <p>
-        Adicione os dados da sua receita corretamente e obtenha o Custo unitário
+        Adicione os dados da sua receita corretamente e obtenha o custo unitário
         e total da receita.
       </p>
-      <p>Todos os ingrediente devem ser em Gramas (g) ou Mililitros (mL).</p>
+      <p>Todos os ingrediente devem ser em Gramas (g) ou Mililitros (mL). <a href="tabelaConversao.html" target="_blank">Tabela de conversão.</a></p>
       <div id="conteinerTable">
         <div id="divTable">
           <table id="foodForm">
