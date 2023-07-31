@@ -28,11 +28,10 @@ function addFood() {
   ) {
     alert("Preencha os dados corretamente.");
   } else {
-    let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
     // Add cells to the new row
     const cell1 = newRow.insertCell(0);
     cell1.innerHTML = ingredients;
-
+    
     const cell2 = newRow.insertCell(1);
     cell2.innerHTML = marketWeight;
 
@@ -55,13 +54,15 @@ function addFood() {
     </span>`;
     const cell6 = newRow.insertCell(5);
     cell6.appendChild(btnEdit);
-
+    
     trCustoTotal.style.opacity = 1;
     result.innerHTML = `R$ ${total.toFixed(2)}`;
     Lucro.innerHTML = `R$ ${total.toFixed(2)}`;
   }
   clearInputs();
 }
+
+let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
 
 function clearInputs() {
   const ingredients = document.getElementById("ingredients")
