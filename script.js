@@ -17,8 +17,8 @@ function addFood() {
   const result = document.getElementById("custoTotal");
 
   // Create a new table row
-  const table = document.getElementById("foodTable");
-  const newRow = table.insertRow(1);
+  const table = document.getElementById("foodForm");
+  const newRow = table.insertRow(2);
 
   if (
     !!ingredients,
