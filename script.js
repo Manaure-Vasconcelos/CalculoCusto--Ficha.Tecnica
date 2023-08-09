@@ -1,21 +1,13 @@
 (function () {
   const itensLocale = [];
   let total = 0;
-  
+
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       addFood();
     }
   })
-  
-  document.addEventListener('click', function (event) {
-    const el = event.target
-    if (el.classList.contains('btnAdd')) {
-      console.log(el)
-      addFood();
-    }
-  })
-  
+
   document.addEventListener("DOMContentLoaded", function (event) {
     loadItens();
   });
@@ -48,11 +40,9 @@
     }
   }
 
-
   function addFood(item) {
     const el = item
     const { ingredients, marketWeight, marketPrice, grossWeight } = el || createItem();
-    const Lucro = document.querySelector("#Lucro");
 
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
@@ -80,12 +70,23 @@
     const btnEdit = createElement();
     cell6.appendChild(btnEdit);
 
-    Lucro.innerHTML = `Custo total: R$ ${total.toFixed(2)}`;
-
+    addLucro()
     clearInputs();
   }
 
-  let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+  const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+  const costLucro = (total, uni) => total / uni;
+
+  const addLucro = () => {
+    const divLucro = document.querySelector("#lucro");
+    const uni = document.querySelector(".inputUni").value;
+
+    const lucro = costLucro(total, uni);
+
+    divLucro.innerHTML = `<p>Custo total: R$ ${total.toFixed(2)}</p>`;
+    divLucro.innerHTML += `<p>Custo total: R$ ${lucro.toFixed(2)}</p>`;
+
+  }
 
   const createElement = () => {
     const btnEdit = document.createElement("button");

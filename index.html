@@ -16,33 +16,48 @@
       <h1>Calculando o preço ideal.</h1>
       <p>
         Quando somos pequenos empresario existem inúmeras dificuldades no
-        caminho, uma delas é: “Por quanto vendo meu produto?”, “Quanto exatamente to
-        gastando ao fazer essa receita?”, “Trabalho em casa, preciso pagar os
-        custos fixos iguais se tivesse em um ponto alugado?”.
+        caminho, uma delas é: “Por quanto vendo meu produto?”, “Quanto
+        exatamente to gastando ao fazer essa receita?”, “Trabalho em casa,
+        preciso pagar os custos fixos iguais se tivesse em um ponto alugado?”.
       </p>
 
       <!-- Iframe infos -->
       <div id="conteinerIframe">
-        <iframe src="conteudoIframe.html" name="janela" id="iframe" scrolling="no"></iframe>
+        <iframe
+          src="conteudoIframe.html"
+          name="janela"
+          id="iframe"
+          scrolling="no"
+        ></iframe>
         <div class="btnsIframe">
           <button class="btnIframe" onclick="showArticle('topo', event)">
             Importância da precificação.
           </button>
-          <button class="btnIframe" onclick="showArticle('fichaTecnica', event)">
+          <button
+            class="btnIframe"
+            onclick="showArticle('fichaTecnica', event)"
+          >
             O que é ficha técnica?
           </button>
-          <button class="btnIframe" onclick="showArticle('custos', event)">Custos fixos.</button>
-          <button class="btnIframe" onclick="showArticle('topo', event)">Margem de lucro.</button>
+          <button class="btnIframe" onclick="showArticle('custos', event)">
+            Custos fixos.
+          </button>
+          <button class="btnIframe" onclick="showArticle('topo', event)">
+            Margem de lucro.
+          </button>
         </div>
       </div>
 
       <!-- Tabela de custos -->
       <h1>Ficha Técnica:</h1>
       <p>
-        Adicione os dados da sua receita e obtenha o custo unitário.
-        e total da receita.
+        Adicione os dados da sua receita e obtenha o custo unitário. e total da
+        receita.
       </p>
-      <p>Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou Unidade.</p>
+      <p>
+        Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
+        Unidade.
+      </p>
       <div id="conteinerTable">
         <div id="divTable">
           <table id="foodForm">
@@ -53,7 +68,7 @@
               </th>
               <th><label for="marketPrice">Preço no mercado (R$)</label></th>
               <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
-              <th rowspan="2"colspan2 id="thBtn">
+              <th rowspan="2" colspan2 id="thBtn">
                 <button type="button" class="btnAdd" onclick="addFood()">
                   <span class="material-icons"> add_circle </span>
                 </button>
@@ -70,8 +85,8 @@
 
         <div id="divLucro">
           <h2>Margem de lucro:</h2>
-          10%<input type="range" />100%
-          <div id="Lucro"></div>
+          Rendimento:<input type="number" class="inputUni" onkeypress="addLucro()">
+          <div id="lucro"></div>
         </div>
       </div>
 
