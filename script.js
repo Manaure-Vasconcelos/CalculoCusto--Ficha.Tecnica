@@ -1,11 +1,4 @@
 (function () {
-  const ingredientsInput = document.getElementById("ingredients");
-  const marketWeightInput = document.getElementById("marketWeight");
-  const marketPriceInput = document.getElementById("marketPrice");
-  const grossWeightInput = document.getElementById("grossWeight");
-  const trCustoTotal = document.getElementById("trCustoTotal");
-  const Lucro = document.getElementById("Lucro");
-  const result = document.getElementById("custoTotal");
   let total = 0;
 
   document.addEventListener('keydown', function (event) {
@@ -14,12 +7,21 @@
     }
   })
 
+  const createItem = () => {
+    const item = {
+      ingredients: String(document.getElementById("ingredients").value),
+      marketWeight: Number(document.getElementById("marketWeight").value),
+      marketPrice: Number(document.getElementById("marketPrice").value),
+      grossWeight: Number(document.getElementById("grossWeight").value)
+    }
+    return item;
+  };
+
   function addFood() {
-    // Create a new table row
-    const ingredients = String(ingredientsInput.value);
-    const marketWeight = Number(marketWeightInput.value);
-    const marketPrice = Number(marketPriceInput.value);
-    const grossWeight = Number(grossWeightInput.value);
+    const { ingredients, marketWeight, marketPrice, grossWeight } = createItem()
+    const trCustoTotal = document.getElementById("trCustoTotal");
+    const Lucro = document.getElementById("Lucro");
+    const result = document.getElementById("custoTotal");
 
     const table = document.getElementById("foodForm");
     const newRow = table.insertRow(2);
@@ -53,7 +55,7 @@
       result.innerHTML = `R$ ${total.toFixed(2)}`;
       Lucro.innerHTML = `R$ ${total.toFixed(2)}`;
     }
-    clearInputs();
+    clearInputs(this.ingredients, this.marketWeight, this.marketPrice, this.grossWeight);
   }
 
   let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
@@ -64,16 +66,16 @@
     btnEdit.setAttribute("onclick", "editElement()");
     btnEdit.innerHTML = `<span class="material-icons">
         edit
-      </span>`;
+        </span>`;
     return btnEdit
   };
 
-  function clearInputs() {
-    ingredientsInput.value = "";
-    marketWeightInput.value = "";
-    marketPriceInput.value = "";
-    grossWeightInput.value = "";
-    ingredientsInput.focus();
+  const clearInputs = (ingredients, marketWeight, marketPrice, grossWeight) => {
+    ingredients.value = "";
+    marketWeight.value = "";
+    marketPrice.value = "";
+    grossWeight.value = "";
+    ingredients.focus();
   }
 
   function showArticle(src, event) {
@@ -82,23 +84,28 @@
     const iframe = document.getElementById("iframe");
     iframe.src = `conteudoIframe.html#${src}`;
   }
+
+  /* const salveTask = () => {
+    const lis = tasks.querySelectorAll('li');
+    const btn = '<button class="deleteTask">Apagar</button>';
+    const liTasks = [];
+
+    for (let liEl of lis) {
+      let taskText = liEl.innerHTML;
+      taskText = taskText.replace(btn, '').trim();
+      liTasks.push(taskText);
+    }
+
+    const liTasksJSON = JSON.stringify(liTasks);
+    localStorage.setItem('tasklist', liTasksJSON);
+  };
+
+  const getTaksSaved = () => {
+    const tasks = localStorage.getItem('tasklist');
+    const list = JSON.parse(tasks);
+
+    for (let task of list) {
+      getNewTask(task);
+    }
+  } */
 })();
-/* function editElement() {
-  const table = document.getElementById("foodTable")
-  const btnEdit = document.getElementById("btnEdit");
-  btnEdit.style.display = "none";
-  const btnDone = document.createElement("button");
-  btnDone.setAttribute("id", "btnDone");
-  btnDone.setAttribute("onclick", "addFood()");
-  btnDone.innerHTML = `<span class="material-icons">
-    done
-    </span>`;
-  const btnDelete = document.createElement("button");
-  btnDelete.setAttribute("id", "btnDelete");
-  btnDelete.setAttribute("onclick", "deleteElement()");
-  btnDelete.innerHTML = `<span class="material-icons">
-    delete
-    </span>`;
-
-} */
-
