@@ -1,5 +1,7 @@
 (function () {
+  loadItems();
   let total = 0;
+  const itensLocale = [];
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
@@ -7,18 +9,37 @@
     }
   })
 
-  const createItem = () => {
+  const createItem = (elements) => {
+    const temp = elements
+    const temp2 = [];
+    for (let i in temp) {
+      temp2.push(temp[i])
+    }
     const item = {
       ingredients: String(document.getElementById("ingredients").value),
       marketWeight: Number(document.getElementById("marketWeight").value),
       marketPrice: Number(document.getElementById("marketPrice").value),
       grossWeight: Number(document.getElementById("grossWeight").value)
-    }
+    } || temp2;
+    itensLocale.push(item)
+    localStorage.setItem('itemList', JSON.stringify(itensLocale));
+
     return item;
   };
 
+  function loadItems() {
+    const savedItems = localStorage.getItem('itemList');
+    const ItensLi = JSON.parse(savedItems)
+
+    if (savedItems) {
+      for (let item of ItensLi) {
+        addFood(item)
+      }
+    }
+  }
+
   function addFood() {
-    const { ingredients, marketWeight, marketPrice, grossWeight } = createItem()
+    const { ingredients, marketWeight, marketPrice, grossWeight } = createItem();
     const trCustoTotal = document.getElementById("trCustoTotal");
     const Lucro = document.getElementById("Lucro");
     const result = document.getElementById("custoTotal");
@@ -85,27 +106,4 @@
     iframe.src = `conteudoIframe.html#${src}`;
   }
 
-  /* const salveTask = () => {
-    const lis = tasks.querySelectorAll('li');
-    const btn = '<button class="deleteTask">Apagar</button>';
-    const liTasks = [];
-
-    for (let liEl of lis) {
-      let taskText = liEl.innerHTML;
-      taskText = taskText.replace(btn, '').trim();
-      liTasks.push(taskText);
-    }
-
-    const liTasksJSON = JSON.stringify(liTasks);
-    localStorage.setItem('tasklist', liTasksJSON);
-  };
-
-  const getTaksSaved = () => {
-    const tasks = localStorage.getItem('tasklist');
-    const list = JSON.parse(tasks);
-
-    for (let task of list) {
-      getNewTask(task);
-    }
-  } */
 })();
