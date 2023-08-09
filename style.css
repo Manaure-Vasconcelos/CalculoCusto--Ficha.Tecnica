@@ -116,7 +116,7 @@ td {
   background: rgb(216, 255, 198);
 }
 /*Botões*/
-#btnAdd {
+.btnAdd {
   border: none;
   cursor: pointer;
   background: none;

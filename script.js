@@ -1,82 +1,88 @@
 (function () {
-  loadItems();
-  let total = 0;
   const itensLocale = [];
-
+  let total = 0;
+  
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       addFood();
     }
   })
-
-  const createItem = (elements) => {
-    const temp = elements
-    const temp2 = [];
-    for (let i in temp) {
-      temp2.push(temp[i])
+  
+  document.addEventListener('click', function (event) {
+    const el = event.target
+    if (el.classList.contains('btnAdd')) {
+      console.log(el)
+      addFood();
     }
+  })
+  
+  document.addEventListener("DOMContentLoaded", function (event) {
+    loadItens();
+  });
+
+  const createItem = () => {
     const item = {
       ingredients: String(document.getElementById("ingredients").value),
       marketWeight: Number(document.getElementById("marketWeight").value),
       marketPrice: Number(document.getElementById("marketPrice").value),
       grossWeight: Number(document.getElementById("grossWeight").value)
-    } || temp2;
-    itensLocale.push(item)
-    localStorage.setItem('itemList', JSON.stringify(itensLocale));
-
+    }
+    savedItens(item)
     return item;
   };
 
-  function loadItems() {
-    const savedItems = localStorage.getItem('itemList');
-    const ItensLi = JSON.parse(savedItems)
+  const savedItens = (item) => {
+    itensLocale.push(item)
+    localStorage.setItem('itemList', JSON.stringify(itensLocale));
+  };
 
-    if (savedItems) {
-      for (let item of ItensLi) {
+  const loadItens = () => {
+    const savedItens = localStorage.getItem('itemList');
+
+    if (savedItens) {
+      const itensLi = JSON.parse(savedItens)
+      for (let item of itensLi) {
+        console.log(item.ingredients, typeof item.ingredients, typeof item.marketPrice)
         addFood(item)
       }
     }
   }
 
-  function addFood() {
-    const { ingredients, marketWeight, marketPrice, grossWeight } = createItem();
-    const trCustoTotal = document.getElementById("trCustoTotal");
-    const Lucro = document.getElementById("Lucro");
-    const result = document.getElementById("custoTotal");
 
-    const table = document.getElementById("foodForm");
-    const newRow = table.insertRow(2);
+  function addFood(item) {
+    const el = item
+    const { ingredients, marketWeight, marketPrice, grossWeight } = el || createItem();
+    const Lucro = document.querySelector("#Lucro");
 
-    if (ingredients === '' || marketWeight === 0 || marketPrice === 0 || grossWeight === 0) {
-      alert("Preencha os dados corretamente.");
-    } else {
-      // Add cells to the new row
-      const cell1 = newRow.insertCell(0);
-      cell1.innerHTML = ingredients;
+    if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
-      const cell2 = newRow.insertCell(1);
-      cell2.innerHTML = marketWeight;
+    const table = document.querySelector("#foodForm");
+    const newRow = table.insertRow(-1);
+    // Add cells to the new row
+    const cell1 = newRow.insertCell(0);
+    cell1.innerHTML = ingredients;
 
-      const cell3 = newRow.insertCell(2);
-      cell3.innerHTML = `R$ ${marketPrice.toFixed(2)}`;
+    const cell2 = newRow.insertCell(1);
+    cell2.innerHTML = marketWeight;
 
-      const cell4 = newRow.insertCell(3);
-      cell4.innerHTML = grossWeight;
+    const cell3 = newRow.insertCell(2);
+    cell3.innerHTML = `R$ ${marketPrice.toFixed(2)}`;
 
-      const cell5 = newRow.insertCell(4);
-      const costUni = costReal(marketPrice, marketWeight, grossWeight);
-      total += costUni;
-      cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
+    const cell4 = newRow.insertCell(3);
+    cell4.innerHTML = grossWeight;
 
-      const cell6 = newRow.insertCell(5);
-      const btnEdit = createElement();
-      cell6.appendChild(btnEdit);
+    const cell5 = newRow.insertCell(4);
+    const costUni = costReal(marketPrice, marketWeight, grossWeight);
+    total += costUni;
+    cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
 
-      trCustoTotal.style.opacity = 1;
-      result.innerHTML = `R$ ${total.toFixed(2)}`;
-      Lucro.innerHTML = `R$ ${total.toFixed(2)}`;
-    }
-    clearInputs(this.ingredients, this.marketWeight, this.marketPrice, this.grossWeight);
+    const cell6 = newRow.insertCell(5);
+    const btnEdit = createElement();
+    cell6.appendChild(btnEdit);
+
+    Lucro.innerHTML = `Custo total: R$ ${total.toFixed(2)}`;
+
+    clearInputs();
   }
 
   let costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
@@ -91,12 +97,12 @@
     return btnEdit
   };
 
-  const clearInputs = (ingredients, marketWeight, marketPrice, grossWeight) => {
-    ingredients.value = "";
-    marketWeight.value = "";
-    marketPrice.value = "";
-    grossWeight.value = "";
-    ingredients.focus();
+  const clearInputs = () => {
+    document.getElementById("ingredients").value = '';
+    document.getElementById("marketWeight").value = '';
+    document.getElementById("marketPrice").value = '';
+    document.getElementById("grossWeight").value = '';
+    document.getElementById("ingredients").focus();
   }
 
   function showArticle(src, event) {

@@ -54,7 +54,7 @@
               <th><label for="marketPrice">Preço no mercado (R$)</label></th>
               <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
               <th rowspan="2"colspan2 id="thBtn">
-                <button type="button" id="btnAdd" onclick="addFood()">
+                <button type="button" class="btnAdd" onclick="addFood()">
                   <span class="material-icons"> add_circle </span>
                 </button>
               </th>
@@ -65,17 +65,13 @@
               <th><input type="number" id="marketPrice" required /></th>
               <th><input type="number" id="grossWeight" required /></th>
             </tr>
-            <tr id="trCustoTotal">
-              <th colspan="4" class="custoTotal">Custo total:</th>
-              <th id="custoTotal"></th>
-            </tr>
           </table>
         </div>
 
         <div id="divLucro">
           <h2>Margem de lucro:</h2>
           10%<input type="range" />100%
-          <div id="Lucro">resul</div>
+          <div id="Lucro"></div>
         </div>
       </div>
 
