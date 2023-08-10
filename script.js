@@ -8,7 +8,7 @@
     }
   })
 
-  document.addEventListener("DOMContentLoaded", function (event) {
+  document.addEventListener("DOMContentLoaded", function () {
     loadItens();
   });
 
@@ -34,13 +34,12 @@
     if (savedItens) {
       const itensLi = JSON.parse(savedItens)
       for (let item of itensLi) {
-        console.log(item.ingredients, typeof item.ingredients, typeof item.marketPrice)
         addFood(item)
       }
     }
   }
 
-  function addFood(item) {
+  const addFood = (item) => {
     const el = item
     const { ingredients, marketWeight, marketPrice, grossWeight } = el || createItem();
 
@@ -75,16 +74,18 @@
   }
 
   const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
-  const costLucro = (total, uni) => total / uni;
 
   const addLucro = () => {
     const divLucro = document.querySelector("#lucro");
-    const uni = document.querySelector(".inputUni").value;
 
-    const lucro = costLucro(total, uni);
+    /* if (!divLucro) return; */
+
+    const uni = document.querySelector(".inputUnit").value;
+
+    const lucroUni = !uni.value ? total / uni : total / 1;
 
     divLucro.innerHTML = `<p>Custo total: R$ ${total.toFixed(2)}</p>`;
-    divLucro.innerHTML += `<p>Custo total: R$ ${lucro.toFixed(2)}</p>`;
+    divLucro.innerHTML += `<p>Custo unitário: R$ ${lucroUni.toFixed(2)}</p>`;
 
   }
 
@@ -106,7 +107,7 @@
     document.getElementById("ingredients").focus();
   }
 
-  function showArticle(src, event) {
+  const showArticle = (src, event) => {
     event.preventDefault();
 
     const iframe = document.getElementById("iframe");
