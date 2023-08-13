@@ -2,6 +2,13 @@
   const itensLocale = [];
   let total = 0;
 
+  const showArticle = (src, event) => {
+    event.preventDefault();
+
+    const iframe = document.getElementById("iframe");
+    iframe.src = `conteudoIframe.html#${src}`;
+  }
+
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       addFood();
@@ -11,33 +18,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     loadItens();
   });
-
-  const createItem = () => {
-    const item = {
-      ingredients: String(document.getElementById("ingredients").value),
-      marketWeight: Number(document.getElementById("marketWeight").value),
-      marketPrice: Number(document.getElementById("marketPrice").value),
-      grossWeight: Number(document.getElementById("grossWeight").value)
-    }
-    savedItens(item)
-    return item;
-  };
-
-  const savedItens = (item) => {
-    itensLocale.push(item)
-    localStorage.setItem('itemList', JSON.stringify(itensLocale));
-  };
-
-  const loadItens = () => {
-    const savedItens = localStorage.getItem('itemList');
-
-    if (savedItens) {
-      const itensLi = JSON.parse(savedItens)
-      for (let item of itensLi) {
-        addFood(item)
-      }
-    }
-  }
 
   const addFood = (item) => {
     const el = item
@@ -73,7 +53,28 @@
     clearInputs();
   }
 
+  const createItem = () => {
+    const item = {
+      ingredients: String(document.getElementById("ingredients").value),
+      marketWeight: Number(document.getElementById("marketWeight").value),
+      marketPrice: Number(document.getElementById("marketPrice").value),
+      grossWeight: Number(document.getElementById("grossWeight").value)
+    }
+    savedItens(item)
+    return item;
+  };
+
   const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+
+  const createElement = () => {
+    const btnEdit = document.createElement("button");
+    btnEdit.setAttribute("id", "btnEdit");
+    btnEdit.setAttribute("onclick", "editElement()");
+    btnEdit.innerHTML = `<span class="material-icons">
+    edit
+    </span>`;
+    return btnEdit
+  };
 
   const addLucro = () => {
     const divLucro = document.querySelector("#lucro");
@@ -89,16 +90,6 @@
 
   }
 
-  const createElement = () => {
-    const btnEdit = document.createElement("button");
-    btnEdit.setAttribute("id", "btnEdit");
-    btnEdit.setAttribute("onclick", "editElement()");
-    btnEdit.innerHTML = `<span class="material-icons">
-        edit
-        </span>`;
-    return btnEdit
-  };
-
   const clearInputs = () => {
     document.getElementById("ingredients").value = '';
     document.getElementById("marketWeight").value = '';
@@ -107,11 +98,21 @@
     document.getElementById("ingredients").focus();
   }
 
-  const showArticle = (src, event) => {
-    event.preventDefault();
+  const savedItens = (item) => {
+    itensLocale.push(item)
+    localStorage.setItem('itemList', JSON.stringify(itensLocale));
+  };
 
-    const iframe = document.getElementById("iframe");
-    iframe.src = `conteudoIframe.html#${src}`;
+  const loadItens = () => {
+    const savedItens = localStorage.getItem('itemList');
+
+    if (savedItens) {
+      const itensLi = JSON.parse(savedItens)
+      for (let item of itensLi) {
+        addFood(item)
+      }
+    }
   }
 
+  (function () { document.setInterval(localStorage.clear(), 30000) })();
 })();
