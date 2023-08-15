@@ -33,7 +33,6 @@ p {
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
-/*Iframe*/
 #conteinerIframe {
   display: grid;
   justify-content: center;
@@ -52,17 +51,22 @@ p {
   align-items: center;
   max-width: 630px;
 }
+
 .btnIframe {
   cursor: pointer;
   margin: 0px;
   transition: transform 0.1 ease-in-out;
 }
+
 .btnIframe:hover {
   transform: scale(1.02);
 }
 /*Inputs*/
+#ingredients {
+  width: 100px;
+}
 input {
-  width: 115px;
+  width: 70px;
   text-align: center;
   justify-content: center;
   outline: none;
@@ -70,25 +74,20 @@ input {
   background-color: transparent;
   border-bottom: 1px solid;
 }
-.container--inputs {
-  padding: 5px;
-  border: 1px solid;
-  width: 540px;
-}
 /*Tabela custos*/
-.container--calculator {
-  margin: auto;
-  padding: 10px;
-  display: flex; 
-  width: 1070px;
-  height: auto;
-  gap: 1rem;
+#conteinerTable {
+  display: flex;
+  justify-content: space-between;
 }
-.container--tableIngredients {
-  padding: 5px;
-  width: 500px;
+#divTable {
+  background: rgb(216, 255, 198);
+  margin-top: 50px;
+  display: block;
+  width: 550px;
+  border: 1px solid;
+  border-radius: 15px;
 }
-.foodTable {
+#foodForm {
   display: table;
   justify-content: space-between;
   padding: 0px 10px 10px 10px;
@@ -96,9 +95,25 @@ input {
   text-align: center;
   padding: 5px;
 }
-.result {
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+#trCustoTotal {
+  opacity: 0;
+}
+.custoTotal {
   text-align: right;
-  display: none;
+  padding-right: 15px;
+}
+#divLucro {
+  display: block;
+  margin: 50px;
+  border: 1px solid;
+  border-radius: 15px;
+  width: 400px;
+  padding: 10px;
+  background: rgb(216, 255, 198);
 }
 /*Botões*/
 .btnAdd {

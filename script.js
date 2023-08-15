@@ -25,7 +25,7 @@
 
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
-    const table = document.querySelector(".foodTable");
+    const table = document.querySelector("#foodForm");
     const newRow = table.insertRow(-1);
     // Add cells to the new row
     const cell1 = newRow.insertCell(0);
@@ -49,6 +49,7 @@
     const btnEdit = createElement();
     cell6.appendChild(btnEdit);
 
+    addLucro()
     clearInputs();
   }
 
@@ -62,9 +63,9 @@
     savedItens(item)
     return item;
   };
-  
+
   const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
-  
+
   const createElement = () => {
     const btnEdit = document.createElement("button");
     btnEdit.setAttribute("id", "btnEdit");
@@ -74,6 +75,20 @@
     </span>`;
     return btnEdit
   };
+
+  const addLucro = () => {
+    const divLucro = document.querySelector("#lucro");
+
+    /* if (!divLucro) return; */
+
+    const uni = document.querySelector(".inputUnit").value;
+
+    const lucroUni = !uni.value ? total / uni : total / 1;
+
+    divLucro.innerHTML = `<p>Custo total: R$ ${total.toFixed(2)}</p>`;
+    divLucro.innerHTML += `<p>Custo unitário: R$ ${lucroUni.toFixed(2)}</p>`;
+
+  }
 
   const clearInputs = () => {
     document.getElementById("ingredients").value = '';
@@ -99,5 +114,5 @@
     }
   }
 
-  /* (function () { document.setInterval(localStorage.clear(), 30000) })(); */
+  (function () { document.setInterval(localStorage.clear(), 30000) })();
 })();

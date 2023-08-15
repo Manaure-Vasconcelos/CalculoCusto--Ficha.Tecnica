@@ -13,29 +13,6 @@
   </head>
   <body>
     <main>
-      <div class="container--calculator">
-        <div class="container--inputs">
-          <input type="text" id="ingredients" required placeholder="Ingredientes"/>
-          <input type="number" id="marketWeight" required placeholder="Peso bruto"/>
-          <input type="number" id="marketPrice" required placeholder="Preço mercado"/>
-          <input type="number" id="grossWeight" required placeholder="Uso"/>
-          <button class="btnAdd" onclick="addFood()">
-            add
-          </button>
-        </div>
-        <div class="container--tableIngredients">
-          <table class="foodTable">
-            <tr>
-              <th><label for="ingredients">Ingrediente:</label></th>
-              <th>
-                <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
-              </th>
-              <th><label for="marketPrice">Preço no mercado (R$)</label></th>
-              <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
-            </tr>
-          </table>
-        </div>
-      </div>
       <h1>Calculando o preço ideal.</h1>
       <p>
         Quando somos pequenos empresario existem inúmeras dificuldades no
@@ -72,6 +49,47 @@
       </div>
 
       <!-- Tabela de custos -->
+      <h1>Ficha Técnica:</h1>
+      <p>
+        Adicione os dados da sua receita e obtenha o custo unitário. e total da
+        receita.
+      </p>
+      <p>
+        Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
+        Unidade.
+      </p>
+      <div id="conteinerTable">
+        <div id="divTable">
+          <table id="foodForm">
+            <tr>
+              <th><label for="ingredients">Ingrediente:</label></th>
+              <th>
+                <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+              </th>
+              <th><label for="marketPrice">Preço no mercado (R$)</label></th>
+              <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+              <th rowspan="2" colspan2 id="thBtn">
+                <button type="button" class="btnAdd" onclick="addFood()">
+                  <span class="material-icons"> add_circle </span>
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th><input type="text" id="ingredients" required /></th>
+              <th><input type="number" id="marketWeight" required /></th>
+              <th><input type="number" id="marketPrice" required /></th>
+              <th><input type="number" id="grossWeight" required /></th>
+            </tr>
+          </table>
+        </div>
+
+        <div id="divLucro">
+          <h2>Margem de lucro:</h2>
+          Rendimento:<input type="number" class="inputUnit" value="0" oninput="addLucro()">
+          <div id="lucro"></div>
+        </div>
+      </div>
+
       <h2>Conclusão:</h2>
       <p>
         Em resumo, a precificação adequada dos produtos é de extrema importância
