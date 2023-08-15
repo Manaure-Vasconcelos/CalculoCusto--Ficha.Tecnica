@@ -114,5 +114,7 @@
     }
   }
 
-  (function () { document.setInterval(localStorage.clear(), 30000) })();
+  const clearLocalStorage = () => localStorage.clear()
+
+  setInterval(clearLocalStorage, 60000)
 })();
