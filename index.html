@@ -12,7 +12,14 @@
     <title>Calculadora de custos -- Ficha técnica.</title>
   </head>
   <body>
-    <main>
+    <section>
+      <nav class="menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#containerIframe">Sobre</a></li>
+          <li><a href="#containerTable">Tabela</a></li>
+        </ul>
+      </nav>
       <!-- Tabela de custos -->
       <h1>Calculando o preço ideal.</h1>
       <p>
@@ -24,7 +31,7 @@
         Unidade.
       </p>
       <div id="containerTable">
-        <div id="divTable">
+        <div id="divTable" class="blocks">
           <table id="foodForm">
             <tr>
               <th><label for="ingredients">Ingrediente:</label></th>
@@ -48,19 +55,19 @@
           </table>
         </div>
         
-        <div id="custosUni">
+        <div id="custosUni" class="blocks">
           <h2>Custo do produto:</h2>
           Rendimento:<input type="number" class="inputUnit" value="0" oninput="addLucro()">
           <div id="lucro"></div>
         </div>
 
-        <div class="custosFixos">
+        <div class="custosFixos" class="blocks">
           <h1>Custos fixos:</h1>
         </div>
       </div>
       
       <!-- Conteudo iframe -->
-      <div id="conteinerIframe">
+      <div id="containerIframe">
         <iframe
           src="conteudoIframe.html"
           name="janela"
@@ -103,7 +110,7 @@
         cálculo de preços e fichas técnicas, por isso é importante adaptar as
         informações e metodologias às necessidades específicas de sua empresa.
       </p>
-    </main>
+    </section>
     <footer class="rodape">&copy; Manaure Vasconcelos</footer>
   </body>
 </html>
