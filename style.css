@@ -10,7 +10,7 @@ main {
   align-items: center;
   align-content: center;
   font-size: 13px;
-  max-width: 90%;
+  max-width: 1150px;
   margin: 0 auto;
   padding: 20px;
   background-color: rgb(248, 255, 243);
@@ -75,15 +75,17 @@ input {
   border-bottom: 1px solid;
 }
 /*Tabela custos*/
-#conteinerTable {
+#containerTable {
   display: flex;
   justify-content: space-between;
+  height: auto;
+  margin: 15px;  
+  gap: 15px;
 }
 #divTable {
   background: rgb(216, 255, 198);
-  margin-top: 50px;
   display: block;
-  width: 550px;
+  width: 600px;
   border: 1px solid;
   border-radius: 15px;
 }
@@ -93,7 +95,7 @@ input {
   padding: 0px 10px 10px 10px;
   border-spacing: 0px;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
 }
 td {
   padding: 8px;
@@ -106,13 +108,20 @@ td {
   text-align: right;
   padding-right: 15px;
 }
-#divLucro {
+#custosUni {
   display: block;
-  margin: 50px;
   border: 1px solid;
   border-radius: 15px;
   width: 400px;
   padding: 10px;
+  background: rgb(216, 255, 198);
+}
+.custosFixos {
+  border: 1px solid;
+  border-radius: 15px;
+  width: 400px;
+  padding: 10px;
+  display: block;
   background: rgb(216, 255, 198);
 }
 /*Botões*/

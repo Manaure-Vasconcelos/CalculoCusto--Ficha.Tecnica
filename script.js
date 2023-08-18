@@ -85,8 +85,8 @@
 
     const lucroUni = !uni.value ? total / uni : total / 1;
 
-    divLucro.innerHTML = `<p>Custo total: R$ ${total.toFixed(2)}</p>`;
-    divLucro.innerHTML += `<p>Custo unitário: R$ ${lucroUni.toFixed(2)}</p>`;
+    divLucro.innerHTML = `Custo total: R$ ${total.toFixed(2)} <br/>`;
+    divLucro.innerHTML += `Custo unitário: R$ ${lucroUni.toFixed(2)}`;
 
   }
 
