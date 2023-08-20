@@ -1,7 +1,9 @@
 /* Geral */
 * {
   margin: auto;
-  font-family: Verdana, sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400px;
+  letter-spacing: .5px;
   transition: 5ms ease-in-out;
 }
 body {
@@ -34,33 +36,49 @@ p {
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
-#containerIframe {
-  display: grid;
-  justify-content: center;
-  align-items: center;
+#head{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  height: 50px;
 }
-#iframe {
-  width: 600px;
-  height: 300px;
-  align-items: center;
-  margin-top: 20px;
-  border: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+nav {
+  position: fixed;  
+  top: 10px;        
+  left: 200px;     
+  z-index: 1000;    
+  background-color: white;  
+  padding: 10px;    
+  border-radius: 5px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.btnsIframe {
-  align-items: center;
-  max-width: 630px;
+nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.7);  
 }
-
-.btnIframe {
-  cursor: pointer;
-  margin: 0px;
-  transition: transform 0.1 ease-in-out;
+nav ul {
+  list-style-type: none;
+  width: 500px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;   
 }
-
-.btnIframe:hover {
-  transform: scale(1.02);
+nav li {
+  display: inline;
+  font-size: 15px;
+}
+nav a {
+  border-radius: 25px;
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px; 
+  transition: background-color 0.3s;  
+}
+nav a:hover {
+  background-color: #f0f0f0;  
+}
+.darkMode{
+  position: fixed;
+  top: 20px;
+  right: 100px;
 }
 /*Inputs*/
 #ingredients {
@@ -78,11 +96,13 @@ input {
 /*Tabela custos*/
 #containerTable {
   display: flex;
-  justify-content: space-between;
-  height: 400px;
+  justify-content: column;
+  align-items: start;
+  width: 100%;
+  height: auto;
+  min-height: 400px;
   margin: 15px;  
   gap: 15px;
-  border: 1px solid;
 }
 #divTable {
   background: rgb(216, 255, 198);
@@ -91,7 +111,7 @@ input {
   border: 1px solid;
   border-radius: 15px;
 }
-#foodForm {
+#foodTable {
   display: table;
   justify-content: space-between;
   padding: 0px 10px 10px 10px;
@@ -152,47 +172,35 @@ td {
   transform: scale(1.2);
   color: blue;
 }
+#containerIframe {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+#iframe {
+  width: 600px;
+  height: 300px;
+  align-items: center;
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.btnsIframe {
+  align-items: center;
+  max-width: 630px;
+}
+.btnIframe {
+  cursor: pointer;
+  margin: 0px;
+  transition: transform 0.1 ease-in-out;
+}
+.btnIframe:hover {
+  transform: scale(1.02);
+}
 footer {
   text-align: center;
   padding: 10px;
   background-color: rgb(248, 255, 243);
   color: black;
-}
-nav {
-  position: fixed;  /* Fixar a posição */
-  top: 10px;        /* Espaçamento do topo */
-  right: 100px;      /* Espaçamento da direita */
-  z-index: 1000;    /* Manter acima de outros elementos */
-  background-color: white;  /* Para garantir que o fundo não seja transparente */
-  padding: 10px;    /* Espaçamento interno para o menu */
-  border-radius: 5px; /* Bordas arredondadas */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.7);  /* Fundo levemente transparente */
-}
-/* Removendo a estilização padrão das listas */
-nav ul {
-  list-style-type: none;
-  width: 500px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;  /* Espaçamento entre os itens do menu */    
-}
-
-nav li {
-  display: inline;
-}
-
-nav a {
-  border-radius: 25px;
-  text-decoration: none;
-  color: #333; /* Cor do texto */
-  padding: 5px 10px;  /* Espaçamento interno para tornar o link mais "clicável" */
-  transition: background-color 0.3s;  /* Transição suave ao mudar a cor de fundo */
-}
-
-nav a:hover {
-  background-color: #f0f0f0;  /* Cor de fundo ao passar o mouse */
 }

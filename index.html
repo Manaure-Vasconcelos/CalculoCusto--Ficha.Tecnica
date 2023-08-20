@@ -9,17 +9,26 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Calculadora de custos -- Ficha técnica.</title>
   </head>
   <body>
     <section>
-      <nav class="menu">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#containerIframe">Sobre</a></li>
-          <li><a href="#containerTable">Tabela</a></li>
-        </ul>
-      </nav>
+      <header id="head">
+        <nav class="menu">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#containerIframe">Sobre</a></li>
+            <li><a href="#containerTable">Tabela</a></li>
+          </ul>
+        </nav>
+        <button class="darkMode">DarkMode</button>
+      </header>
       <!-- Tabela de custos -->
       <h1>Calculando o preço ideal.</h1>
       <p>
@@ -32,7 +41,7 @@
       </p>
       <div id="containerTable">
         <div id="divTable" class="blocks">
-          <table id="foodForm">
+          <table id="foodTable">
             <tr>
               <th><label for="ingredients">Ingrediente:</label></th>
               <th>
@@ -54,10 +63,15 @@
             </tr>
           </table>
         </div>
-        
+
         <div id="custosUni" class="blocks">
           <h2>Custo do produto:</h2>
-          Rendimento:<input type="number" class="inputUnit" value="0" oninput="addLucro()">
+          Rendimento:<input
+            type="number"
+            class="inputUnit"
+            value="0"
+            oninput="addLucro()"
+          />
           <div id="lucro"></div>
         </div>
 
@@ -65,7 +79,7 @@
           <h1>Custos fixos:</h1>
         </div>
       </div>
-      
+
       <!-- Conteudo iframe -->
       <div id="containerIframe">
         <iframe
@@ -104,7 +118,7 @@
         decisões estratégicas para impulsionar o crescimento e a lucratividade
         da empresa.
       </p>
-      
+
       <p>
         Lembre-se de que cada negócio pode ter particularidades em relação ao
         cálculo de preços e fichas técnicas, por isso é importante adaptar as

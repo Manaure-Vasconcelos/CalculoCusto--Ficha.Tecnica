@@ -34,7 +34,7 @@
 
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
-    const table = document.querySelector("#foodForm");
+    const table = document.querySelector("#foodTable");
     const newRow = table.insertRow(-1);
     // Add cells to the new row
     const cell1 = newRow.insertCell(0);
