@@ -95,24 +95,29 @@ input {
 }
 /*Tabela custos*/
 #containerTable {
-  display: flex;
-  justify-content: column;
-  align-items: start;
+  display: block;
   width: 100%;
   height: auto;
   min-height: 400px;
   margin: 15px;  
   gap: 15px;
+  border: 1px solid;
 }
 #divTable {
+  position: relative;
+  top: 10px;
+  left: -270px;
+  overflow-y: auto;
   background: rgb(216, 255, 198);
-  display: block;
   width: 600px;
   border: 1px solid;
   border-radius: 15px;
 }
 #foodTable {
   display: table;
+  position: relative;
+  overflow-y: auto;
+  width: 100%;
   justify-content: space-between;
   padding: 0px 10px 10px 10px;
   border-spacing: 0px;
@@ -132,6 +137,9 @@ td {
 }
 #custosUni {
   display: block;
+  position: relative;
+  top: -160px;
+  left: 270px;
   border: 1px solid;
   border-radius: 15px;
   width: 400px;
@@ -142,8 +150,11 @@ td {
   border: 1px solid;
   border-radius: 15px;
   width: 400px;
-  padding: 10px;
+  padding: 10px; 
   display: block;
+  position: relative;
+  top: -70px;
+  left: 270px;
   background: rgb(216, 255, 198);
 }
 /*Botões*/

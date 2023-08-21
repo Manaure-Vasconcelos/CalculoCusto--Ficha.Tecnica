@@ -55,7 +55,7 @@
     cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
 
     const cell6 = newRow.insertCell(5);
-    const btnEdit = createElement();
+    const btnEdit = createElement(1);
     cell6.appendChild(btnEdit);
 
     addLucro()
@@ -75,15 +75,32 @@
 
   const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
 
-  const createElement = () => {
-    const btnEdit = document.createElement("button");
-    btnEdit.setAttribute("id", "btnEdit");
-    btnEdit.setAttribute("onclick", "editElement()");
-    btnEdit.innerHTML = `<span class="material-icons">
-    edit
-    </span>`;
-    return btnEdit
+  const createElement = (el) => {
+    if (el === 1) {
+      const btn = document.createElement("button");
+      btn.setAttribute("id", "btnEdit");
+      btn.setAttribute("onclick", "editElement(this)");
+      btn.innerHTML = `<span class="material-icons">
+      edit
+      </span>`;
+      return btn
+    }
+    
+    if (el === 2) {
+      const btn = document.createElement("button");
+      btn.setAttribute("id", "btnDelete");
+      /* btnEdit.setAttribute("onclick", "editElement()"); */
+      btn.innerHTML += `<span class="material-icons">
+      delete
+      </span>`;
+      return btn
+    }
   };
+
+  const editElement = (el) => {
+    const btnDelete = createElement(2)
+    el.appendChild(btnDelete);
+  }
 
   const addLucro = () => {
     const divLucro = document.querySelector("#lucro");
