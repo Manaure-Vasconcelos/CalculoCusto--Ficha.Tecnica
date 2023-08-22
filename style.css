@@ -1,9 +1,9 @@
 /* Geral */
 * {
   margin: auto;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   transition: 5ms ease-in-out;
 }
 body {
@@ -36,22 +36,22 @@ p {
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
-#head{
+#head {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   height: 50px;
 }
 nav {
-  position: fixed;  
-  top: 10px;        
-  left: 200px;     
-  z-index: 1000;    
-  background-color: white;  
-  padding: 10px;    
-  border-radius: 5px; 
+  position: fixed;
+  top: 10px;
+  left: 200px;
+  z-index: 1000;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.7);  
+  background-color: rgba(255, 255, 255, 0.7);
 }
 nav ul {
   list-style-type: none;
@@ -59,7 +59,7 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 20px;   
+  gap: 20px;
 }
 nav li {
   display: inline;
@@ -69,13 +69,13 @@ nav a {
   border-radius: 25px;
   text-decoration: none;
   color: #333;
-  padding: 5px 10px; 
-  transition: background-color 0.3s;  
+  padding: 5px 10px;
+  transition: background-color 0.3s;
 }
 nav a:hover {
-  background-color: #f0f0f0;  
+  background-color: #f0f0f0;
 }
-.darkMode{
+.darkMode {
   position: fixed;
   top: 20px;
   right: 100px;
@@ -95,21 +95,22 @@ input {
 }
 /*Tabela custos*/
 #containerTable {
-  display: block;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
   height: auto;
   min-height: 400px;
-  margin: 15px;  
+  margin: 15px;
   gap: 15px;
   border: 1px solid;
 }
 #divTable {
-  position: relative;
-  top: 10px;
-  left: -270px;
   overflow-y: auto;
   background: rgb(216, 255, 198);
-  width: 600px;
+  width: 500px;
+  overflow-y: auto;
   border: 1px solid;
   border-radius: 15px;
 }
@@ -137,9 +138,6 @@ td {
 }
 #custosUni {
   display: block;
-  position: relative;
-  top: -160px;
-  left: 270px;
   border: 1px solid;
   border-radius: 15px;
   width: 400px;
@@ -150,11 +148,9 @@ td {
   border: 1px solid;
   border-radius: 15px;
   width: 400px;
-  padding: 10px; 
   display: block;
-  position: relative;
-  top: -70px;
-  left: 270px;
+  padding: 10px;
+  margin-top: 30px;
   background: rgb(216, 255, 198);
 }
 /*Botões*/

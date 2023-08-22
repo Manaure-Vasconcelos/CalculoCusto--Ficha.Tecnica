@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <title>Calculadora de custos. </title>
+    <title>Calculadora de custos.</title>
   </head>
   <body>
     <section>
@@ -64,19 +64,21 @@
           </table>
         </div>
 
-        <div id="custosUni" class="blocks">
-          <h2>Custo do produto:</h2>
-          Rendimento:<input
-            type="number"
-            class="inputUnit"
-            value="0"
-            oninput="addLucro()"
-          />
-          <div id="lucro"></div>
-        </div>
+        <div class="container-custos">
+          <div id="custosUni" class="blocks">
+            <h2>Custo do produto:</h2>
+            Rendimento:<input
+              type="number"
+              class="inputUnit"
+              value="0"
+              oninput="addLucro()"
+            />
+            <div id="lucro"></div>
+          </div>
 
-        <div class="custosFixos" class="blocks">
-          <h1>Custos fixos:</h1>
+          <div class="custosFixos" class="blocks">
+            <h1>Custos fixos:</h1>
+          </div>
         </div>
       </div>
 
