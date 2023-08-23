@@ -1,16 +1,7 @@
 (function () {
   const itensLocale = [];
   let total = 0;
-
-  window.addEventListener('scroll', function () {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 10) {  // Se a página foi rolada mais de 10 pixels
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-
+  
   const showArticle = (src, event) => {
     event.preventDefault();
 
