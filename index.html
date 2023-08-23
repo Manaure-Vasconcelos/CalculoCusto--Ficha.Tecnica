@@ -56,7 +56,7 @@
           informações e metodologias às necessidades específicas de sua empresa.
         </p>
       </article>
-      
+
       <h1>Calculando o preço ideal.</h1>
       <p>
         Adicione os dados da sua receita e obtenha o custo unitário. e total da
@@ -94,13 +94,20 @@
         <div class="container-custos">
           <div id="custosUni" class="blocks">
             <h2>Custo do produto:</h2>
-            Rendimento:<input
-              type="number"
-              class="inputUnit"
-              value="0"
-              oninput="addLucro()"
-            />
-            <div id="lucro"></div>
+            <p>
+              Rendimento:<input
+                type="number"
+                class="inputUnit"
+                value="0"
+                oninput="addLucro()"
+              />
+            </p>
+            <p>
+              Embalagem:
+              <input type="number" id="packetValue" />
+            </p>
+
+            <div id="lucro">Custo total: R$ 00 Custo Uni: R$ 00</div>
           </div>
 
           <div class="custosFixos" class="blocks">

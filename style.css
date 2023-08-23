@@ -7,18 +7,17 @@
   transition: 5ms ease-in-out;
 }
 body {
-  background-color: rgb(248, 255, 243);
+  background-color: #FFFFFF;
   margin-top: 50px;
 }
 section {
   align-items: center;
   align-content: center;
   font-size: 13px;
-  max-width: 1150px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgb(248, 255, 243);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
 }
 h1 {
   font-size: 17px;
@@ -38,8 +37,8 @@ p {
   margin: 10px 20px 0px 20px;
 }
 #head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  background-color: #333;
+  background-color: #FFFFFF;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
   height: 60px;
   position: fixed;
   top: 0px;
@@ -52,10 +51,10 @@ nav {
   top: 10px;
   left: 200px;
   z-index: 1000;
-  background-color: white;
+  background-color: #F0F0F0;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 nav ul {
   list-style-type: none;
@@ -85,7 +84,7 @@ nav a:hover {
   right: 100px;
   background: none;
   border: none;
-  color: #f0f0f0;
+  color: #000;
   cursor: pointer;
 }
 /*Inputs*/
@@ -108,18 +107,18 @@ input {
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
+  width: 100%;
   height: auto;
   min-height: 400px;
   margin: 15px;
   gap: 15px;
-  border: 1px solid;
+  background-color:#D5F0D2;
 }
 #divTable {
   overflow-y: auto;
-  background: rgb(216, 255, 198);
+  background: #C0E8BB;
   width: 500px;
   overflow-y: auto;
-  border: 1px solid;
   border-radius: 15px;
 }
 #foodTable {
@@ -133,22 +132,24 @@ input {
   text-align: center;
   padding: 10px;
 }
+.container-custos p {
+  margin-bottom: 30px;
+  text-indent: 0px;
+}
 #custosUni {
   display: block;
-  border: 1px solid;
   border-radius: 15px;
   width: 400px;
   padding: 10px;
-  background: rgb(216, 255, 198);
+  background: #C0E8BB;
 }
 .custosFixos {
-  border: 1px solid;
   border-radius: 15px;
   width: 400px;
   display: block;
   padding: 10px;
   margin-top: 30px;
-  background: rgb(216, 255, 198);
+  background: #C0E8BB;
 }
 /*Botões*/
 .material-icons{
