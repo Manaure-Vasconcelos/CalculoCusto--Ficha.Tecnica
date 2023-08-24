@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      #container-blocks {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 0px;
+        width: 1200px;
+        flex-wrap: wrap;
+      }
+      .blocks {
+        margin: 10px;
+        padding: 10px;
+        background: rgb(103, 103, 255);
+        border-radius: 10px;
+      }
+      #divTable {
+        width: 600px;
+      }
+      input {
+        width: 100px;
+      }
+      #foodTable {
+        width: 600px;
+      }
+      #container--custosFixos {
+        width: 400px;
+      }
+      #container--custosUni {
+        width: 400px;
+      }
+      #container--lucro {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container-blocks">
+      <div id="divTable" class="blocks">
+        <table id="foodTable">
+          <tr>
+            <th><label for="ingredients">Ingrediente:</label></th>
+            <th>
+              <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+            </th>
+            <th><label for="marketPrice">Preço no mercado (R$)</label></th>
+            <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+            <th rowspan="2" colspan2 id="thBtn">
+              <button type="button" class="btnAdd" onclick="addFood()">
+                <span class="material-icons"> add_circle </span>
+              </button>
+            </th>
+          </tr>
+          <tr>
+            <th><input type="text" id="ingredients" required /></th>
+            <th><input type="number" id="marketWeight" required /></th>
+            <th><input type="number" id="marketPrice" required /></th>
+            <th><input type="number" id="grossWeight" required /></th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="container--custosUni">
+        <div id="custosUni" class="blocks">
+          <h2>Custo do produto:</h2>
+          <p>
+            <label for="inputUnit">Rendimento:</label>
+            <input
+              type="number"
+              id="inputUnit"
+              value="0"
+              oninput="addLucro()"
+            />
+          </p>
+          <p>
+            <label for="packetValue">Embalagem:</label>
+            <input type="number" id="packetValue" />
+          </p>
+
+          <div id="lucro">Custo Uni: R$ 00</div>
+        </div>
+
+        <div id="container--custosFixos" class="blocks">
+          <h2>Custos fixos mensais:</h2>
+          <label for="custosFixos">Gastos fixos:</label> <br />
+          <input type="number" id="custosFixos" /> <br />
+          <label for="vendas/dia">Nº de vendas / dia:</label> <br />
+          <input type="number" id="vendas/dia" /> <br />
+          Dias trabalhados: <br />
+          <input type="range" id="diasDeTrabalho" />
+        </div>
+      </div>
+
+      <div id="container--lucro" class="blocks">
+        Defina a margem de lucro: <br />
+        <input
+          type="range"
+          id="lucro"
+          value="1"
+          step="5"
+          min="0"
+          max="100"
+          style="width: 80%"
+        />
+      </div>
+    </div>
+  </body>
+</html>
