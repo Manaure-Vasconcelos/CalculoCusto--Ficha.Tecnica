@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora de custos.</title>
+    <link rel="stylesheet" href="/Assets/CSS/style.css" />
+    <link rel="stylesheet" href="Assets/CSS/menu.css" />
+    <link rel="stylesheet" href="Assets/CSS/variables.css">
     <script src="script.js"></script>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -15,13 +18,14 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <title>Calculadora de custos.</title>
   </head>
   <body>
-    <section>
-      <header id="head">
-        <nav class="menu">
-          <ul>
+    <aside class="menu">
+      <div class="menu-content">
+        <h1>LOGO</h1>
+
+        <nav>
+          <ul class="menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#containerIframe">Sobre</a></li>
             <li><a href="#containerTable">Tabela</a></li>
@@ -30,7 +34,10 @@
         <button class="darkMode">
           <span class="material-icons"> dark_mode </span>
         </button>
-      </header>
+      </div>
+    </aside>
+
+    <section>
       <!-- Tabela de custos -->
       <article id="home">
         <h1>
