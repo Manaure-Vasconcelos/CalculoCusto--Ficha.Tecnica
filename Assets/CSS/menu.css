@@ -6,11 +6,12 @@
   width: 100%;
   z-index: 1;
   border-bottom: 0.1rem solid var(--light-gray-color);
+  background-color: #ffff;
 }
 
 .menu-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding-top: 0;
   padding-bottom: 0;
@@ -19,6 +20,10 @@
 .menu h1 {
   font-size: 2.3rem;
   color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
 }
 
 .menu h1 a {
