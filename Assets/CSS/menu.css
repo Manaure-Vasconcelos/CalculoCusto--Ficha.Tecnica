@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 1;
   border-bottom: 0.1rem solid var(--light-gray-color);
-  background-color: #ffff;
+  background-color: var(--white-color);
 }
 
 .menu-content {
@@ -33,12 +33,13 @@ a {
 .menu ul {
   list-style: none;
   display: flex;
+  gap: 2rem;
 }
 
 .menu ul li a {
   display: block;
-  padding: 2rem;
-  font-size: 1.8rem;
+  padding: 10px;
+  font-size: 24px;
   color: var(--primary-color);
   position: relative;
 }
@@ -48,6 +49,7 @@ a {
   position: absolute;
   bottom: 1rem;
   left: 50%;
+  top: 85%;
   width: 0;
   height: 0.2rem;
   background: var(--secondary-color); 
