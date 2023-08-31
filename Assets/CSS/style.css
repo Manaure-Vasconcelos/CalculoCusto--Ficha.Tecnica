@@ -35,6 +35,12 @@ h2 {
   font-size: 17px;
 }
 
+.bg-green {
+  background: url('../img/abstract-envelope.svg');
+  background-size: cover;
+  background-position: center center;
+}
+
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -143,10 +149,9 @@ input {
   justify-content: space-around;
   width: 100%;
   height: auto;
-  min-height: 400px;
+  min-height: 300px;
   margin: 15px;
   gap: 15px;
-  background-color:#D5F0D2;
 }
 #divTable {
   overflow-y: auto;
@@ -224,6 +229,7 @@ input {
   transform: scale(1.1);
   color: rgb(199, 162, 0);
 }
+/* Footer */
 .rodape {
   text-align: center;
   padding: 10px;
@@ -235,6 +241,8 @@ input {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 8px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .contact {
@@ -244,7 +252,7 @@ input {
 }
 
 .contact li {
-  margin: 20px;
+  margin: 0 25px 0 25px;
   padding: 5px;
 }
 
@@ -256,4 +264,5 @@ input {
 
 .contact li:hover {
   text-decoration: underline;
+  transform: scale(1.01);
 }
