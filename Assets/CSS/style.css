@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #0a1128;
+  --white-color: #ffffff;
+  --light-gray-color: #eeeeee;
+  --secondary-color: crimson;
+  --gap: 3rem;
+}
+
 /* Geral */
 * {
   margin: 0;
@@ -30,7 +38,7 @@ h2 {
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 3rem;
 }
 
 .section {
@@ -43,6 +51,76 @@ p {
   font-size: 15px;
   margin: 10px 20px 0px 20px;
 }
+/* Menu */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 0.1rem solid var(--light-gray-color);
+  background-color: var(--white-color); 
+}
+
+.menu-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 15rem;
+}
+
+.menu h1 {
+  font-size: 2.3rem;
+  color: var(--primary-color);
+}
+
+.menu nav {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu h1 a {
+  color: inherit;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.menu ul li a {
+  display: block;
+  padding: 10px;
+  font-size: 24px;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.menu ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  top: 85%;
+  width: 0;
+  height: 0.2rem;
+  background: var(--secondary-color); 
+  transition: all 200ms ease-in-out;
+}
+
+.menu ul li a:hover::after {
+  width: 50%;
+  left: 25%;
+}
+
+/* ========================================================================================= */
 /*Inputs*/
 #ingredients {
   width: 100px;
@@ -140,13 +218,15 @@ input {
   background: transparent;
   border: none;
   cursor: pointer;
+  margin-left: 5rem;
 }
 .darkMode:hover {
   transform: scale(1.1);
+  color: rgb(199, 162, 0);
 }
-footer {
+.rodape {
   text-align: center;
   padding: 10px;
-  background-color: rgb(248, 255, 243);
   color: black;
+  display: flex;
 }
