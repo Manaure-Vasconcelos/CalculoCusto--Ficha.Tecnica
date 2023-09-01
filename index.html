@@ -86,62 +86,64 @@
       </div>
     </section>
 
-    <section class="main-content bg-green section">
-      <h1>Calculando o preço ideal.</h1>
-      <p>
-        Adicione os dados da sua receita e obtenha o custo unitário. e total da
-        receita.
-      </p>
-      <p>
-        Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
-        Unidade.
-      </p>
-      <div id="containerTable">
-        <div id="divTable" class="blocks">
-          <table id="foodTable">
-            <tr>
-              <th><label for="ingredients">Ingrediente:</label></th>
-              <th>
-                <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
-              </th>
-              <th><label for="marketPrice">Preço no mercado (R$)</label></th>
-              <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
-              <th rowspan="2" colspan2 id="thBtn">
-                <button type="button" class="btnAdd" onclick="addFood()">
-                  <span class="material-icons"> add_circle </span>
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th><input type="text" id="ingredients" required /></th>
-              <th><input type="number" id="marketWeight" required /></th>
-              <th><input type="number" id="marketPrice" required /></th>
-              <th><input type="number" id="grossWeight" required /></th>
-            </tr>
-          </table>
-        </div>
-
-        <div class="container-custos">
-          <div id="custosUni" class="blocks">
-            <h2>Custo do produto:</h2>
-            <p>
-              Rendimento:<input
-                type="number"
-                class="inputUnit"
-                value="0"
-                oninput="addLucro()"
-              />
-            </p>
-            <p>
-              Embalagem:
-              <input type="number" id="packetValue" />
-            </p>
-
-            <div id="lucro">Custo Uni: R$ 00</div>
+    <section class="bg-green section">
+      <div class="main-content">
+        <h1>Calculando o preço ideal.</h1>
+        <p>
+          Adicione os dados da sua receita e obtenha o custo unitário. e total
+          da receita.
+        </p>
+        <p>
+          Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
+          Unidade.
+        </p>
+        <div id="containerTable">
+          <div id="divTable">
+            <table id="foodTable">
+              <tr>
+                <th><label for="ingredients">Ingrediente:</label></th>
+                <th>
+                  <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+                </th>
+                <th><label for="marketPrice">Preço no mercado (R$)</label></th>
+                <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+                <th rowspan="2" colspan2 id="thBtn">
+                  <button type="button" class="btnAdd" onclick="addFood()">
+                    <span class="material-icons"> add_circle </span>
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th><input type="text" id="ingredients" required /></th>
+                <th><input type="number" id="marketWeight" required /></th>
+                <th><input type="number" id="marketPrice" required /></th>
+                <th><input type="number" id="grossWeight" required /></th>
+              </tr>
+            </table>
           </div>
 
-          <div class="custosFixos" class="blocks">
-            <h2>Custos fixos:</h2>
+          <div class="container-custos">
+            <div id="custosUni">
+              <h2>Custo do produto:</h2>
+              <p>
+                Rendimento:<input
+                  type="number"
+                  class="inputUnit"
+                  value="0"
+                  oninput="addLucro()"
+                />
+              </p>
+              <p>
+                Embalagem:
+                <input type="number" id="packetValue" />
+              </p>
+
+              <div id="lucro">Custo Uni: R$ 00</div>
+            </div>
+
+            <div class="custosFixos">
+              <h2>Custos fixos:</h2>
+            </div>
           </div>
         </div>
       </div>
@@ -176,12 +178,25 @@
     </section>
     <footer class="rodape">
       <div class="footer-content">
-        <h4>Um projeto desenvolvido por <br> Manaure Vasconcelos &copy;</h4>
+        <h4>
+          Um projeto desenvolvido por <br />
+          Manaure Vasconcelos &copy;
+        </h4>
 
         <div>
           <ul class="contact">
-            <li><a href="https://www.linkedin.com/in/manaure-vasconcelos-63b38218a/" target="_blank">Linkedin</a></li>
-            <li><a href="https://github.com/Manaure-Vasconcelos" target="_blank">GitHub</a></li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/manaure-vasconcelos-63b38218a/"
+                target="_blank"
+                >Linkedin</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/Manaure-Vasconcelos" target="_blank"
+                >GitHub</a
+              >
+            </li>
           </ul>
         </div>
       </div>

@@ -122,8 +122,8 @@ a {
 }
 
 .menu ul li a:hover::after {
-  width: 50%;
-  left: 25%;
+  width: 60%;
+  left: 20%;
 }
 
 /* ========================================================================================= */
@@ -251,12 +251,9 @@ input {
   display: flex;
 }
 
-.contact li {
+.contact li a {
+  display: block;
   margin: 0 25px 0 25px;
-  padding: 5px;
-}
-
-.contact li a{
   cursor: pointer;
   color: var(--primary-color);
   transition: 200ms ease-in-out;
