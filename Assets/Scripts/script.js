@@ -1,13 +1,21 @@
 (function () {
   const itensLocale = [];
   let total = 0;
-  
+
   const showArticle = (src, event) => {
     event.preventDefault();
 
     const iframe = document.getElementById("iframe");
     iframe.src = `conteudoIframe.html#${src}`;
   }
+
+  document.addEventListener('click', function (event) {
+    const el = event.target;
+
+    if (el.classList.contains('btnAdd')) {
+      addFood();
+    }
+  })
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
@@ -76,7 +84,7 @@
       </span>`;
       return btn
     }
-    
+
     if (el === 2) {
       const btn = document.createElement("button");
       btn.setAttribute("id", "btnDelete");
