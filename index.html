@@ -101,13 +101,11 @@
           <div id="divTable">
             <table id="foodTable">
               <tr>
-                <th><label for="ingredients">Ingrediente:</label></th>
-                <th>
-                  <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
-                </th>
-                <th><label for="marketPrice">Preço no mercado (R$)</label></th>
-                <th><label for="grossWeight">Uso na receita: (g/mL)</label></th>
-                <th rowspan="2" colspan2 id="thBtn">
+                <th ><label for="ingredients" class="headerTable">Ingrediente:</label></th>
+                <th class="headerTable"><label for="marketWeight">Tamanho da embalagem: (g/mL)</label></th>
+                <th class="headerTable"><label for="marketPrice">Preço no mercado (R$)</label></th>
+                <th class="headerTable"><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+                <th rowspan="2" id="thBtn">
                   <button type="button" class="btnAdd" onclick="addFood()">
                     <span class="material-icons"> add_circle </span>
                   </button>
@@ -142,9 +140,31 @@
             </div>
 
             <div class="custosFixos">
-              <h2>Custos fixos:</h2>
+              <h2>Custos fixos mensais:</h2>
+              <label for="custosFixos">Gastos fixos:</label> <br />
+              <input type="number" id="custosFixos" /> <br />
+              <label for="vendasPorDia">Nº de vendas / dia:</label> <br />
+              <input type="number" id="vendas/dia" /> <br />
+              Dias trabalhados: <br />
+              <input type="range" id="diasDeTrabalho" />
             </div>
+
+            
           </div>
+
+          <div id="container--lucro">
+            Defina a margem de lucro: <br />
+            <input
+              type="range"
+              id="lucro"
+              value="1"
+              step="5"
+              min="0"
+              max="100"
+              style="width: 80%"
+            />
+          </div>
+
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
   --white-color: #ffffff;
   --light-gray-color: #eeeeee;
   --secondary-color: crimson;
+  --black-rgba: rgba(0,0,0, .4);
   --gap: 3rem;
 }
 
@@ -37,8 +38,9 @@ h2 {
 
 .bg-green {
   background: url('../img/dragon-scales.svg');
-  background-size: 40%;
+  background-size: 45%;
   background-position: center;
+  color: var(--primary-color);
 }
 
 .main-content {
@@ -139,14 +141,15 @@ input {
   border: none;
   background-color: transparent;
   border-bottom: 1px solid;
+  color: var(--primary-color);
 }
 /*Tabela custos*/
 #containerTable {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: top;
+  justify-content: flex-start;
   width: 100%;
   height: auto;
   min-height: 300px;
@@ -155,10 +158,10 @@ input {
 }
 #divTable {
   overflow-y: auto;
-  background: #C0E8BB;
   width: 500px;
   overflow-y: auto;
   border-radius: 15px;
+  border: 1px solid var(--black-rgba);
 }
 #foodTable {
   display: table;
@@ -171,6 +174,9 @@ input {
   text-align: center;
   padding: 10px;
 }
+.headerTable {
+  text-align: top;
+}
 .container-custos p {
   margin-bottom: 30px;
   text-indent: 0px;
@@ -178,17 +184,26 @@ input {
 #custosUni {
   display: block;
   border-radius: 15px;
-  width: 400px;
+  width: 350px;
   padding: 10px;
-  background: #C0E8BB;
+  border: 1px solid var(--black-rgba);
 }
 .custosFixos {
   border-radius: 15px;
-  width: 400px;
+  width: 350px;
   display: block;
   padding: 10px;
   margin-top: 30px;
-  background: #C0E8BB;
+  border: 1px solid var(--black-rgba);
+}
+
+#container--lucro {
+  border-radius: 15px;
+  width: 350px;
+  display: block;
+  padding: 10px;
+  margin-top: 30px;
+  border: 1px solid var(--black-rgba);
 }
 /*Botões*/
 .material-icons{
