@@ -34,7 +34,7 @@
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
     const table = document.querySelector("#foodTable");
-    const newRow = table.insertRow(-1);
+    const newRow = table.insertRow(2);
     // Add cells to the new row
     const cell1 = newRow.insertCell(0);
     cell1.innerHTML = ingredients;
@@ -49,6 +49,7 @@
     cell4.innerHTML = grossWeight;
 
     const cell5 = newRow.insertCell(4);
+    cell5.setAttribute('class', 'thResult')
     const costUni = costReal(marketPrice, marketWeight, grossWeight);
     total += costUni;
     cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
@@ -57,7 +58,7 @@
     const btnEdit = createElement(1);
     cell6.appendChild(btnEdit);
 
-    addLucro()
+    addCostTot()
     clearInputs();
   }
 
@@ -101,18 +102,9 @@
     el.appendChild(btnDelete);
   }
 
-  const addLucro = () => {
-    const divLucro = document.querySelector("#lucro");
-
-    /* if (!divLucro) return; */
-
-    const uni = document.querySelector(".inputUnit").value;
-
-    const lucroUni = !uni.value ? total / uni : total / 1;
-
-    divLucro.innerHTML = `Custo total: R$ ${total.toFixed(2)} <br/>`;
-    divLucro.innerHTML += `Custo unitário: R$ ${lucroUni.toFixed(2)}`;
-
+  const addCostTot = () => {
+    const thCustoTo = document.querySelector("#thResult");
+    thCustoTo.innerHTML = `Custo total: $ ${total.toFixed(2)}`;
   }
 
   const clearInputs = () => {

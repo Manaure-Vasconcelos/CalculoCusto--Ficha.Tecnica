@@ -103,10 +103,8 @@
           <div id="divTable">
             <table id="foodTable">
               <tr>
-                <th>
-                  <label for="ingredients" class="headerTable"
-                    >Ingrediente:</label
-                  >
+                <th class="headerTable">
+                  <label for="ingredients">Ingrediente:</label>
                 </th>
                 <th class="headerTable">
                   <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
@@ -117,7 +115,7 @@
                 <th class="headerTable">
                   <label for="grossWeight">Uso na receita: (g/mL)</label>
                 </th>
-                <th rowspan="2" id="thBtn">
+                <th rowspan="2" colspan="2" id="thBtn">
                   <button type="button" class="btnAdd">
                     <span class="material-icons"> add_circle </span>
                   </button>
@@ -128,6 +126,9 @@
                 <th><input type="number" id="marketWeight" required /></th>
                 <th><input type="number" id="marketPrice" required /></th>
                 <th><input type="number" id="grossWeight" required /></th>
+              </tr>
+              <tr>
+                <th id="thCustoTot">Custo total: $ 00</th>
               </tr>
             </table>
           </div>
