@@ -1,5 +1,5 @@
 (function () {
-  const itensLocale = [];
+  /* const itensLocale = []; */
   let total = 0;
 
   const showArticle = (src, event) => {
@@ -12,7 +12,7 @@
   document.addEventListener('click', function (event) {
     const el = event.target;
 
-    if (el.classList.contains('btnAdd')) {
+    if (el.classList.contains('.btnAdd')) {
       addFood();
     }
   })
@@ -23,13 +23,13 @@
     }
   })
 
-  document.addEventListener("DOMContentLoaded", function () {
+  /* document.addEventListener("DOMContentLoaded", function () {
     loadItens();
-  });
+  }); */
 
-  const addFood = (item) => {
-    const el = item
-    const { ingredients, marketWeight, marketPrice, grossWeight } = el || createItem();
+  const addFood = () => {
+    /* const el = item */
+    const { ingredients, marketWeight, marketPrice, grossWeight } = createItem(); /* el || */
 
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
@@ -68,7 +68,7 @@
       marketPrice: Number(document.getElementById("marketPrice").value),
       grossWeight: Number(document.getElementById("grossWeight").value)
     }
-    savedItens(item)
+    /* savedItens(item) */
     return item;
   };
 
@@ -123,7 +123,7 @@
     document.getElementById("ingredients").focus();
   }
 
-  const savedItens = (item) => {
+  /* const savedItens = (item) => {
     itensLocale.push(item)
     localStorage.setItem('itemList', JSON.stringify(itensLocale));
   };
@@ -141,5 +141,5 @@
 
   const clearLocalStorage = () => localStorage.clear()
 
-  setInterval(clearLocalStorage, 60000)
+  setInterval(clearLocalStorage, 60000) */
 })();

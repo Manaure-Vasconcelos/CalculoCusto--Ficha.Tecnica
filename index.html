@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de custos.</title>
     <link rel="stylesheet" href="Assets/CSS/style.css " />
-    <script src="script.js"></script>
+    <script src="Assets/Scripts/script.js"></script>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -88,23 +88,35 @@
 
     <section class="bg-green section">
       <div class="main-content">
-        <h1>Calculando o preço ideal.</h1>
-        <p>
-          Adicione os dados da sua receita e obtenha o custo unitário. e total
-          da receita.
-        </p>
-        <p>
-          Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
-          Unidade.
-        </p>
-        <div id="containerTable">
+        <header>
+          <h1>Calculando o preço ideal.</h1>
+          <p>
+            Adicione os dados da sua receita e obtenha o custo unitário. e total
+            da receita.
+          </p>
+          <p>
+            Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou
+            Unidade.
+          </p>
+        </header>
+        <article id="containerTable">
           <div id="divTable">
             <table id="foodTable">
               <tr>
-                <th ><label for="ingredients" class="headerTable">Ingrediente:</label></th>
-                <th class="headerTable"><label for="marketWeight">Tamanho da embalagem: (g/mL)</label></th>
-                <th class="headerTable"><label for="marketPrice">Preço no mercado (R$)</label></th>
-                <th class="headerTable"><label for="grossWeight">Uso na receita: (g/mL)</label></th>
+                <th>
+                  <label for="ingredients" class="headerTable"
+                    >Ingrediente:</label
+                  >
+                </th>
+                <th class="headerTable">
+                  <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+                </th>
+                <th class="headerTable">
+                  <label for="marketPrice">Preço no mercado (R$)</label>
+                </th>
+                <th class="headerTable">
+                  <label for="grossWeight">Uso na receita: (g/mL)</label>
+                </th>
                 <th rowspan="2" id="thBtn">
                   <button type="button" class="btnAdd">
                     <span class="material-icons"> add_circle </span>
@@ -149,23 +161,20 @@
               <input type="range" id="diasDeTrabalho" />
             </div>
 
-             
+            <div id="container--lucro">
+              <h2>Defina a margem de lucro.</h2>
+              <input
+                type="range"
+                id="lucro"
+                value="1"
+                step="5"
+                min="0"
+                max="100"
+                style="width: 80%"
+              />
+            </div>
           </div>
-
-          <div id="container--lucro">
-            Defina a margem de lucro: <br />
-            <input
-              type="range"
-              id="lucro"
-              value="1"
-              step="5"
-              min="0"
-              max="100"
-              style="width: 80%"
-            />
-          </div>
-
-        </div>
+        </article>
       </div>
     </section>
 
