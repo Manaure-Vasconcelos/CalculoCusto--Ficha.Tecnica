@@ -49,9 +49,9 @@
     cell4.innerHTML = grossWeight;
 
     const cell5 = newRow.insertCell(4);
-    cell5.setAttribute('class', 'thResult')
     const costUni = costReal(marketPrice, marketWeight, grossWeight);
     total += costUni;
+    cell5.setAttribute('class', 'thResult')
     cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
 
     const cell6 = newRow.insertCell(5);
@@ -103,7 +103,7 @@
   }
 
   const addCostTot = () => {
-    const thCustoTo = document.querySelector("#thResult");
+    const thCustoTo = document.querySelector("#thCustoTot");
     thCustoTo.innerHTML = `Custo total: $ ${total.toFixed(2)}`;
   }
 
