@@ -128,7 +128,9 @@
                 <th><input type="number" id="grossWeight" required /></th>
               </tr>
             </table>
-            <div id="thCustoTot">Custo total: $ 00</div>
+            <div class="custoTot">
+              <div class=" blockResult">Custo total: R$ 00</div>
+            </div>
           </div>
 
           <div class="container-custos">
@@ -147,7 +149,9 @@
                 <input type="number" id="packetValue" />
               </p>
 
-              <div id="lucro">Custo Uni: R$ 00</div>
+              <div class="custoTot">
+                <div class=" blockResult">Custo Uni: R$ 00</div>
+              </div>
             </div>
 
             <div class="custosFixos">
@@ -158,6 +162,9 @@
               <input type="number" id="vendasPorDia" /> <br />
               Dias trabalhados: <br />
               <input type="range" id="diasDeTrabalho" />
+              <div class="custoTot">
+                <div class=" blockResult">Custo fixo / Uni: R$ 00</div>
+              </div>
             </div>
 
             <div id="container--lucro">
@@ -171,6 +178,9 @@
                 max="100"
                 style="width: 80%"
               />
+              <div class="custoTot">
+                <div class=" blockResult">Valor de venda: R$ 00</div>
+              </div>
             </div>
           </div>
         </article>
