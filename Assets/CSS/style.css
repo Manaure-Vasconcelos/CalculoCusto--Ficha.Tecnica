@@ -2,6 +2,7 @@
   --primary-color: #0a1128;
   --white-color: #ffffff;
   --light-gray-color: #eeeeee;
+  --gray-2: #EEEEEE;
   --secondary-color: crimson;
   --black-rgba: rgba(0,0,0, .4);
   --gap: 3rem;
@@ -37,7 +38,7 @@ h2 {
 }
 
 .bg-green {
-  background: url('../img/dragon-scales.svg');
+  background: var(--gray-2)/* url('../img/dragon-scales.svg') */;
   background-size: 45%;
   background-position: center;
   color: var(--primary-color);
@@ -185,7 +186,7 @@ th {
   padding: 10px;
 }
 
-.custoTot {
+.divCusto {
   padding: .8rem;
   display: flex;
   justify-content: end;
@@ -291,7 +292,8 @@ th {
   text-align: center;
   padding: 10px;
   color: var(--primary-color);
-  border-top: 0.1rem solid var(--light-gray-color);
+  border-top: 0.1rem solid var(--black-rgba);
+  background-color: var(--gray-2);
 }
 
 .footer-content {
