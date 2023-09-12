@@ -60,7 +60,7 @@
           obra e embalagens.
         </p>
         <h1>Entendendo os custos.</h1>
-        <h2>Custos Fixos</h2>
+        <h2>- Custos Fixos</h2>
         <p>
           Os gastos fixos são aqueles que ocorrem independentemente da
           quantidade produzida, como aluguel do espaço físico, salários dos
@@ -69,7 +69,7 @@
           identificar e considerar esses gastos ao calcular o custo do seu
           produto, pois eles impactam diretamente a lucratividade do negócio.
         </p>
-        <h2>Custos Variáveis</h2>
+        <h2>- Custos Variáveis</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
           enim, dolor aut itaque corporis eveniet aspernatur voluptatem eligendi
@@ -129,46 +129,46 @@
               </tr>
             </table>
             <div class="divCusto">
-              <div id="custoTot" class=" blockResult">Custo total: R$ 00</div>
+              <div id="custoTot" class="blockResult">Custo total: R$ 00</div>
             </div>
           </div>
 
           <div class="container-custos">
             <div id="custosUni">
-              <h2>Custo do produto:</h2>
-              <p>
-                Rendimento:<input
-                  type="number"
-                  class="inputUnit"
-                  value="0"
-                  oninput="addLucro()"
-                />
-              </p>
-              <p>
-                Embalagem:
-                <input type="number" id="packetValue" />
-              </p>
+              <h2>Custo unitário:</h2>
+              <p>Rendimento:</p>
+              <input
+                type="number"
+                class="inputUnit restInputs"
+                placeholder="Exemplo: 1 ou 20"
+                oninput="addLucro()"
+              />
+              <p>Embalagem:</p>
+              <input type="number" id="packetValue" class="restInputs" placeholder="Exemplo: 1,00"/>
 
               <div class="divCusto">
-                <div id="custoUni" class=" blockResult">Custo Uni: R$ 00</div>
+                <div id="custoUni" class="blockResult">Custo Uni: R$ 00</div>
               </div>
             </div>
 
             <div class="custosFixos">
               <h2>Custos fixos mensais:</h2>
-              <label for="custosFixos">Gastos fixos:</label> <br />
-              <input type="number" id="custosFixos" /> <br />
-              <label for="vendasPorDia">Nº de vendas / dia:</label> <br />
-              <input type="number" id="vendasPorDia" /> <br />
-              Dias trabalhados: <br />
+              <p><label for="custosFixos">Gastos fixos:</label></p>
+              <input type="number" id="custosFixos" class="restInputs" placeholder="Exemplo: 150,00"/>
+              <p><label for="vendasPorDia"> Nº de vendas / dia: </label></p>
+              <input type="number" id="vendasPorDia" class="restInputs" placeholder="Exemplo: 10,00"/>
+              <p>Dias trabalhados:</p>
               <input type="range" id="diasDeTrabalho" />
               <div class="divCusto">
-                <div id="custoFixo" class=" blockResult">Custo fixo / Uni: R$ 00</div>
+                <div id="custoFixo" class="blockResult">
+                  Custo fixo / Uni: R$ 00
+                </div>
               </div>
             </div>
 
             <div id="container--lucro">
-              <h2>Defina a margem de lucro.</h2>
+              <h2>Margem de lucro.</h2>
+              <p>Escolha sua margem de lucro:</p>
               <input
                 type="range"
                 id="rangeLucro"
@@ -178,7 +178,7 @@
                 max="100"
               />
               <div class="divCusto">
-                <div id="lucro" class=" blockResult">Valor de venda: R$ 00</div>
+                <div id="lucro" class="blockResult">Valor de venda: R$ 00</div>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@
       </div>
     </section>
 
-<!--     <section class="main-content" style="min-height: 60vh">
+    <!--     <section class="main-content" style="min-height: 60vh">
       <div id="containerIframe">
         <iframe
           src="conteudoIframe.html"
