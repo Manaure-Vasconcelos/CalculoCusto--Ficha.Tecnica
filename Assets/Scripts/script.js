@@ -104,7 +104,7 @@
 
   const addCostTot = () => {
     const thCustoTo = document.querySelector("#custoTot");
-    thCustoTo.innerHTML = `Custo total: R$ ${total.toFixed(2)}`;
+    thCustoTo.innerHTML = `R$ ${total.toFixed(2)}`;
   }
 
   const clearInputs = () => {

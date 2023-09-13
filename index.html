@@ -129,7 +129,7 @@
               </tr>
             </table>
             <div class="divCusto">
-              <div id="custoTot" class="blockResult">Custo total: R$ 00</div>
+              <div id="custoTot" class="blockResult">R$ 00</div>
             </div>
           </div>
 
@@ -147,7 +147,8 @@
               <input type="number" id="packetValue" class="restInputs" placeholder="Exemplo: 1,00"/>
 
               <div class="divCusto">
-                <div id="custoUni" class="blockResult">Custo Uni: R$ 00</div>
+                <h2>O custo unitário do seu produto:</h2> <br>
+                <div id="custoUni" class="blockResult">R$ 00</div>
               </div>
             </div>
 
@@ -158,27 +159,30 @@
               <p><label for="vendasPorDia"> Nº de vendas / dia: </label></p>
               <input type="number" id="vendasPorDia" class="restInputs" placeholder="Exemplo: 10,00"/>
               <p>Dias trabalhados:</p>
-              <input type="range" id="diasDeTrabalho" />
+              <input type="range" id="diasDeTrabalho" class="ranges" step="1" min="1" max="7" />
               <div class="divCusto">
+                <h2>O custo fixo do produto é:</h2>
+                <p>Esse valor é referente ao gasto fixo por produto.</p>
                 <div id="custoFixo" class="blockResult">
-                  Custo fixo / Uni: R$ 00
+                  R$ 00
                 </div>
               </div>
             </div>
 
             <div id="container--lucro">
               <h2>Margem de lucro.</h2>
-              <p>Escolha sua margem de lucro:</p>
+              <p>Escolha a margem de lucro do seu produto:</p>
               <input
                 type="range"
                 id="rangeLucro"
+                class="ranges"
                 value="1"
                 step="5"
                 min="0"
                 max="100"
               />
               <div class="divCusto">
-                <div id="lucro" class="blockResult">Valor de venda: R$ 00</div>
+                <div id="lucro" class="blockResult">R$ 00</div>
               </div>
             </div>
           </div>
