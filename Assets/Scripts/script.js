@@ -1,12 +1,26 @@
-(function () {
   /* const itensLocale = []; */
   let total = 0;
-
   const showArticle = (src, event) => {
     event.preventDefault();
 
     const iframe = document.getElementById("iframe");
     iframe.src = `conteudoIframe.html#${src}`;
+  }
+
+  const darkMode = (mode) => {
+    const doc = document.querySelector("body");
+    const darkMode = document.querySelector(".darkMode");
+    doc.style.transition = '5ms ease-in-out';
+
+    if (mode === 'dark') {
+      doc.style.color = '#FFFFFF';
+      doc.style.backgroundColor = "#121212";
+      darkMode.innerHTML = '<span class="material-icons"> light_mode </span>';
+    }
+    if (mode === 'light') {
+      doc.style.color = '#000000';
+      doc.style.backgroundColor = "#ffffff";
+    }
   }
 
   document.addEventListener('click', function (event) {
@@ -98,8 +112,9 @@
   };
 
   const editElement = (el) => {
-    const btnDelete = createElement(2)
-    el.appendChild(btnDelete);
+    el.innerHTML += `alo`;
+    /* const btnDelete = createElement(2)
+    cell6.appendChild(btnDelete); */
   }
 
   const addCostTot = () => {
@@ -134,4 +149,3 @@
   const clearLocalStorage = () => localStorage.clear()
 
   setInterval(clearLocalStorage, 60000) */
-})();
