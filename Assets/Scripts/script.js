@@ -26,9 +26,16 @@
   document.addEventListener('click', function (event) {
     const el = event.target;
 
-    if (el.classList.contains('.btnAdd')) {
+    if (el.classList.contains('btnAdd')) {
       addFood();
     }
+  })
+
+  document.addEventListener('input', function (event) {
+    const el = event.target;
+
+    if (el.classList.contains('inputUnit')) addCostUnit();
+    if (el.classList.contains('inputPacket')) addCostUnit();
   })
 
   document.addEventListener('keydown', function (event) {
@@ -73,6 +80,7 @@
     cell6.appendChild(btnEdit);
 
     addCostTot()
+    addCostUnit()
     clearInputs();
   }
 
@@ -111,11 +119,11 @@
     }
   };
 
-  const editElement = (el) => {
+  /* const editElement = (el) => {
     el.innerHTML += `alo`;
-    /* const btnDelete = createElement(2)
-    cell6.appendChild(btnDelete); */
-  }
+    const btnDelete = createElement(2)
+    cell6.appendChild(btnDelete);
+  } */
 
   const addCostTot = () => {
     const thCustoTo = document.querySelector("#custoTot");
@@ -128,6 +136,25 @@
     document.getElementById("marketPrice").value = '';
     document.getElementById("grossWeight").value = '';
     document.getElementById("ingredients").focus();
+  }
+
+  const addCostUnit = () => {
+    const divResult = document.querySelector('#divCostUnit')
+    const costUnit = costUni();
+    divResult.innerHTML = `R$ ${costUnit}`;
+  }
+
+  const costUni = () => {
+    const inputUnit = document.querySelector('#inputUnit');
+    const inputPacket = document.querySelector('#packetValue');
+    const inputUnitValue = Number(inputUnit.value)
+    const inputPacketValue = Number(inputPacket.value)
+
+    if (!total) return '0,00';
+    if (!inputUnit) return '0,00';
+    if (!inputPacket) return '0,00';
+    const result = (total / inputUnitValue) + inputPacketValue;
+    return result.toFixed(2);
   }
 
   /* const savedItens = (item) => {

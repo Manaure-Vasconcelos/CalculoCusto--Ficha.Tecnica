@@ -136,19 +136,14 @@
           <div class="container-custos">
             <div id="custosUni">
               <h2>Custo unitário:</h2>
-              <p>Rendimento:</p>
-              <input
-                type="number"
-                class="inputUnit restInputs"
-                placeholder="Exemplo: 1 ou 20"
-                oninput="addLucro()"
-              />
-              <p>Embalagem:</p>
-              <input type="number" id="packetValue" class="restInputs" placeholder="Exemplo: 1,00"/>
+              <p><label for="inputUnit">Rendimento:</label></p>
+              <input type="number" id="inputUnit" class="inputUnit restInputs" placeholder="Exemplo: 1 ou 20" oninput="addLucro()"/>
+              <p><label for="packetValue">Embalagem:</label></p>
+              <input type="number" id="packetValue" class="inputPacket restInputs" placeholder="Exemplo: 1,00"/>
 
               <div class="divCusto">
                 <h2>O custo unitário do seu produto:</h2> <br>
-                <div id="custoUni" class="blockResult">R$ 00</div>
+                <div id="divCostUnit" class="blockResult">R$ 0,00</div>
               </div>
             </div>
 
@@ -164,7 +159,7 @@
                 <h2>O custo fixo do produto é:</h2>
                 <p>Esse valor é referente ao gasto fixo por produto.</p>
                 <div id="custoFixo" class="blockResult">
-                  R$ 00
+                  R$ 0,00
                 </div>
               </div>
             </div>
@@ -182,7 +177,7 @@
                 max="100"
               />
               <div class="divCusto">
-                <div id="lucro" class="blockResult">R$ 00</div>
+                <div id="lucro" class="blockResult">R$ 0,00</div>
               </div>
             </div>
           </div>
