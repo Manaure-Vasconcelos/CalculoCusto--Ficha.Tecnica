@@ -1,5 +1,10 @@
 /* const itensLocale = []; */
 let custoTotal = 0;
+let diasTrabalhados;
+let vendasPorDia;
+let gastosFixos;
+let valorUnit = 0;
+let valorGF = 0;
 
 const showArticle = (src, event) => {
   event.preventDefault();
@@ -153,6 +158,7 @@ const custoUni = () => {
 
   if (!unitValue || !custoTotal) return '0,00';
   const result = (custoTotal / unitValue) + packetValue;
+  valorUnit = result;
   return result.toFixed(2).replace('.', ',');
 }
 
@@ -162,17 +168,14 @@ const addCustosFixos = (id, valueInput) => {
   divResult.innerHTML = `R$ ${gastosFixos}`;
 }
 
-let diasTrabalhados = 0;
-let vendasPorDia = 0;
-let gastosFixos = 0;
 const valorGastosFixo = (id, valueInput) => {
-  if (id === 'DT') diasTrabalhados = Number(valueInput.value); 
-  if (id === 'VD') vendasPorDia = Number(valueInput.value); 
-  if (id === 'GF') gastosFixos = Number(valueInput.value); 
+  if (id === 'DT') diasTrabalhados = Number(valueInput); 
+  if (id === 'VD') vendasPorDia = Number(valueInput); 
+  if (id === 'GF') gastosFixos = Number(valueInput); 
   
-  if (vendasPorDia, gastosFixos === 0) return '0,00'; 
-  console.log(diasTrabalhados, vendasPorDia, gastosFixos, '3')
-  const result = ((diasTrabalhados * 4) * vendasPorDia) / gastosFixos;
+  if (!vendasPorDia, !gastosFixos) return '0,00'; 
+  const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
+  valorGF = result;
   return result.toFixed(2).replace('.', ',');
 }
 
@@ -184,8 +187,9 @@ const addValorFinal = () => {
 
 const valorFinal = () => {
   const rangeValue = Number(document.querySelector('#rangeLucro').value);
+  const valorFinalProduto = valorUnit + valorGF;
 
-  const resultFinal = custoTotal + (custoTotal * (rangeValue / 100));
+  const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
   return resultFinal.toFixed(2).replace('.', ',');
 }
 
