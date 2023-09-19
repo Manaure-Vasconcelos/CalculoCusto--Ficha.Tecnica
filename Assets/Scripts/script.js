@@ -38,9 +38,9 @@ document.addEventListener('input', function (event) {
   if (el.classList.contains('inputUnit')) addCustoUni();
   if (el.classList.contains('inputPacket')) addCustoUni();
   if (el.classList.contains('rangeLucro')) addValorFinal();
-  if (el.classList.contains('inputGastosFixos')) addCustosFixos();
-  if (el.classList.contains('inputVendasPorDias')) addCustosFixos();
-  if (el.classList.contains('rangeDiasDeTrabalho')) addCustosFixos();
+  if (el.classList.contains('rangeDiasDeTrabalho')) addCustosFixos('DT', el.value);
+  if (el.classList.contains('inputVendasPorDias')) addCustosFixos('VD', el.value);
+  if (el.classList.contains('inputGastosFixos')) addCustosFixos('GF', el.value);
 })
 
 document.addEventListener('keydown', function (event) {
@@ -76,7 +76,7 @@ const addFood = () => {
   const costUni = costReal(marketPrice, marketWeight, grossWeight);
   custoTotal += costUni;
   cell5.setAttribute('class', 'thResult')
-  cell5.innerHTML = `R$ ${costUni.toFixed(2)}`;
+  cell5.innerHTML = `R$ ${costUni.toFixed(2).replace('.', ',')}`;
 
   const cell6 = newRow.insertCell(5);
   const btnEdit = createElement(1);
@@ -148,34 +148,32 @@ const addCustoUni = () => {
 }
 
 const custoUni = () => {
-  const inputUnitValue = Number(document.querySelector('#inputUnit').value);
-  const inputPacketValue = Number(document.querySelector('#packetValue').value);
+  const unitValue = Number(document.querySelector('#inputUnit').value);
+  const packetValue = Number(document.querySelector('#packetValue').value);
 
-  if (!inputUnitValue) return '0,00';
-  const result = (custoTotal / inputUnitValue) + inputPacketValue;
+  if (!unitValue || !custoTotal) return '0,00';
+  const result = (custoTotal / unitValue) + packetValue;
   return result.toFixed(2).replace('.', ',');
 }
 
-const addCustosFixos = () => {
+const addCustosFixos = (id, valueInput) => {
   const divResult = document.querySelector('#divCustoFixo');
-  const gastosFixos = ValorGastosFixo();
+  const gastosFixos = valorGastosFixo(id, valueInput);
   divResult.innerHTML = `R$ ${gastosFixos}`;
 }
 
-const ValorGastosFixo = () => {
-  const inputGastosFixosValue = Number(document.querySelector('#InputGastosFixos').value);
-  const inputVendasPorDiaValue = Number(document.querySelector('#inputVendasPorDia').value);
-  const rangeDiasTrabalhadosValue = Number(document.querySelector('#rangeDiasDeTrabalho').value);
-
-  if (!inputGastosFixosValue || !inputVendasPorDiaValue || !rangeDiasTrabalhadosValue) {
-    return '0,00';
-  } else {
-    const diasTrabalhadosMes = rangeDiasTrabalhadosValue * 4;
-    const vendasMes = inputVendasPorDiaValue * diasTrabalhadosMes;
-    const result = inputGastosFixosValue / vendasMes;
+let diasTrabalhados = 0;
+let vendasPorDia = 0;
+let gastosFixos = 0;
+const valorGastosFixo = (id, valueInput) => {
+  if (id === 'DT') diasTrabalhados = Number(valueInput.value); 
+  if (id === 'VD') vendasPorDia = Number(valueInput.value); 
+  if (id === 'GF') gastosFixos = Number(valueInput.value); 
   
-    return result.toFixed(2).replace('.', ',');
-  }
+  if (vendasPorDia, gastosFixos === 0) return '0,00'; 
+  console.log(diasTrabalhados, vendasPorDia, gastosFixos, '3')
+  const result = ((diasTrabalhados * 4) * vendasPorDia) / gastosFixos;
+  return result.toFixed(2).replace('.', ',');
 }
 
 const addValorFinal = () => {
