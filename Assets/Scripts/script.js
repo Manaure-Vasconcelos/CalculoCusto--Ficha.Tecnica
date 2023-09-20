@@ -1,40 +1,38 @@
 /* const itensLocale = []; */
+let modeStyle = 'light';
 let custoTotal = 0;
-let diasTrabalhados;
-let vendasPorDia;
-let gastosFixos;
 let valorUnit = 0;
 let valorGF = 0;
 
-const showArticle = (src, event) => {
+/* const showArticle = (src, event) => {
   event.preventDefault();
 
   const iframe = document.getElementById("iframe");
   iframe.src = `conteudoIframe.html#${src}`;
-}
+} */
 
-const darkMode = (mode) => {
+const darkMode = () => {
   const doc = document.querySelector("body");
-  const darkMode = document.querySelector(".darkMode");
-  doc.style.transition = '5ms ease-in-out';
-
-  if (mode === 'dark') {
-    doc.style.color = '#FFFFFF';
-    doc.style.backgroundColor = "#121212";
-    darkMode.innerHTML = '<span class="material-icons"> light_mode </span>';
-  }
-  if (mode === 'light') {
-    doc.style.color = '#000000';
-    doc.style.backgroundColor = "#ffffff";
+  const darkModeBtn = document.querySelector(".darkMode");
+  
+  if (modeStyle === 'dark') {
+    doc.classList.remove('light-theme');
+    doc.classList.add('dark-theme');
+    darkModeBtn.innerHTML = '<span class="material-icons"> light_mode </span>';
+    modeStyle = 'light';
+  } else if (modeStyle === 'light') {
+    doc.classList.remove('dark-theme');
+    doc.classList.add('light-theme');
+    darkModeBtn.innerHTML = '<span class="material-icons"> dark_mode </span>';
+    modeStyle = 'dark';
   }
 }
 
 document.addEventListener('click', function (event) {
   const el = event.target;
 
-  if (el.classList.contains('btnAdd')) {
-    addFood();
-  }
+  if (el.classList.contains('btnAdd')) addFood();
+  if (el.classList.contains('darkMode')) darkMode();
 })
 
 document.addEventListener('input', function (event) {
@@ -43,15 +41,13 @@ document.addEventListener('input', function (event) {
   if (el.classList.contains('inputUnit')) addCustoUni();
   if (el.classList.contains('inputPacket')) addCustoUni();
   if (el.classList.contains('rangeLucro')) addValorFinal();
-  if (el.classList.contains('rangeDiasDeTrabalho')) addCustosFixos('DT', el.value);
-  if (el.classList.contains('inputVendasPorDias')) addCustosFixos('VD', el.value);
-  if (el.classList.contains('inputGastosFixos')) addCustosFixos('GF', el.value);
+  if (el.classList.contains('rangeDiasDeTrabalho')) addCustosFixos();
+  if (el.classList.contains('inputVendasPorDias')) addCustosFixos();
+  if (el.classList.contains('inputGastosFixos')) addCustosFixos();
 })
 
 document.addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    addFood();
-  }
+  if (event.key === 'Enter') addFood();
 })
 
 /* document.addEventListener("DOMContentLoaded", function () {
@@ -155,23 +151,23 @@ const addCustoUni = () => {
 const custoUni = () => {
   const unitValue = Number(document.querySelector('#inputUnit').value);
   const packetValue = Number(document.querySelector('#packetValue').value);
-
+  
   if (!unitValue || !custoTotal) return '0,00';
   const result = (custoTotal / unitValue) + packetValue;
   valorUnit = result;
   return result.toFixed(2).replace('.', ',');
 }
 
-const addCustosFixos = (id, valueInput) => {
+const addCustosFixos = () => {
   const divResult = document.querySelector('#divCustoFixo');
-  const gastosFixos = valorGastosFixo(id, valueInput);
+  const gastosFixos = valorGastosFixo();
   divResult.innerHTML = `R$ ${gastosFixos}`;
 }
 
-const valorGastosFixo = (id, valueInput) => {
-  if (id === 'DT') diasTrabalhados = Number(valueInput); 
-  if (id === 'VD') vendasPorDia = Number(valueInput); 
-  if (id === 'GF') gastosFixos = Number(valueInput); 
+const valorGastosFixo = () => {
+  const diasTrabalhados = Number(document.querySelector('#rangeDiasDeTrabalho').value);
+  const vendasPorDia = Number(document.querySelector('#inputVendasPorDia').value);
+  const gastosFixos = Number(document.querySelector('#inputGastosFixos').value);
   
   if (!vendasPorDia, !gastosFixos) return '0,00'; 
   const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);

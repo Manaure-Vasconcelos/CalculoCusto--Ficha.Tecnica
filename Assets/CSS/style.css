@@ -48,6 +48,16 @@ p {
   margin: 10px 20px 0px 20px;
 }
 
+.light-theme {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.dark-theme {
+  color: #FFFFFF;
+  background-color: #121212;
+}
+
 .bg-table {
   color: var(--primary-color);
   border-top: 1px solid var(--light-gray-color);
