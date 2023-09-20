@@ -116,6 +116,8 @@ p {
 
 .menu nav {
   display: flex;
+  justify-content: space-between;
+  width: 450px;
 }
 
 a {
@@ -332,7 +334,6 @@ th {
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-left: 5rem;
 }
 
 .darkMode:hover {
