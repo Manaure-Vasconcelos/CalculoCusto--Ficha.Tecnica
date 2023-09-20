@@ -14,7 +14,7 @@ let valorGF = 0;
 const darkMode = () => {
   const doc = document.querySelector("body");
   const darkModeBtn = document.querySelector(".darkMode");
-  
+
   if (modeStyle === 'dark') {
     doc.classList.remove('light-theme');
     doc.classList.add('dark-theme');
@@ -151,7 +151,7 @@ const addCustoUni = () => {
 const custoUni = () => {
   const unitValue = Number(document.querySelector('#inputUnit').value);
   const packetValue = Number(document.querySelector('#packetValue').value);
-  
+
   if (!unitValue || !custoTotal) return '0,00';
   const result = (custoTotal / unitValue) + packetValue;
   valorUnit = result;
@@ -168,8 +168,8 @@ const valorGastosFixo = () => {
   const diasTrabalhados = Number(document.querySelector('#rangeDiasDeTrabalho').value);
   const vendasPorDia = Number(document.querySelector('#inputVendasPorDia').value);
   const gastosFixos = Number(document.querySelector('#inputGastosFixos').value);
-  
-  if (!vendasPorDia, !gastosFixos) return '0,00'; 
+
+  if (!vendasPorDia, !gastosFixos) return '0,00';
   const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
   valorGF = result;
   return result.toFixed(2).replace('.', ',');

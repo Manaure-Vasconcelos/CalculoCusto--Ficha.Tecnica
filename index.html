@@ -137,12 +137,23 @@
             <div id="custosUni">
               <h2>Custo unitário:</h2>
               <p><label for="inputUnit">Rendimento:</label></p>
-              <input type="number" id="inputUnit" class="inputUnit restInputs" placeholder="Exemplo: 1 ou 20"/>
+              <input
+                type="number"
+                id="inputUnit"
+                class="inputUnit restInputs"
+                placeholder="Exemplo: 1 ou 20"
+              />
               <p><label for="packetValue">Embalagem:</label></p>
-              <input type="number" id="packetValue" class="inputPacket restInputs" placeholder="Exemplo: 1,00"/>
+              <input
+                type="number"
+                id="packetValue"
+                class="inputPacket restInputs"
+                placeholder="Exemplo: 1,00"
+              />
 
               <div class="divCusto">
-                <h2>O custo unitário do seu produto:</h2> <br>
+                <h2>O custo unitário do seu produto:</h2>
+                <br />
                 <div id="divCostUnit" class="blockResult">R$ 0,00</div>
               </div>
             </div>
@@ -150,17 +161,34 @@
             <div class="custosFixos">
               <h2>Custos fixos mensais:</h2>
               <p>Dias trabalhados:</p>
-              <input type="range" id="rangeDiasDeTrabalho" class="ranges rangeDiasDeTrabalho" step="1" min="1" max="7" />
-              <p><label for="inputVendasPorDia"> Nº de vendas / dia: </label></p>
-              <input type="number" id="inputVendasPorDia" class="restInputs inputVendasPorDias" placeholder="Exemplo: 10,00"/>
+              <input
+                type="range"
+                id="rangeDiasDeTrabalho"
+                class="ranges rangeDiasDeTrabalho"
+                step="1"
+                min="1"
+                max="7"
+              />
+              <p>
+                <label for="inputVendasPorDia"> Nº de vendas / dia: </label>
+              </p>
+              <input
+                type="number"
+                id="inputVendasPorDia"
+                class="restInputs inputVendasPorDias"
+                placeholder="Exemplo: 10,00"
+              />
               <p><label for="inputGastosFixos">Gastos fixos:</label></p>
-              <input type="number" id="inputGastosFixos" class="restInputs inputGastosFixos" placeholder="Exemplo: 150,00"/>
+              <input
+                type="number"
+                id="inputGastosFixos"
+                class="restInputs inputGastosFixos"
+                placeholder="Exemplo: 150,00"
+              />
               <div class="divCusto">
                 <h2>O custo fixo do produto é:</h2>
                 <p>O valor é referente ao gasto fixo por produto.</p>
-                <div id="divCustoFixo" class="blockResult">
-                  R$ 0,00
-                </div>
+                <div id="divCustoFixo" class="blockResult">R$ 0,00</div>
               </div>
             </div>
 
