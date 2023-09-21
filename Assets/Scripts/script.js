@@ -15,13 +15,13 @@
     const darkModeBtn = document.querySelector(".darkMode");
 
     if (modeStyle === 'dark') {
-      doc.classList.remove('light-theme');
-      doc.classList.add('dark-theme');
+      doc.classList.remove('lightTheme');
+      doc.classList.add('darkTheme');
       darkModeBtn.innerHTML = '<span class="material-icons"> light_mode </span>';
       modeStyle = 'light';
     } else if (modeStyle === 'light') {
-      doc.classList.remove('dark-theme');
-      doc.classList.add('light-theme');
+      doc.classList.remove('darkTheme');
+      doc.classList.add('lightTheme');
       darkModeBtn.innerHTML = '<span class="material-icons"> dark_mode </span>';
       modeStyle = 'dark';
     }

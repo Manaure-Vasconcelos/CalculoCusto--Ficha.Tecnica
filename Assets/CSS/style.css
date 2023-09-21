@@ -5,6 +5,8 @@
   --white-color: #ffffff;
   --light-gray-color: #eeeeee;
   --black-rgba: rgba(0, 0, 0, 0.4);
+  --black-bg-color: #000000;
+  --black-dark-theme: #282A36;
   --orange-color: #cd7d3c;
   --gap: 3rem;
 }
@@ -48,14 +50,18 @@ p {
   margin: 10px 20px 0px 20px;
 }
 
-.light-theme {
-  color: #000000;
-  background-color: #ffffff;
+.lightTheme {
+  color: var(--black-bg-color);
+  background-color: var(--white-color);
 }
 
-.dark-theme {
-  color: #ffffff;
-  background-color: #282A36;
+.darkThemeBlocks {
+  background-color: red;
+}
+
+.darkTheme {
+  color: var(--white-color);
+  background-color: var(--black-dark-theme);
 }
 
 .bg-table {
