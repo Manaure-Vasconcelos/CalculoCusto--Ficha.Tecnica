@@ -1,8 +1,6 @@
 /* const itensLocale = []; */
 let modeStyle = 'light';
-let custoTotal = 0;
-let valorUnit = 0;
-let valorGF = 0;
+const valuesProduct = { valueTot: 0, valueUnit: 0, valueGF: 0 };
 
 /* const showArticle = (src, event) => {
   event.preventDefault();
@@ -75,7 +73,7 @@ const addFood = () => {
 
   const cell5 = newRow.insertCell(4);
   const costUni = costReal(marketPrice, marketWeight, grossWeight);
-  custoTotal += costUni;
+  valuesProduct.valueTot += costUni;
   cell5.setAttribute('class', 'thResult')
   cell5.innerHTML = `R$ ${costUni.toFixed(2).replace('.', ',')}`;
 
@@ -89,11 +87,11 @@ const addFood = () => {
 }
 
 class NewItem {
-  constructor () {
+  constructor() {
     this.ingredients = String(document.getElementById("ingredients").value),
-    this.marketWeight = Number(document.getElementById("marketWeight").value),
-    this.marketPrice = Number(document.getElementById("marketPrice").value),
-    this.grossWeight = Number(document.getElementById("grossWeight").value)
+      this.marketWeight = Number(document.getElementById("marketWeight").value),
+      this.marketPrice = Number(document.getElementById("marketPrice").value),
+      this.grossWeight = Number(document.getElementById("grossWeight").value)
   }
   /* savedItens(item) */
 };
@@ -130,7 +128,7 @@ const createElement = (el) => {
 
 const addCostTot = () => {
   const thCustoTo = document.querySelector("#custoTot");
-  thCustoTo.innerHTML = `R$ ${custoTotal.toFixed(2).replace('.', ',')}`;
+  thCustoTo.innerHTML = `R$ ${valuesProduct.valueTot.toFixed(2).replace('.', ',')}`;
 }
 
 const clearInputs = () => {
@@ -151,9 +149,9 @@ const custoUni = () => {
   const unitValue = Number(document.querySelector('#inputUnit').value);
   const packetValue = Number(document.querySelector('#packetValue').value);
 
-  if (!unitValue || !custoTotal) return '0,00';
-  const result = (custoTotal / unitValue) + packetValue;
-  valorUnit = result;
+  if (!unitValue || !valuesProduct.valueTot) return '0,00';
+  const result = (valuesProduct.valueTot / unitValue) + packetValue;
+  valuesProduct.valueUnit = result;
   return result.toFixed(2).replace('.', ',');
 }
 
@@ -170,7 +168,7 @@ const valorGastosFixo = () => {
 
   if (!vendasPorDia, !gastosFixos) return '0,00';
   const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
-  valorGF = result;
+  valuesProduct.valueGF = result;
   return result.toFixed(2).replace('.', ',');
 }
 
@@ -182,7 +180,7 @@ const addValorFinal = () => {
 
 const valorFinal = () => {
   const rangeValue = Number(document.querySelector('#rangeLucro').value);
-  const valorFinalProduto = valorUnit + valorGF;
+  const valorFinalProduto = valuesProduct.valueUnit + valuesProduct.valueGF;
 
   const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
   return resultFinal.toFixed(2).replace('.', ',');
