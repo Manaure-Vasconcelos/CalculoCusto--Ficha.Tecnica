@@ -50,7 +50,8 @@
   })
 
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') addFood();
+    const inputs = document.querySelectorAll("#foodTable input");
+    if (event.key === 'Enter' && Array.from(inputs).includes(document.activeElement)) addFood();
   })
 
   const addFood = () => {
@@ -129,7 +130,8 @@
 
   const addCostTot = () => {
     const thCustoTo = document.querySelector("#custoTot");
-    thCustoTo.innerHTML = `R$ ${valuesProduct.valueTot.toFixed(2).replace('.', ',')}`;
+    const result = valuesProduct.valueTot.toFixed(2).replace('.', ',');
+    thCustoTo.innerHTML = `R$ ${result}`;
   }
 
   const clearInputs = () => {
