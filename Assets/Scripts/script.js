@@ -55,7 +55,7 @@ document.addEventListener('keydown', function (event) {
 }); */
 
 const addFood = () => {
-  const { ingredients, marketWeight, marketPrice, grossWeight } = createItem();
+  const { ingredients, marketWeight, marketPrice, grossWeight } = new NewItem();
   if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
   const table = document.querySelector("#foodTable");
@@ -88,15 +88,14 @@ const addFood = () => {
   clearInputs();
 }
 
-const createItem = () => {
-  const item = {
-    ingredients: String(document.getElementById("ingredients").value),
-    marketWeight: Number(document.getElementById("marketWeight").value),
-    marketPrice: Number(document.getElementById("marketPrice").value),
-    grossWeight: Number(document.getElementById("grossWeight").value)
+class NewItem {
+  constructor () {
+    this.ingredients = String(document.getElementById("ingredients").value),
+    this.marketWeight = Number(document.getElementById("marketWeight").value),
+    this.marketPrice = Number(document.getElementById("marketPrice").value),
+    this.grossWeight = Number(document.getElementById("grossWeight").value)
   }
   /* savedItens(item) */
-  return item;
 };
 
 const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
