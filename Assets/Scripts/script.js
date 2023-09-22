@@ -68,7 +68,7 @@
     cell2.innerHTML = marketWeight;
 
     const cell3 = newRow.insertCell(2);
-    cell3.innerHTML = `R$ ${marketPrice.toFixed(2)}`;
+    cell3.innerHTML = `R$ ${marketPrice.toFixed(2).replace('.', ',')}`;
 
     const cell4 = newRow.insertCell(3);
     cell4.innerHTML = grossWeight;
