@@ -4,9 +4,10 @@
   --terceary-color: #56b665;
   --white-color: #ffffff;
   --light-gray-color: #eeeeee;
+  --light-gray-2-color: #f3f2f8;
   --black-rgba: rgba(0, 0, 0, 0.4);
   --black-bg-color: #000000;
-  --black-dark-theme: #282A36;
+  --black-dark-theme: #202124;
   --orange-color: #cd7d3c;
   --gap: 3rem;
 }
@@ -20,7 +21,6 @@
 }
 
 body {
-  background-color: var(--white-color);
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   margin-top: 80px;
@@ -47,7 +47,7 @@ p {
   text-indent: 30pt;
   text-align: justify;
   font-size: 16px;
-  margin: 10px 20px 0px 20px;
+  margin: 10px 20px;
 }
 
 .lightTheme {
@@ -56,7 +56,11 @@ p {
 }
 
 .darkThemeBlocks {
-  background-color: red;
+  background-color: var(--light-gray-2-color);
+  border-radius: 0.5rem;
+  border: 1px solid var(--black-rgba);
+  color: var(--primary-color);
+  padding: 10px;
 }
 
 .darkTheme {
@@ -203,12 +207,10 @@ a {
   overflow: hidden;
   width: 520px;
   min-height: 400px;
-  border-radius: 0.5rem;
-  border: 1px solid var(--black-rgba);
-  background-color: var(--light-gray-color);
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 0;
 }
 
 #foodTable {
@@ -220,7 +222,6 @@ a {
   padding: 0px 10px 10px 10px;
   border-spacing: 0px;
   text-align: center;
-  color: var(--primary-color);
   padding: 10px;
 }
 
@@ -272,34 +273,19 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border-radius: 0.5rem;
   width: 300px;
-  padding: 10px;
-  border: 1px solid var(--black-rgba);
-  background-color: var(--light-gray-color);
-  color: var(--primary-color);
 }
 
-.custosFixos {
-  border-radius: 0.5rem;
+#custosFixos {
   width: 300px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  border: 1px solid var(--black-rgba);
-  background-color: var(--light-gray-color);
-  color: var(--primary-color);
 }
 
 #container--lucro {
-  border-radius: 0.5rem;
   width: 500px;
   display: block;
-  padding: 1rem;
   margin-top: 0.8rem;
-  border: 1px solid var(--black-rgba);
-  background-color: var(--light-gray-color);
-  color: var(--primary-color);
 }
 
 /*Botões*/
@@ -370,9 +356,7 @@ input[type="range"]::-webkit-slider-thumb {
 .rodape {
   text-align: center;
   padding: 10px;
-  color: var(--primary-color);
   border-top: 0.1rem solid var(--black-rgba);
-  background-color: var(--green-teal-color);
 }
 
 .footer-content {
