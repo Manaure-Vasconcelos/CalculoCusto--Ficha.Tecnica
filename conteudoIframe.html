@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conteúdo Iframe</title>
     <style>
-        *{
+      /*  *{
             text-align: center;
             font-family:Verdana, Geneva, Tahoma, sans-serif;
         }
@@ -21,11 +21,18 @@
         }
         article{
           margin-bottom: 300px;
+        } */
+
+        ul {
+          border: 1px solid;
+          width: 600px;
+          align-items: center;
+          list-style: none;
         }
     </style>
   </head>
   <body>
-    <article id="topo">
+    <!-- <article id="topo">
       <h1>A Importância de ter o Controle do Seu Produto:</h1>
       <p>
         Quando se trata de administrar um negócio ou empreendimento, a
@@ -66,6 +73,60 @@
     <p>
       Se você é um pequeno empreendedor e trabalha na sua própria residencia
     </p>
-</article>
+</article> -->
+  <input type="number" id="ingredients">
+  <input type="number" id="marketWeight">
+  <input type="number" id="marketPrice">
+  <input type="number" id="grossWeight">
+    <ul id="foodList">
+    </ul>
+    <button onclick="addFood()">adicionar</button>
+
   </body>
+  <script>
+    const addFood = () => {
+      const { ingredients, marketWeight, marketPrice, grossWeight } =
+        new NewItem();
+      if (!ingredients || !marketWeight || !marketPrice || !grossWeight)
+        return alert("Preencha os dados corretamente.");
+
+      const list = document.querySelector("#foodList");
+      const newItem = document.createElement("li");
+
+      // Cria um elemento <span> para cada parte do alimento e adiciona ao <li>
+      const span1 = document.createElement("span");
+      span1.innerHTML = ingredients;
+      newItem.appendChild(span1);
+
+      const span2 = document.createElement("span");
+      span2.innerHTML = marketWeight;
+      newItem.appendChild(span2);
+
+      const span3 = document.createElement("span");
+      span3.innerHTML = `R$ ${marketPrice.toFixed(2).replace(".", ",")}`;
+      newItem.appendChild(span3);
+
+      const span4 = document.createElement("span");
+      span4.innerHTML = grossWeight;
+      newItem.appendChild(span4);
+
+      const span5 = document.createElement("span");
+      const costUni = costReal(marketPrice, marketWeight, grossWeight);
+      span5.setAttribute("class", "thResult");
+      span5.innerHTML = `R$ ${costUni.toFixed(2).replace(".", ",")}`;
+      newItem.appendChild(span5);
+
+    };
+
+    class NewItem {
+    constructor() {
+      this.ingredients = String(document.getElementById("ingredients").value),
+        this.marketWeight = Number(document.getElementById("marketWeight").value),
+        this.marketPrice = Number(document.getElementById("marketPrice").value),
+        this.grossWeight = Number(document.getElementById("grossWeight").value)
+    }
+    /* savedItens(item) */
+  };
+  const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+  </script>
 </html>
