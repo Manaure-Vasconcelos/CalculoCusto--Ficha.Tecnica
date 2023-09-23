@@ -1,7 +1,6 @@
 (function () {
   /* const itensLocale = []; */
-  let modeStyle = 'dark';
-  const valuesProduct = { valueTot: 0, valueUnit: 0, valueGF: 0 };
+  const temporaryObj = { valueTot: 0, valueUnit: 0, valueGF: 0, modeStyle: 'dark' };
 
   /* const showArticle = (src, event) => {
     event.preventDefault();
@@ -14,16 +13,16 @@
     const doc = document.querySelector("body");
     const darkModeBtn = document.querySelector(".darkMode");
 
-    if (modeStyle === 'dark') {
+    if (temporaryObj.modeStyle === 'dark') {
       doc.classList.remove('lightTheme');
       doc.classList.add('darkTheme');
       darkModeBtn.innerHTML = '<span class="material-icons"> light_mode </span>';
-      modeStyle = 'light';
-    } else if (modeStyle === 'light') {
+      temporaryObj.modeStyle = 'light';
+    } else if (temporaryObj.modeStyle === 'light') {
       doc.classList.remove('darkTheme');
       doc.classList.add('lightTheme');
       darkModeBtn.innerHTML = '<span class="material-icons"> dark_mode </span>';
-      modeStyle = 'dark';
+      temporaryObj.modeStyle = 'dark';
     }
   }
 
@@ -75,7 +74,7 @@
 
     const cell5 = newRow.insertCell(4);
     const costUni = costReal(marketPrice, marketWeight, grossWeight);
-    valuesProduct.valueTot += costUni;
+    temporaryObj.valueTot += costUni;
     cell5.setAttribute('class', 'thResult')
     cell5.innerHTML = `R$ ${costUni.toFixed(2).replace('.', ',')}`;
 
@@ -130,7 +129,7 @@
 
   const addCostTot = () => {
     const thCustoTo = document.querySelector("#custoTot");
-    const result = valuesProduct.valueTot.toFixed(2).replace('.', ',');
+    const result = temporaryObj.valueTot.toFixed(2).replace('.', ',');
     thCustoTo.innerHTML = `R$ ${result}`;
   }
 
@@ -152,9 +151,9 @@
     const unitValue = Number(document.querySelector('#inputUnit').value);
     const packetValue = Number(document.querySelector('#packetValue').value);
 
-    if (!unitValue || !valuesProduct.valueTot) return '0,00';
-    const result = (valuesProduct.valueTot / unitValue) + packetValue;
-    valuesProduct.valueUnit = result;
+    if (!unitValue || !temporaryObj.valueTot) return '0,00';
+    const result = (temporaryObj.valueTot / unitValue) + packetValue;
+    temporaryObj.valueUnit = result;
     return result.toFixed(2).replace('.', ',');
   }
 
@@ -171,7 +170,7 @@
 
     if (!vendasPorDia, !gastosFixos) return '0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
-    valuesProduct.valueGF = result;
+    temporaryObj.valueGF = result;
     return result.toFixed(2).replace('.', ',');
   }
 
@@ -183,7 +182,7 @@
 
   const valorFinal = () => {
     const rangeValue = Number(document.querySelector('#rangeLucro').value);
-    const valorFinalProduto = valuesProduct.valueUnit + valuesProduct.valueGF;
+    const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
 
     const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
     return resultFinal.toFixed(2).replace('.', ',');
