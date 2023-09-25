@@ -91,31 +91,36 @@
         return alert("Preencha os dados corretamente.");
 
       const list = document.querySelector("#foodList");
-      const newItem = document.createElement("li");
+      const newLi = document.createElement("li");
 
       // Cria um elemento <span> para cada parte do alimento e adiciona ao <li>
       const span1 = document.createElement("span");
       span1.innerHTML = ingredients;
-      newItem.appendChild(span1);
-
+      newLi.innerHTML = span1;
+      list.appendChild();
+      
       const span2 = document.createElement("span");
       span2.innerHTML = marketWeight;
-      newItem.appendChild(span2);
-
+      newLi.innerHTML = span2;
+      list.appendChild();
+      
       const span3 = document.createElement("span");
       span3.innerHTML = `R$ ${marketPrice.toFixed(2).replace(".", ",")}`;
-      newItem.appendChild(span3);
-
+      newLi.innerHTML = span3;
+      list.appendChild();
+      
       const span4 = document.createElement("span");
       span4.innerHTML = grossWeight;
-      newItem.appendChild(span4);
-
+      newLi.innerHTML = span4;
+      list.appendChild();
+      
       const span5 = document.createElement("span");
       const costUni = costReal(marketPrice, marketWeight, grossWeight);
       span5.setAttribute("class", "thResult");
       span5.innerHTML = `R$ ${costUni.toFixed(2).replace(".", ",")}`;
-      newItem.appendChild(span5);
-
+      newLi.innerHTML = span5;
+      list.appendChild(span5);
+      
     };
 
     class NewItem {
