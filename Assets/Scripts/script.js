@@ -68,7 +68,7 @@
     cell2.innerHTML = marketWeight;
 
     const cell3 = newRow.insertCell(2);
-    cell3.innerHTML = `R$ ${marketPrice.toFixed(2).replace('.', ',')}`;
+    cell3.innerHTML = `R$ ${formatNumber(marketPrice)}`;
 
     const cell4 = newRow.insertCell(3);
     cell4.innerHTML = grossWeight;
@@ -77,7 +77,7 @@
     const costUni = newItem.costReal();
     temporaryObj.valueTot += costUni;
     cell5.setAttribute('class', 'thResult')
-    cell5.innerHTML = `R$ ${costUni.toFixed(2).replace('.', ',')}`;
+    cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
 
     const cell6 = newRow.insertCell(5);
     const btnEdit = createElement(1);
@@ -132,7 +132,7 @@
 
   const addCostTot = () => {
     const thCustoTo = document.querySelector("#custoTot");
-    const result = temporaryObj.valueTot.toFixed(2).replace('.', ',');
+    const result = formatNumber(temporaryObj.valueTot);
     thCustoTo.innerHTML = `R$ ${result}`;
   }
 
@@ -157,7 +157,7 @@
     if (!unitValue || !temporaryObj.valueTot) return '0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
     temporaryObj.valueUnit = result;
-    return result.toFixed(2).replace('.', ',');
+    return formatNumber(result);
   }
 
   const addCustosFixos = () => {
@@ -174,7 +174,7 @@
     if (!vendasPorDia, !gastosFixos) return '0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
     temporaryObj.valueGF = result;
-    return result.toFixed(2).replace('.', ',');
+    return formatNumber(result);
   }
 
   const addValorFinal = () => {
@@ -188,7 +188,11 @@
     const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
 
     const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
-    return resultFinal.toFixed(2).replace('.', ',');
+    return formatNumber(resultFinal);
+  }
+
+  const formatNumber = (value) => {
+    return value.toFixed(2).replace('.', ',')
   }
 
   /*  const savedItens = (item) => {
