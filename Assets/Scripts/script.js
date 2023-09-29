@@ -124,17 +124,22 @@
     }
   };
 
-  const addCostTot = () => {
-    const thCustoTo = selectElement("#custoTot");
-    const result = formatNumber(temporaryObj.valueTot);
-    thCustoTo.innerHTML = `R$ ${result}`;
-  }
+  const addCostTot = () => addValue(costTot, '#custoTot');
+  const addCustoUni = () => addValue(custoUni, '#divCostUnit');
+  const addCustosFixos = () => addValue(valorGastosFixo, '#divCustoFixo');
+  const addValorFinal = () => addValue(valorFinal, '#divLucro');
 
-  const addCustoUni = () => {
-    const divResult = selectElement('#divCostUnit');
-    const costUnit = custoUni();
-    divResult.innerHTML = `R$ ${costUnit}`;
-  }
+  const addValue = (calcFunction, selector) => {
+    const value = calcFunction();
+    setResultInDiv(selector, value);
+  };
+
+  const setResultInDiv = (selector, value) => {
+    const div = selectElement(selector);
+    div.innerHTML = `R$ ${value}`;
+  };
+
+  const costTot = () => formatNumber(temporaryObj.valueTot);
 
   const custoUni = () => {
     const unitValue = getValueInput('#inputUnit', Number);
@@ -146,12 +151,6 @@
     return formatNumber(result);
   }
 
-  const addCustosFixos = () => {
-    const divResult = selectElement('#divCustoFixo');
-    const gastosFixos = valorGastosFixo();
-    divResult.innerHTML = `R$ ${gastosFixos}`;
-  }
-
   const valorGastosFixo = () => {
     const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
     const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
@@ -161,12 +160,6 @@
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
     temporaryObj.valueGF = result;
     return formatNumber(result);
-  }
-
-  const addValorFinal = () => {
-    const divResult = selectElement('#divLucro');
-    const resultFinal = valorFinal();
-    divResult.innerHTML = `R$ ${resultFinal}`;
   }
 
   const valorFinal = () => {
@@ -189,9 +182,7 @@
 
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
-  const formatNumber = (value) => {
-    return value.toFixed(2).replace('.', ',')
-  }
+  const formatNumber = (value) => value.toFixed(2).replace('.', ',');
 
   /*  const savedItens = (item) => {
      itensLocale.push(item)
