@@ -178,11 +178,11 @@
   }
 
   const addValorFinal = () => {
-    const divResult = getValueInput('#divLucro');
+    const divResult = document.querySelector('#divLucro');
     const resultFinal = valorFinal();
     divResult.innerHTML = `R$ ${resultFinal}`;
   }
-
+  
   const valorFinal = () => {
     const rangeValue = getValueInput('#rangeLucro', Number);
     const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
