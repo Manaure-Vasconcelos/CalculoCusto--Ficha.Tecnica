@@ -90,11 +90,11 @@
 
   class NewItem {
     constructor() {
-      this.ingredients = String(document.getElementById("ingredients").value),
-        this.marketWeight = Number(document.getElementById("marketWeight").value),
-        this.marketPrice = Number(document.getElementById("marketPrice").value),
-        this.grossWeight = Number(document.getElementById("grossWeight").value)
-    }
+      this.ingredients = getValueInput('#ingredients', String)
+        this.marketWeight = getValueInput('#marketWeight', Number)
+        this.marketPrice = getValueInput('#marketPrice', Number)
+        this.grossWeight = getValueInput('#grossWeight', Number)    
+      }
     /* savedItens(item) */
   };
 
@@ -151,8 +151,8 @@
   }
 
   const custoUni = () => {
-    const unitValue = Number(document.querySelector('#inputUnit').value);
-    const packetValue = Number(document.querySelector('#packetValue').value);
+    const unitValue = getValueInput('#inputUnit', Number);
+    const packetValue = getValueInput('#packetValue',  Number);
 
     if (!unitValue || !temporaryObj.valueTot) return '0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
@@ -167,9 +167,9 @@
   }
 
   const valorGastosFixo = () => {
-    const diasTrabalhados = Number(document.querySelector('#rangeDiasDeTrabalho').value);
-    const vendasPorDia = Number(document.querySelector('#inputVendasPorDia').value);
-    const gastosFixos = Number(document.querySelector('#inputGastosFixos').value);
+    const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
+    const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
+    const gastosFixos = getValueInput('#inputGastosFixos', Number);
 
     if (!vendasPorDia, !gastosFixos) return '0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
@@ -178,18 +178,20 @@
   }
 
   const addValorFinal = () => {
-    const divResult = document.querySelector('#divLucro');
+    const divResult = getValueInput('#divLucro');
     const resultFinal = valorFinal();
     divResult.innerHTML = `R$ ${resultFinal}`;
   }
 
   const valorFinal = () => {
-    const rangeValue = Number(document.querySelector('#rangeLucro').value);
+    const rangeValue = getValueInput('#rangeLucro', Number);
     const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
 
     const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
     return formatNumber(resultFinal);
   }
+
+  const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
   const formatNumber = (value) => {
     return value.toFixed(2).replace('.', ',')
