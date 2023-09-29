@@ -54,7 +54,8 @@
   })
 
   const addFood = () => {
-    const { ingredients, marketWeight, marketPrice, grossWeight } = new NewItem();
+    const newItem = new NewItem();
+    const { ingredients, marketWeight, marketPrice, grossWeight } = newItem;
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
     const table = document.querySelector("#foodTable");
@@ -73,7 +74,7 @@
     cell4.innerHTML = grossWeight;
 
     const cell5 = newRow.insertCell(4);
-    const costUni = costReal(marketPrice, marketWeight, grossWeight);
+    const costUni = newItem.costReal();
     temporaryObj.valueTot += costUni;
     cell5.setAttribute('class', 'thResult')
     cell5.innerHTML = `R$ ${costUni.toFixed(2).replace('.', ',')}`;
@@ -97,7 +98,9 @@
     /* savedItens(item) */
   };
 
-  const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+  NewItem.prototype.costReal = function () {
+    return (this.marketPrice / this.marketWeight) * this.grossWeight;
+  }
 
   const createElement = (el) => {
     if (el === 1) {
