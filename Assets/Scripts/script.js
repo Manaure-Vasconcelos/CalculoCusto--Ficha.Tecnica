@@ -10,8 +10,8 @@
   } */
 
   const darkMode = () => {
-    const doc = document.querySelector("body");
-    const darkModeBtn = document.querySelector(".darkMode");
+    const doc = selectElement('body');
+    const darkModeBtn = selectElement('.darkMode');
 
     if (temporaryObj.modeStyle === 'dark') {
       doc.classList.remove('lightTheme');
@@ -58,7 +58,7 @@
     const { ingredients, marketWeight, marketPrice, grossWeight } = newItem;
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
-    const table = document.querySelector("#foodTable");
+    const table = selectElement("#foodTable");
     const newRow = table.insertRow(2);
 
     const cell1 = newRow.insertCell(0);
@@ -91,10 +91,10 @@
   class NewItem {
     constructor() {
       this.ingredients = getValueInput('#ingredients', String)
-        this.marketWeight = getValueInput('#marketWeight', Number)
-        this.marketPrice = getValueInput('#marketPrice', Number)
-        this.grossWeight = getValueInput('#grossWeight', Number)    
-      }
+      this.marketWeight = getValueInput('#marketWeight', Number)
+      this.marketPrice = getValueInput('#marketPrice', Number)
+      this.grossWeight = getValueInput('#grossWeight', Number)
+    }
     /* savedItens(item) */
   };
 
@@ -124,46 +124,31 @@
     }
   };
 
-  /* const editElement = (el) => {
-    el.innerHTML += `alo`;
-    const btnDelete = createElement(2)
-    cell6.appendChild(btnDelete);
-  } */
+  const addCostTot = () => addValue(costTot, '#custoTot');
+  const addCustoUni = () => addValue(custoUni, '#divCostUnit');
+  const addCustosFixos = () => addValue(valorGastosFixo, '#divCustoFixo');
+  const addValorFinal = () => addValue(valorFinal, '#divLucro');
 
-  const addCostTot = () => {
-    const thCustoTo = document.querySelector("#custoTot");
-    const result = formatNumber(temporaryObj.valueTot);
-    thCustoTo.innerHTML = `R$ ${result}`;
-  }
+  const addValue = (calcFunction, selector) => {
+    const value = calcFunction();
+    setResultInDiv(selector, value);
+  };
 
-  const clearInputs = () => {
-    document.getElementById("ingredients").value = '';
-    document.getElementById("marketWeight").value = '';
-    document.getElementById("marketPrice").value = '';
-    document.getElementById("grossWeight").value = '';
-    document.getElementById("ingredients").focus();
-  }
+  const setResultInDiv = (selector, value) => {
+    const div = selectElement(selector);
+    div.innerHTML = `R$ ${value}`;
+  };
 
-  const addCustoUni = () => {
-    const divResult = document.querySelector('#divCostUnit');
-    const costUnit = custoUni();
-    divResult.innerHTML = `R$ ${costUnit}`;
-  }
+  const costTot = () => formatNumber(temporaryObj.valueTot);
 
   const custoUni = () => {
     const unitValue = getValueInput('#inputUnit', Number);
-    const packetValue = getValueInput('#packetValue',  Number);
+    const packetValue = getValueInput('#packetValue', Number);
 
     if (!unitValue || !temporaryObj.valueTot) return '0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
     temporaryObj.valueUnit = result;
     return formatNumber(result);
-  }
-
-  const addCustosFixos = () => {
-    const divResult = document.querySelector('#divCustoFixo');
-    const gastosFixos = valorGastosFixo();
-    divResult.innerHTML = `R$ ${gastosFixos}`;
   }
 
   const valorGastosFixo = () => {
@@ -177,12 +162,6 @@
     return formatNumber(result);
   }
 
-  const addValorFinal = () => {
-    const divResult = document.querySelector('#divLucro');
-    const resultFinal = valorFinal();
-    divResult.innerHTML = `R$ ${resultFinal}`;
-  }
-  
   const valorFinal = () => {
     const rangeValue = getValueInput('#rangeLucro', Number);
     const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
@@ -191,11 +170,19 @@
     return formatNumber(resultFinal);
   }
 
+  const clearInputs = () => {
+    selectElement("#ingredients").value = '';
+    selectElement("#marketWeight").value = '';
+    selectElement("#marketPrice").value = '';
+    selectElement("#grossWeight").value = '';
+    selectElement("#ingredients").focus();
+  }
+
+  const selectElement = (selector) => document.querySelector(selector);
+
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
-  const formatNumber = (value) => {
-    return value.toFixed(2).replace('.', ',')
-  }
+  const formatNumber = (value) => value.toFixed(2).replace('.', ',');
 
   /*  const savedItens = (item) => {
      itensLocale.push(item)
