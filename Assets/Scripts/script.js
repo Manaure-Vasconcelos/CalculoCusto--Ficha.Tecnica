@@ -156,7 +156,7 @@
     const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
     const gastosFixos = getValueInput('#inputGastosFixos', Number);
 
-    if (!vendasPorDia, !gastosFixos) return '0,00';
+    if (!vendasPorDia || !gastosFixos) return '0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
     temporaryObj.valueGF = result;
     return formatNumber(result);
