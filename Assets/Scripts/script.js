@@ -10,8 +10,8 @@
   } */
 
   const darkMode = () => {
-    const doc = document.querySelector("body");
-    const darkModeBtn = document.querySelector(".darkMode");
+    const doc = selectElement('body');
+    const darkModeBtn = selectElement('.darkMode');
 
     if (temporaryObj.modeStyle === 'dark') {
       doc.classList.remove('lightTheme');
@@ -58,7 +58,7 @@
     const { ingredients, marketWeight, marketPrice, grossWeight } = newItem;
     if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
 
-    const table = document.querySelector("#foodTable");
+    const table = selectElement("#foodTable");
     const newRow = table.insertRow(2);
 
     const cell1 = newRow.insertCell(0);
@@ -91,10 +91,10 @@
   class NewItem {
     constructor() {
       this.ingredients = getValueInput('#ingredients', String)
-        this.marketWeight = getValueInput('#marketWeight', Number)
-        this.marketPrice = getValueInput('#marketPrice', Number)
-        this.grossWeight = getValueInput('#grossWeight', Number)    
-      }
+      this.marketWeight = getValueInput('#marketWeight', Number)
+      this.marketPrice = getValueInput('#marketPrice', Number)
+      this.grossWeight = getValueInput('#grossWeight', Number)
+    }
     /* savedItens(item) */
   };
 
@@ -124,35 +124,21 @@
     }
   };
 
-  /* const editElement = (el) => {
-    el.innerHTML += `alo`;
-    const btnDelete = createElement(2)
-    cell6.appendChild(btnDelete);
-  } */
-
   const addCostTot = () => {
-    const thCustoTo = document.querySelector("#custoTot");
+    const thCustoTo = selectElement("#custoTot");
     const result = formatNumber(temporaryObj.valueTot);
     thCustoTo.innerHTML = `R$ ${result}`;
   }
 
-  const clearInputs = () => {
-    document.getElementById("ingredients").value = '';
-    document.getElementById("marketWeight").value = '';
-    document.getElementById("marketPrice").value = '';
-    document.getElementById("grossWeight").value = '';
-    document.getElementById("ingredients").focus();
-  }
-
   const addCustoUni = () => {
-    const divResult = document.querySelector('#divCostUnit');
+    const divResult = selectElement('#divCostUnit');
     const costUnit = custoUni();
     divResult.innerHTML = `R$ ${costUnit}`;
   }
 
   const custoUni = () => {
     const unitValue = getValueInput('#inputUnit', Number);
-    const packetValue = getValueInput('#packetValue',  Number);
+    const packetValue = getValueInput('#packetValue', Number);
 
     if (!unitValue || !temporaryObj.valueTot) return '0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
@@ -161,7 +147,7 @@
   }
 
   const addCustosFixos = () => {
-    const divResult = document.querySelector('#divCustoFixo');
+    const divResult = selectElement('#divCustoFixo');
     const gastosFixos = valorGastosFixo();
     divResult.innerHTML = `R$ ${gastosFixos}`;
   }
@@ -178,11 +164,11 @@
   }
 
   const addValorFinal = () => {
-    const divResult = document.querySelector('#divLucro');
+    const divResult = selectElement('#divLucro');
     const resultFinal = valorFinal();
     divResult.innerHTML = `R$ ${resultFinal}`;
   }
-  
+
   const valorFinal = () => {
     const rangeValue = getValueInput('#rangeLucro', Number);
     const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
@@ -190,6 +176,16 @@
     const resultFinal = valorFinalProduto + (valorFinalProduto * (rangeValue / 100));
     return formatNumber(resultFinal);
   }
+
+  const clearInputs = () => {
+    selectElement("#ingredients").value = '';
+    selectElement("#marketWeight").value = '';
+    selectElement("#marketPrice").value = '';
+    selectElement("#grossWeight").value = '';
+    selectElement("#ingredients").focus();
+  }
+
+  const selectElement = (selector) => document.querySelector(selector);
 
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
