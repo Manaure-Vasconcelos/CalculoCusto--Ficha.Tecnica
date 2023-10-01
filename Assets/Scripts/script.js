@@ -54,27 +54,26 @@
   })
 
   const addFood = () => {
-    const newItem = new NewItem();
-    const { ingredients, marketWeight, marketPrice, grossWeight } = newItem;
-    if (!ingredients || !marketWeight || !marketPrice || !grossWeight) return alert("Preencha os dados corretamente.");
+    const item = new NewItem();
+    if (!item.ingredients || !item.marketWeight || !item.marketPrice || !item.grossWeight) return alert("Preencha os dados corretamente.");
 
     const table = selectElement("#foodTable");
     const newRow = table.insertRow(2);
 
     const cell1 = newRow.insertCell(0);
-    cell1.innerHTML = ingredients;
+    cell1.innerHTML = item.ingredients;
 
     const cell2 = newRow.insertCell(1);
-    cell2.innerHTML = marketWeight;
+    cell2.innerHTML = item.marketWeight;
 
     const cell3 = newRow.insertCell(2);
-    cell3.innerHTML = `R$ ${formatNumber(marketPrice)}`;
+    cell3.innerHTML = `R$ ${formatNumber(item.marketPrice)}`;
 
     const cell4 = newRow.insertCell(3);
-    cell4.innerHTML = grossWeight;
+    cell4.innerHTML = item.grossWeight;
 
     const cell5 = newRow.insertCell(4);
-    const costUni = newItem.costReal();
+    const costUni = item.costReal();
     temporaryObj.valueTot += costUni;
     cell5.setAttribute('class', 'thResult')
     cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
