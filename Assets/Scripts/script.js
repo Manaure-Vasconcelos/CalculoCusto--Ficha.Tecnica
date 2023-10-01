@@ -67,7 +67,7 @@
     cell2.innerHTML = item.marketWeight;
 
     const cell3 = newRow.insertCell(2);
-    cell3.innerHTML = `R$ ${formatNumber(item.marketPrice)}`;
+    cell3.innerHTML = formatNumber(item.marketPrice);
 
     const cell4 = newRow.insertCell(3);
     cell4.innerHTML = item.grossWeight;
@@ -76,7 +76,7 @@
     const costUni = item.costReal();
     temporaryObj.valueTot += costUni;
     cell5.setAttribute('class', 'thResult')
-    cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
+    cell5.innerHTML = formatNumber(costUni);
 
     const cell6 = newRow.insertCell(5);
     const btnEdit = createElement(1);
@@ -135,7 +135,7 @@
 
   const setResultInDiv = (selector, value) => {
     const div = selectElement(selector);
-    div.innerHTML = `R$ ${value}`;
+    div.innerHTML = value;
   };
 
   const costTot = () => formatNumber(temporaryObj.valueTot);
@@ -144,7 +144,7 @@
     const unitValue = getValueInput('#inputUnit', Number);
     const packetValue = getValueInput('#packetValue', Number);
 
-    if (!unitValue || !temporaryObj.valueTot) return '0,00';
+    if (!unitValue || !temporaryObj.valueTot) return 'R$ 0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
     temporaryObj.valueUnit = result;
     return formatNumber(result);
@@ -155,7 +155,7 @@
     const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
     const gastosFixos = getValueInput('#inputGastosFixos', Number);
 
-    if (!vendasPorDia || !gastosFixos) return '0,00';
+    if (!vendasPorDia || !gastosFixos) return 'R$ 0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
     temporaryObj.valueGF = result;
     return formatNumber(result);
@@ -181,7 +181,7 @@
 
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
-  const formatNumber = (value) => value.toFixed(2).replace('.', ',');
+  const formatNumber = (value) => `R$ ${value.toFixed(2).replace(".", ",")}`;
 
   /*  const savedItens = (item) => {
      itensLocale.push(item)

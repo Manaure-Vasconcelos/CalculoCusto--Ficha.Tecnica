@@ -122,16 +122,18 @@
       const list = document.querySelector("#foodList");
       const newLi = document.createElement("li");
 
+      for (value in item) {
+        const span = document.createElement("span");
+        span.innerHTML = item[value] || value;
+        newLi.appendChild(span);
+      }
+
       [
         "ingredients",
         "marketWeight",
         `R$ ${item.marketPrice.toFixed(2).replace(".", ",")}`,
         "grossWeight",
-      ].forEach((value) => {
-        const span = document.createElement("span");
-        span.innerHTML = item[value] || value;
-        newLi.appendChild(span);
-      });
+      ].forEach((value) => {});
 
       const span5 = document.createElement("span");
       const costUni = costReal(
@@ -147,15 +149,19 @@
     };
 
     class NewItem {
-      constructor() {
-        this.ingredients = document.getElementById("ingredients").value;
-        this.marketWeight = Number(
-          document.getElementById("marketWeight").value
-        );
-        this.marketPrice = Number(document.getElementById("marketPrice").value);
-        this.grossWeight = Number(document.getElementById("grossWeight").value);
-      }
+    constructor() {
+      this.ingredients = getValueInput('#ingredients', String)
+      this.marketWeight = formatNumber(getValueInput('#marketWeight', Number))
+      this.marketPrice = getValueInput('#marketPrice', Number)
+      this.grossWeight = getValueInput('#grossWeight', Number)
     }
+    /* savedItens(item) */
+  };
+
+    const getValueInput = (selector, type) =>
+      type(document.querySelector(selector).value);
+
+    const formatNumber = (value) => `R$ ${value.toFixed(2).replace(".", ",")}`;
 
     const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
   </script>
