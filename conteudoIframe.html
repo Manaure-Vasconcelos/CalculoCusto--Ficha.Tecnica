@@ -23,12 +23,17 @@
           margin-bottom: 300px;
         } */
 
-        ul {
-          border: 1px solid;
-          width: 600px;
-          align-items: center;
-          list-style: none;
-        }
+      ul {
+        border: 1px solid;
+        width: 500px;
+        align-items: center;
+        list-style: none;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+      }
     </style>
   </head>
   <body>
@@ -74,64 +79,72 @@
       Se você é um pequeno empreendedor e trabalha na sua própria residencia
     </p>
 </article> -->
-  <input type="number" id="ingredients">
-  <input type="number" id="marketWeight">
-  <input type="number" id="marketPrice">
-  <input type="number" id="grossWeight">
-    <ul id="foodList">
-    </ul>
-    <button onclick="addFood()">adicionar</button>
+    <h2>Adicionar Novo Alimento</h2>
 
+    <!-- Formulário para adicionar alimento -->
+    <form id="foodForm">
+      <label for="ingredients">Ingrediente: </label>
+      <input type="text" id="ingredients" />
+      <br />
+
+      <label for="marketWeight">Peso no Mercado (g): </label>
+      <input type="number" id="marketWeight" />
+      <br />
+
+      <label for="marketPrice">Preço no Mercado (R$): </label>
+      <input type="number" id="marketPrice" step="0.01" />
+      <br />
+
+      <label for="grossWeight">Peso Bruto (g): </label>
+      <input type="number" id="grossWeight" />
+      <br />
+
+      <input type="button" value="Adicionar" onclick="addFood()" />
+    </form>
+
+    <!-- Lista para mostrar os alimentos adicionados -->
+    <h3>Alimentos Adicionados:</h3>
+    <ul id="foodList"></ul>
   </body>
   <script>
     const addFood = () => {
-      const { ingredients, marketWeight, marketPrice, grossWeight } =
-        new NewItem();
-      if (!ingredients || !marketWeight || !marketPrice || !grossWeight)
-        return alert("Preencha os dados corretamente.");
+      const item = new NewItem();
 
+      if (!item.ingredients || !item.marketWeight || !item.marketPrice || !item.grossWeight) alert("Preencha os dados corretamente.");
+ 
       const list = document.querySelector("#foodList");
       const newLi = document.createElement("li");
 
-      // Cria um elemento <span> para cada parte do alimento e adiciona ao <li>
-      const span1 = document.createElement("span");
-      span1.innerHTML = ingredients;
-      newLi.innerHTML = span1;
-      list.appendChild();
-      
-      const span2 = document.createElement("span");
-      span2.innerHTML = marketWeight;
-      newLi.innerHTML = span2;
-      list.appendChild();
-      
-      const span3 = document.createElement("span");
-      span3.innerHTML = `R$ ${marketPrice.toFixed(2).replace(".", ",")}`;
-      newLi.innerHTML = span3;
-      list.appendChild();
-      
-      const span4 = document.createElement("span");
-      span4.innerHTML = grossWeight;
-      newLi.innerHTML = span4;
-      list.appendChild();
-      
-      const span5 = document.createElement("span");
-      const costUni = costReal(marketPrice, marketWeight, grossWeight);
-      span5.setAttribute("class", "thResult");
-      span5.innerHTML = `R$ ${costUni.toFixed(2).replace(".", ",")}`;
-      newLi.innerHTML = span5;
-      list.appendChild(span5);
-      
+      const properties = ["ingredients", "marketWeight", "marketPrice", "grossWeight", item.costReal()];
+
+      for (value of properties) {
+        const span = document.createElement("span");
+
+        // Checando se o valor é o custo real (que é um número) ou se é o 'marketPrice'
+        span.innerHTML = typeof value === "number"  ? formatNumber(value) : value === "marketPrice" ? formatNumber(item[value]) : item[value];
+
+        newLi.appendChild(span);
+      }
+
+      list.appendChild(newLi);
     };
 
     class NewItem {
-    constructor() {
-      this.ingredients = String(document.getElementById("ingredients").value),
-        this.marketWeight = Number(document.getElementById("marketWeight").value),
-        this.marketPrice = Number(document.getElementById("marketPrice").value),
-        this.grossWeight = Number(document.getElementById("grossWeight").value)
+      constructor() {
+        this.ingredients = getValueInput("#ingredients", String);
+        this.marketWeight = getValueInput("#marketWeight", Number);
+        this.marketPrice = getValueInput("#marketPrice", Number);
+        this.grossWeight = getValueInput("#grossWeight", Number);
+      }
+      /* savedItens(item) */
     }
-    /* savedItens(item) */
-  };
-  const costReal = (preço, embalagem, uso) => (preço / embalagem) * uso;
+    NewItem.prototype.costReal = function () {
+      return (this.marketPrice / this.marketWeight) * this.grossWeight;
+    };
+
+    const getValueInput = (selector, type) =>
+      type(document.querySelector(selector).value);
+
+    const formatNumber = (value) => `R$ ${value.toFixed(2).replace(".", ",")}`;
   </script>
 </html>

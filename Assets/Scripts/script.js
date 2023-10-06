@@ -158,14 +158,14 @@
 
   const setResultInDiv = (selector, value) => {
     const div = selectElement(selector);
-    div.innerHTML = `R$ ${value}`;
+    div.innerHTML = value;
   };
 
   const custoUni = () => {
     const unitValue = getValueInput('#inputUnit', Number);
     const packetValue = getValueInput('#packetValue', Number);
 
-    if (!unitValue || !temporaryObj.valueTot) return '0,00';
+    if (!unitValue || !temporaryObj.valueTot) return 'R$ 0,00';
     const result = (temporaryObj.valueTot / unitValue) + packetValue;
     temporaryObj.valueUnit = result;
     return formatNumber(result);
