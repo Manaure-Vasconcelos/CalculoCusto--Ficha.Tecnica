@@ -4,11 +4,11 @@
 
   /* const showArticle = (src, event) => {
     event.preventDefault();
-  
+    
     const iframe = document.getElementById("iframe");
     iframe.src = `conteudoIframe.html#${src}`;
   } */
-
+  
   const darkMode = () => {
     const doc = selectElement('body');
     const darkModeBtn = selectElement('.darkMode');
@@ -26,15 +26,19 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function (e) {
+    e.preventDefault();
     darkMode();
   });
 
   document.addEventListener('click', function (event) {
     const el = event.target;
-
-    if (el.classList.contains('btnAdd')) addFood();
+    
     if (el.classList.contains('darkMode')) darkMode();
+    if (el.classList.contains('btnAdd')) {
+      const food = new Food();
+      food.addFood();
+    };
   })
 
   document.addEventListener('input', function (event) {
@@ -50,80 +54,99 @@
 
   document.addEventListener('keydown', function (event) {
     const inputs = document.querySelectorAll("#foodTable input");
-    if (event.key === 'Enter' && Array.from(inputs).includes(document.activeElement)) addFood();
+    if (event.key === 'Enter' && Array.from(inputs).includes(document.activeElement)) {
+      const food = new Food();
+      food.addFood();
+    }
   })
 
-  const addFood = () => {
-    const item = new NewItem();
-    if (!item.ingredients || !item.marketWeight || !item.marketPrice || !item.grossWeight) return alert("Preencha os dados corretamente.");
-
-    const table = selectElement("#foodTable");
-    const newRow = table.insertRow(2);
-
-    const cell1 = newRow.insertCell(0);
-    cell1.innerHTML = item.ingredients;
-
-    const cell2 = newRow.insertCell(1);
-    cell2.innerHTML = item.marketWeight;
-
-    const cell3 = newRow.insertCell(2);
-    cell3.innerHTML = formatNumber(item.marketPrice);
-
-    const cell4 = newRow.insertCell(3);
-    cell4.innerHTML = item.grossWeight;
-
-    const cell5 = newRow.insertCell(4);
-    const costUni = item.costReal();
-    temporaryObj.valueTot += costUni;
-    cell5.setAttribute('class', 'thResult')
-    cell5.innerHTML = formatNumber(costUni);
-
-    const cell6 = newRow.insertCell(5);
-    const btnEdit = createElement(1);
-    cell6.appendChild(btnEdit);
-
-    addCostTot()
-    addCustoUni()
-    clearInputs();
-  }
-
-  class NewItem {
+  class Food {
     constructor() {
       this.ingredients = getValueInput('#ingredients', String)
       this.marketWeight = getValueInput('#marketWeight', Number)
       this.marketPrice = getValueInput('#marketPrice', Number)
       this.grossWeight = getValueInput('#grossWeight', Number)
     }
-    /* savedItens(item) */
-  };
 
-  NewItem.prototype.costReal = function () {
-    return (this.marketPrice / this.marketWeight) * this.grossWeight;
+    addFood() {
+      for (const input of document.querySelectorAll('.inputForm')) {
+        if(!input.value) {
+          alert("Preencha os dados corretamente.");
+          input.focus();
+          return
+        }
+      }
+
+      const table = selectElement("#foodTable");
+      const newRow = table.insertRow(2);
+
+      const cell1 = newRow.insertCell(0);
+      cell1.innerHTML = this.ingredients;
+
+      const cell2 = newRow.insertCell(1);
+      cell2.innerHTML = this.marketWeight;
+
+      const cell3 = newRow.insertCell(2);
+      cell3.innerHTML = `R$ ${formatNumber(this.marketPrice)}`;
+      
+      const cell4 = newRow.insertCell(3);
+      cell4.innerHTML = this.grossWeight;
+      
+      const cell5 = newRow.insertCell(4);
+      const costUni = this.costReal();
+      temporaryObj.valueTot += costUni;
+      cell5.setAttribute('class', 'thResult')
+      cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
+
+      const cell6 = newRow.insertCell(5);
+      const btnEdit = this.createButtonElement(1);
+      cell6.appendChild(btnEdit);
+
+      this.addCostTot;
+      addCustoUni()
+      Food.clearInputs();
+    }
+    
+    costReal() {
+      return (this.marketPrice / this.marketWeight) * this.grossWeight;
+    }
+
+    get addCostTot() {
+      const div = selectElement('#custoTot');
+      const tot = formatNumber(temporaryObj.valueTot);
+      div.innerHTML = `R$ ${tot}`;
+    }
+    
+    createButtonElement(el) {
+      if (el === 1) {
+        const btn = document.createElement("button");
+        btn.setAttribute("id", "btnEdit");
+        btn.setAttribute("onclick", "editElement(this)");
+        btn.innerHTML = `<span class="material-icons">
+        edit
+        </span>`;
+        return btn
+      }
+      
+      if (el === 2) {
+        const btn = document.createElement("button");
+        btn.setAttribute("id", "btnDelete");
+        /* btnEdit.setAttribute("onclick", "editElement()"); */
+        btn.innerHTML += `<span class="material-icons">
+        delete
+        </span>`;
+        return btn
+      }
+    };
+
+    static clearInputs() {
+      for (const input of document.querySelectorAll('.inputForm')) {
+        input.value ="";
+      }
+      selectElement('#ingredients').focus();
+    }
   }
 
-  const createElement = (el) => {
-    if (el === 1) {
-      const btn = document.createElement("button");
-      btn.setAttribute("id", "btnEdit");
-      btn.setAttribute("onclick", "editElement(this)");
-      btn.innerHTML = `<span class="material-icons">
-      edit
-      </span>`;
-      return btn
-    }
-
-    if (el === 2) {
-      const btn = document.createElement("button");
-      btn.setAttribute("id", "btnDelete");
-      /* btnEdit.setAttribute("onclick", "editElement()"); */
-      btn.innerHTML += `<span class="material-icons">
-      delete
-      </span>`;
-      return btn
-    }
-  };
-
-  const addCostTot = () => addValue(costTot, '#custoTot');
   const addCustoUni = () => addValue(custoUni, '#divCostUnit');
   const addCustosFixos = () => addValue(valorGastosFixo, '#divCustoFixo');
   const addValorFinal = () => addValue(valorFinal, '#divLucro');
@@ -137,8 +160,6 @@
     const div = selectElement(selector);
     div.innerHTML = value;
   };
-
-  const costTot = () => formatNumber(temporaryObj.valueTot);
 
   const custoUni = () => {
     const unitValue = getValueInput('#inputUnit', Number);
@@ -155,7 +176,7 @@
     const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
     const gastosFixos = getValueInput('#inputGastosFixos', Number);
 
-    if (!vendasPorDia || !gastosFixos) return 'R$ 0,00';
+    if (!vendasPorDia || !gastosFixos) return '0,00';
     const result = gastosFixos / ((diasTrabalhados * 4) * vendasPorDia);
     temporaryObj.valueGF = result;
     return formatNumber(result);
@@ -169,37 +190,10 @@
     return formatNumber(resultFinal);
   }
 
-  const clearInputs = () => {
-    selectElement("#ingredients").value = '';
-    selectElement("#marketWeight").value = '';
-    selectElement("#marketPrice").value = '';
-    selectElement("#grossWeight").value = '';
-    selectElement("#ingredients").focus();
-  }
-
   const selectElement = (selector) => document.querySelector(selector);
 
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
-  const formatNumber = (value) => `R$ ${value.toFixed(2).replace(".", ",")}`;
-
-  /*  const savedItens = (item) => {
-     itensLocale.push(item)
-     localStorage.setItem('itemList', JSON.stringify(itensLocale));
-   };
+  const formatNumber = (value) => value.toFixed(2).replace('.', ',');
   
-   const loadItens = () => {
-     const savedItens = localStorage.getItem('itemList');
-  
-     if (savedItens) {
-       const itensLi = JSON.parse(savedItens)
-       for (let item of itensLi) {
-         addFood(item)
-       }
-     }
-   }
-  
-   const clearLocalStorage = () => localStorage.clear()
-  
-   setInterval(clearLocalStorage, 60000) */
 })()
