@@ -1,14 +1,6 @@
 (function () {
-  /* const itensLocale = []; */
   const temporaryObj = { valueTot: 0, valueUnit: 0, valueGF: 0, modeStyle: 'dark' };
 
-  /* const showArticle = (src, event) => {
-    event.preventDefault();
-    
-    const iframe = document.getElementById("iframe");
-    iframe.src = `conteudoIframe.html#${src}`;
-  } */
-  
   const darkMode = () => {
     const doc = selectElement('body');
     const darkModeBtn = selectElement('.darkMode');
@@ -33,7 +25,7 @@
 
   document.addEventListener('click', function (event) {
     const el = event.target;
-    
+
     if (el.classList.contains('darkMode')) darkMode();
     if (el.classList.contains('btnAdd')) {
       const food = new Food();
@@ -70,7 +62,7 @@
 
     addFood() {
       for (const input of document.querySelectorAll('.inputForm')) {
-        if(!input.value) {
+        if (!input.value) {
           alert("Preencha os dados corretamente.");
           input.focus();
           return
@@ -88,10 +80,10 @@
 
       const cell3 = newRow.insertCell(2);
       cell3.innerHTML = `R$ ${formatNumber(this.marketPrice)}`;
-      
+
       const cell4 = newRow.insertCell(3);
       cell4.innerHTML = this.grossWeight;
-      
+
       const cell5 = newRow.insertCell(4);
       const costUni = this.costReal;
       temporaryObj.valueTot += costUni;
@@ -106,7 +98,7 @@
       addCustoUni()
       Food.clearInputs();
     }
-    
+
     get costReal() {
       return (this.marketPrice / this.marketWeight) * this.grossWeight;
     }
@@ -116,7 +108,7 @@
       const tot = formatNumber(temporaryObj.valueTot);
       div.innerHTML = `R$ ${tot}`;
     }
-    
+
     static createButtonElement(el) {
       if (el === 1) {
         const btn = document.createElement("button");
@@ -127,7 +119,7 @@
         </span>`;
         return btn
       }
-      
+
       if (el === 2) {
         const btn = document.createElement("button");
         btn.setAttribute("id", "btnDelete");
@@ -141,7 +133,7 @@
 
     static clearInputs() {
       for (const input of document.querySelectorAll('.inputForm')) {
-        input.value ="";
+        input.value = "";
       }
       selectElement('#ingredients').focus();
     }
@@ -195,5 +187,5 @@
   const getValueInput = (selector, type) => type(document.querySelector(selector).value);
 
   const formatNumber = (value) => value.toFixed(2).replace('.', ',');
-  
+
 })()
