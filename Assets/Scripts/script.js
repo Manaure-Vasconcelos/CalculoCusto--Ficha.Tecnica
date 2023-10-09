@@ -93,31 +93,31 @@
       cell4.innerHTML = this.grossWeight;
       
       const cell5 = newRow.insertCell(4);
-      const costUni = this.costReal();
+      const costUni = this.costReal;
       temporaryObj.valueTot += costUni;
       cell5.setAttribute('class', 'thResult')
       cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
 
       const cell6 = newRow.insertCell(5);
-      const btnEdit = this.createButtonElement(1);
+      const btnEdit = Food.createButtonElement(1);
       cell6.appendChild(btnEdit);
 
-      this.addCostTot;
+      this.addCostTot();
       addCustoUni()
       Food.clearInputs();
     }
     
-    costReal() {
+    get costReal() {
       return (this.marketPrice / this.marketWeight) * this.grossWeight;
     }
 
-    get addCostTot() {
+    addCostTot() {
       const div = selectElement('#custoTot');
       const tot = formatNumber(temporaryObj.valueTot);
       div.innerHTML = `R$ ${tot}`;
     }
     
-    createButtonElement(el) {
+    static createButtonElement(el) {
       if (el === 1) {
         const btn = document.createElement("button");
         btn.setAttribute("id", "btnEdit");
