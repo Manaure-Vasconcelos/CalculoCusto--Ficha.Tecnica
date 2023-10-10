@@ -61,13 +61,7 @@
     }
 
     addFood() {
-      for (const input of document.querySelectorAll('.inputForm')) {
-        if (!input.value) {
-          alert("Preencha os dados corretamente.");
-          input.focus();
-          return
-        }
-      }
+      if(!Food.validInputs()) return
 
       const table = selectElement("#foodTable");
       const newRow = table.insertRow(2);
@@ -85,7 +79,7 @@
       cell4.innerHTML = this.grossWeight;
 
       const cell5 = newRow.insertCell(4);
-      const costUni = this.costReal;
+      const costUni = this.costReal();
       temporaryObj.valueTot += costUni;
       cell5.setAttribute('class', 'thResult')
       cell5.innerHTML = `R$ ${formatNumber(costUni)}`;
@@ -99,7 +93,7 @@
       Food.clearInputs();
     }
 
-    get costReal() {
+    costReal() {
       return (this.marketPrice / this.marketWeight) * this.grossWeight;
     }
 
@@ -107,6 +101,17 @@
       const div = selectElement('#custoTot');
       const tot = formatNumber(temporaryObj.valueTot);
       div.innerHTML = `R$ ${tot}`;
+    }
+
+    static validInputs() {
+      for (const input of document.querySelectorAll('.inputForm')) {
+        if (!input.value) {
+          alert("Preencha os dados corretamente.");
+          input.focus();
+          return false;
+        }
+      }
+      return true;
     }
 
     static createButtonElement(el) {
