@@ -1,0 +1,182 @@
+k<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de custos.</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script type="module" src="../script/main.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="menu">
+      <div class="menu-content">
+        <h1><a href="#home">LOGO</a></h1>
+
+        <nav>
+          <ul>
+            <li><a href="./src/templates/home">Home</a></li>
+            <li><a href="./src/templates/tabela">Calculadora</a></li>
+            <li><a href="./src/templates/receitas">Receitas</a></li>
+            <li><a href="#containerIframe">Sobre</a></li>
+          </ul>
+          <button class="darkMode">
+            <span class="material-icons"> dark_mode </span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <section class="main-content section">
+      <div id="home">
+        <h1>A importância da precificação correta</h1>
+        <p>
+          Quando se trata de administrar um negócio ou empreendimento, a precificação adequada dos produtos desempenha um papel crucial para garantir o sucesso
+          financeiro e a sustentabilidade da empresa. Estabelecer preços justos e competitivos não apenas permite obter lucro, mas também reflete o valor real
+          dos produtos ou serviços oferecidos aos clientes. Uma ferramenta valiosa para auxiliar nesse processo é a ficha técnica, que desempenha um papel
+          essencial no cálculo do preço de custo de um produto. Portanto, encontrar o equilíbrio certo é essencial. É aqui que entra a ficha técnica.
+        </p>
+        <h1>Ficha técnica como ferramenta.</h1>
+        <p>
+          A ficha técnica é uma ferramenta que lista todos os componentes e ingredientes necessários para a produção de um produto, bem como as quantidades e os
+          custos associados a cada um deles. Ao realizar o cálculo da ficha técnica, é possível determinar o custo total de produção de um produto, levando em
+          consideração não apenas os ingredientes, mas também os custos indiretos, como energia, mão de obra e embalagens.
+        </p>
+        <h1>Entendendo os custos.</h1>
+        <h2>- Custos Fixos</h2>
+        <p>
+          Os gastos fixos são aqueles que ocorrem independentemente da quantidade produzida, como aluguel do espaço físico, salários dos funcionários
+          administrativos, despesas com utilities, como água e eletricidade, e outros custos de infraestrutura. É importante identificar e considerar esses
+          gastos ao calcular o custo do seu produto, pois eles impactam diretamente a lucratividade do negócio.
+        </p>
+        <h2>- Custos Variáveis</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis enim, dolor aut itaque corporis eveniet aspernatur voluptatem eligendi ab nihil iste
+          molestias unde sed reprehenderit ducimus porro culpa suscipit laboriosam!
+        </p>
+        <h1>Dicas para pequeno empreendedor.</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, fugiat deserunt iste quisquam facere aut deleniti qui, ex consectetur praesentium
+          quasi vero adipisci rerum in similique placeat, aliquam repudiandae perferendis?
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-table section">
+      <div class="main-content">
+        <header>
+          <h1>Calculando o preço ideal.</h1>
+          <p>Adicione os dados da sua receita e obtenha o custo unitário. e total da receita.</p>
+          <p>Todos os ingrediente devem ser em Gramas (g), Mililitros (mL) ou Unidade.</p>
+        </header>
+        <article id="containerTable">
+          <div id="divTable" class="darkThemeBlocks">
+            <table id="foodTable">
+              <tr>
+                <th class="headerTable">
+                  <label for="ingredients">Ingrediente:</label>
+                </th>
+                <th class="headerTable">
+                  <label for="marketWeight">Tamanho da embalagem: (g/mL)</label>
+                </th>
+                <th class="headerTable">
+                  <label for="marketPrice">Preço no mercado (R$)</label>
+                </th>
+                <th class="headerTable">
+                  <label for="grossWeight">Uso na receita: (g/mL)</label>
+                </th>
+                <th rowspan="2" colspan="2" id="thBtn">
+                  <button type="button" class="btnAdd">
+                    <span class="material-icons"> add_circle </span>
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <input type="text" id="ingredients" class="inputForm" required />
+                </th>
+                <th>
+                  <input type="number" id="marketWeight" class="inputForm" required />
+                </th>
+                <th>
+                  <input type="number" id="marketPrice" class="inputForm" required />
+                </th>
+                <th>
+                  <input type="number" id="grossWeight" class="inputForm" required />
+                </th>
+              </tr>
+            </table>
+            <div class="divCusto">
+              <div id="custoTot" class="blockResult">R$ 0,00</div>
+            </div>
+          </div>
+
+          <div class="container-custos">
+            <div id="custosUni" class="darkThemeBlocks">
+              <h2>Custo unitário:</h2>
+              <p><label for="inputUnit">Rendimento:</label></p>
+              <input type="number" id="inputUnit" class="inputUnit restInputs" placeholder="Exemplo: 1 ou 20" />
+              <p><label for="packetValue">Embalagem:</label></p>
+              <input type="number" id="packetValue" class="inputPacket restInputs" placeholder="Exemplo: 1,00" />
+
+              <div class="divCusto">
+                <h2>O custo unitário do seu produto:</h2>
+                <br />
+                <div id="divCostUnit" class="blockResult">R$ 0,00</div>
+              </div>
+            </div>
+
+            <div id="custosFixos" class="darkThemeBlocks">
+              <h2>Custos fixos mensais:</h2>
+              <p><label for="rangeDiasDeTrabalho">Dias trabalhados:</label></p>
+              <input type="range" id="rangeDiasDeTrabalho" class="ranges rangeDiasDeTrabalho" step="1" min="1" max="7" />
+              <p><label for="inputVendasPorDia"> Nº de vendas / dia: </label></p>
+              <input type="number" id="inputVendasPorDia" class="restInputs inputVendasPorDias" placeholder="Exemplo: 10,00" />
+              <p><label for="inputGastosFixos">Gastos fixos:</label></p>
+              <input type="number" id="inputGastosFixos" class="restInputs inputGastosFixos" placeholder="Exemplo: 150,00" />
+              <div class="divCusto">
+                <h2>O custo fixo do produto é:</h2>
+                <p>O valor é referente ao gasto fixo por produto.</p>
+                <div id="divCustoFixo" class="blockResult">R$ 0,00</div>
+              </div>
+            </div>
+
+            <div id="container--lucro" class="darkThemeBlocks">
+              <h2>Margem de lucro.</h2>
+              <p>Escolha a margem de lucro do seu produto:</p>
+              <input type="range" id="rangeLucro" class="ranges rangeLucro" value="1" step="5" min="0" max="100" />
+              <div class="divCusto">
+                <div id="divLucro" class="blockResult">R$ 0,00</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <footer class="rodape">
+      <div class="footer-content">
+        <h4>
+          Um projeto desenvolvido por <br />
+          Manaure Vasconcelos &copy;
+        </h4>
+
+        <div>
+          <ul class="contact">
+            <li>
+              <a href="https://www.linkedin.com/in/manaure-vasconcelos-63b38218a/" target="_blank">Linkedin</a>
+            </li>
+            <li>
+              <a href="https://github.com/Manaure-Vasconcelos" target="_blank">GitHub</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
