@@ -1,7 +1,7 @@
 (function () {
   const temporaryObj = { valueTot: 0, valueUnit: 0, valueGF: 0, modeStyle: 'dark' };
 
-  const darkMode = () => {
+/*   const darkMode = () => {
     const doc = selectElement('body');
     const darkModeBtn = selectElement('.darkMode');
 
@@ -16,7 +16,7 @@
       darkModeBtn.innerHTML = '<span class="material-icons"> dark_mode </span>';
       temporaryObj.modeStyle = 'dark';
     }
-  }
+  } */
 
   document.addEventListener("DOMContentLoaded", function (e) {
     e.preventDefault();
@@ -61,7 +61,7 @@
     }
 
     addFood() {
-      if(!Food.validInputs()) return
+      if (!Food.validInputs()) return
 
       const table = selectElement("#foodTable");
       const newRow = table.insertRow(2);
