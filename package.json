@@ -1,0 +1,11 @@
+{
+  "name": "calculocusto--ficha.tecnica",
+  "version": "1.0.0",
+  "description": "Tabela de calculo de custos de um determinado produto utilizando a ficha técnica.\r  Usando JavaScript, HTML e CSS como a base para construção;\r  Posteriormente será criando uma pagina web para a tabela/calculo e estruturada.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
