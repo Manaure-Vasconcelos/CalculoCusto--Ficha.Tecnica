@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":";;;;;;AAAa;AACb;AACA,iBAAiB","sources":["webpack://test-vite/./src/index.ts"],"sourcesContent":["\"use strict\";\nconsole.log('testing');\nconst person = { name: 'John', surname: 'vasconcelos' };\n"],"names":[],"sourceRoot":""}
