@@ -6,8 +6,8 @@ import {
 } from './utils';
 
 export const custoUni = () => {
-  const unitValue = getValueInput('#inputUnit', Number);
-  const packetValue = getValueInput('#packetValue', Number);
+  const unitValue = getValueInput('#inputUnit');
+  const packetValue = getValueInput('#packetValue');
 
   if (!unitValue || !temporaryObj.valueTot) return 'R$ 0,00';
   if (typeof unitValue === 'number' && typeof packetValue === 'number') {
@@ -19,9 +19,9 @@ export const custoUni = () => {
 };
 
 export const valorGastosFixo = () => {
-  const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
-  const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
-  const gastosFixos = getValueInput('#inputGastosFixos', Number);
+  const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho');
+  const vendasPorDia = getValueInput('#inputVendasPorDia');
+  const gastosFixos = getValueInput('#inputGastosFixos');
 
   if (vendasPorDia === undefined || gastosFixos === undefined) return '0,00';
   if (
@@ -40,7 +40,7 @@ export const valorGastosFixo = () => {
 };
 
 export const valorFinal = () => {
-  const rangeValue = getValueInput('#rangeLucro', Number);
+  const rangeValue = getValueInput('#rangeLucro');
   const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
   if (typeof rangeValue === 'number') {
     const resultFinal =

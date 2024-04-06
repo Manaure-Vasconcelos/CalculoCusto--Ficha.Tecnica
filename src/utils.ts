@@ -7,12 +7,9 @@ export const temporaryObj = {
 export const selectElement = (selector: string) =>
   document.querySelector(selector);
 
-export const getValueInput = (
-  selector: string,
-  type: (value: string) => string | number
-): string | number => {
+export const getValueInput = (selector: string): number => {
   const element = selectElement(selector) as HTMLInputElement;
-  return type(element.value);
+  return Number(element.value);
 };
 
 export const formatNumber = (value: number): string =>
