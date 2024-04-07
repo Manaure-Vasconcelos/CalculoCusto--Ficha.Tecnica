@@ -5,6 +5,12 @@ import {
   setResultInDiv
 } from './utils';
 
+export const totalAmountPerIngredient = (
+  marketWeight: number,
+  marketPrice: number,
+  grossWeight: number
+): number => (marketWeight / grossWeight) * marketPrice;
+
 export const custoUni = () => {
   const unitValue = getValueInput('#inputUnit', Number);
   const packetValue = getValueInput('#packetValue', Number);
