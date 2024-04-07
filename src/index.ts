@@ -8,20 +8,38 @@ import {
 } from './selected'; */
 
 export class TableOfIngredients {
-  private readonly ingredients: ingredient[] = [];
+  private readonly _ingredients: Ingredient[] = [];
 
-  insertIngredients(...ingredients: ingredient[]): void {
-    for (const current_ingredient of ingredients) {
-      this.ingredients.push(current_ingredient);
-    }
+  set ingredients(ingredients: Ingredient) {
+    // addIngredient
+    this._ingredients.push(ingredients);
+    /* Outra forma => Caso queira inserir todos os elementos novamente substituindo todos os anteriores.
+      for (const currentIngredient of ingredients) {
+      this._ingredients.push(currentIngredient);
+    } */
   }
 
-  getIngredients() {
-    return this.ingredients;
+  get ingredients(): Ingredient[] {
+    return this._ingredients;
+  }
+
+  addIngredientInTheContents(...ingredients: Ingredient[]) {
+    /* const 
+    for (const current of ){
+
+    }
+    console.log(values[0]); */
+    // Vai setar no html o elemento.
+    /* 
+      for (const currentIngredient of ingredients) {
+      row.innerHTML.text = currentIngredient
+      Ou em uma lista/tabela de 0 1 2 3 4 5 6 7 8 9 10 | e toda vez que chamada ele seta os valores novamente.
+      Atualizando sempre do índice 0.
+    */
   }
 }
 
-export class ingredient {
+export class Ingredient {
   constructor(
     public ingredients: string,
     public marketWeight: number,
@@ -31,7 +49,81 @@ export class ingredient {
 }
 
 const table = new TableOfIngredients();
+const comida1 = new Ingredient('comida1', 1, 1, 1);
+const comida2 = new Ingredient('comida2', 1, 1, 1);
+table.ingredients = comida1;
+table.ingredients = comida2;
+const result = table.ingredients;
+table.addIngredientInTheContents(...result);
 
+export class TableCostUnit {
+  private _servings: number = 0;
+  private _packaging: number = 0;
+
+  set servings(value: number) {
+    this._servings = value;
+  }
+
+  get servings(): number {
+    return this._servings;
+  }
+
+  set packaging(value: number) {
+    this._packaging = value;
+  }
+
+  get packaging(): number {
+    return this._packaging;
+  }
+
+  addCostUnit() {}
+}
+
+export class TableFixedCosts {
+  private _daysWorked: number = 0;
+  private _salesPerDay: number = 0;
+  private _fixedCosts: number = 0;
+
+  set daysWorked(value: number) {
+    this._daysWorked;
+  }
+
+  get daysWorked(): number {
+    return this._daysWorked;
+  }
+
+  set salesPerDay(value: number) {
+    this._salesPerDay = value;
+  }
+
+  get salesPerDay(): number {
+    return this._salesPerDay;
+  }
+
+  set fixedCosts(value: number) {
+    this._fixedCosts = value;
+  }
+
+  get fixedCosts(): number {
+    return this._fixedCosts;
+  }
+
+  addFixedCosts() {}
+}
+
+export class TableProfitMargin {
+  private _profitMargin: number = 0;
+
+  set profitMargin(value: number) {
+    this._profitMargin = value;
+  }
+
+  get profitMargin() {
+    return this._profitMargin;
+  }
+
+  addProfitMargin() {}
+}
 
 /* -------------------------------------------------------------------------------- */
 
