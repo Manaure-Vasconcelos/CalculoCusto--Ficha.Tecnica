@@ -1,64 +1,41 @@
-import { addCustoUni, addCustosFixos, addValorFinal } from './business';
+/* import { addCustoUni, addCustosFixos, addValorFinal } from './business';
 import { selectElement, formatNumber, temporaryObj } from './utils';
-import {
+import { 
   valueIngredient,
   valueMarketWeight,
   valueMarketPrice,
   valueGrossWeight
-} from './selected';
+} from './selected'; */
 
-document.addEventListener('click', function (event: MouseEvent) {
-  const el = event.target as HTMLElement;
+export class TableOfIngredients {
+  private readonly ingredients: ingredient[] = [];
 
-  if (el.classList.contains('btnAdd')) {
-    const food = new Food(
-      valueIngredient,
-      valueMarketWeight,
-      valueMarketPrice,
-      valueGrossWeight
-    );
-    food.addFood();
+  insertIngredients(...ingredients: ingredient[]): void {
+    for (const current_ingredient of ingredients) {
+      this.ingredients.push(current_ingredient);
+    }
   }
-});
 
-document.addEventListener('input', function (event: Event) {
-  const el = event.target as HTMLElement;
+  getIngredients() {
+    return this.ingredients;
+  }
+}
 
-  if (
-    el.classList.contains('inputUnit') ||
-    el.classList.contains('inputPacket')
-  ) {
-    addCustoUni();
-  }
-  if (el.classList.contains('rangeLucro')) {
-    addValorFinal();
-  }
-  if (
-    el.classList.contains('rangeDiasDeTrabalho') ||
-    el.classList.contains('inputVendasPorDias') ||
-    el.classList.contains('inputGastosFixos')
-  ) {
-    addCustosFixos();
-  }
-});
+export class ingredient {
+  constructor(
+    public ingredients: string,
+    public marketWeight: number,
+    public marketPrice: number,
+    public grossWeight: number
+  ) {}
+}
 
-document.addEventListener('keydown', function (event: KeyboardEvent) {
-  const inputs = document.querySelectorAll<HTMLElement>('#foodTable input');
-  if (
-    event.key === 'Enter' &&
-    Array.from(inputs).includes(document.activeElement as HTMLElement)
-  ) {
-    const food = new Food(
-      valueIngredient,
-      valueMarketWeight,
-      valueMarketPrice,
-      valueGrossWeight
-    );
-    food.addFood();
-  }
-});
+const table = new TableOfIngredients();
 
-class Food {
+
+/* -------------------------------------------------------------------------------- */
+
+/* class Food {
   constructor(
     public ingredients: string,
     public marketWeight: number,
@@ -68,15 +45,15 @@ class Food {
 
   addFood() {
     if (!Food.validInputs()) return;
-
+    
     const table = selectElement('#foodTable') as HTMLTableElement | null;
     if (!table) {
       console.error('Table element not found');
       return;
     }
-
+    
     const newRow = table.insertRow(2);
-
+    
     const cell1 = newRow.insertCell(0);
     cell1.innerHTML = this.ingredients;
 
@@ -131,3 +108,60 @@ class Food {
     if (element) element.focus();
   }
 }
+ */
+
+/* ---------------------------------------------------------------------------- */
+
+/* document.addEventListener('click', function (event: MouseEvent) {
+      const el = event.target as HTMLElement;
+    
+      if (el.classList.contains('btnAdd')) {
+        const food = new Food(
+          valueIngredient,
+          valueMarketWeight,
+          valueMarketPrice,
+          valueGrossWeight
+        );
+        food.addFood();
+      }
+    });
+    
+    document.addEventListener('input', function (event: Event) {
+      const el = event.target as HTMLElement;
+    
+      if (
+        el.classList.contains('inputUnit') ||
+        el.classList.contains('inputPacket')
+      ) {
+        addCustoUni();
+      }
+      if (el.classList.contains('rangeLucro')) {
+        addValorFinal();
+      }
+      if (
+        el.classList.contains('rangeDiasDeTrabalho') ||
+        el.classList.contains('inputVendasPorDias') ||
+        el.classList.contains('inputGastosFixos')
+      ) {
+        addCustosFixos();
+      }
+    });
+    
+    document.addEventListener('keydown', function (event: KeyboardEvent) {
+      const inputs = document.querySelectorAll<HTMLElement>('#foodTable input');
+      if (
+        event.key === 'Enter' &&
+        Array.from(inputs).includes(document.activeElement as HTMLElement)
+      ) {
+        const food = new ingredient(
+          valueIngredient,
+          valueMarketWeight,
+          valueMarketPrice,
+          valueGrossWeight
+        );
+        table.insert_ingredients(valueIngredient,
+          valueMarketWeight,
+          valueMarketPrice,
+          valueGrossWeight);
+      }
+    }); */
