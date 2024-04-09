@@ -1,37 +1,42 @@
 import { totalAmountPerIngredient } from './business';
+import { IIngredient } from './interfaces';
 
 export class TableOfIngredients {
-  private readonly _ingredients: Ingredient[] = [];
+  private readonly _ingredients: IIngredient[] = [];
+  public _valuePartialOfRecipe: number = 0;
+  // valor parcial da receita e usar pela intancia no arquivo index.
 
-  set ingredients(ingredient: Ingredient) {
+  set ingredients(ingredient: IIngredient) {
     // addIngredient
     this._ingredients.push(ingredient);
     /* Outra forma => Caso queira inserir todos os elementos novamente substituindo todos os anteriores.
       for (const currentIngredient of ingredients) {
       this._ingredients.push(currentIngredient);
     } */
-    /* this.costPerIngredient(ingredient); */
-
-    ingredient.realAmount = totalAmountPerIngredient(
-      ingredient.marketWeight,
-      ingredient.grossWeight,
-      ingredient.marketPrice
-    );
+    ingredient._realAmount = totalAmountPerIngredient(ingredient);
     this.setIngredientInTheContents(...this._ingredients);
-    this.setPartialValueOfRecipe(...this._ingredients);
+    this.setPartialValueOfRecipe(ingredient._realAmount);
   }
 
-  get ingredients(): Ingredient[] {
+  get ingredients(): IIngredient[] {
     return this._ingredients;
+  }
+
+  set valuePartialOfRecipe(value: number) {
+    this._valuePartialOfRecipe = value;
+  }
+
+  getValuePartialOfRecipe(): number {
+    return this._valuePartialOfRecipe;
   }
 
   /*  costPerIngredient(ingredient: Ingredient): void {
     ingredient.totalAmount = 1000;
   } */
 
-  setIngredientInTheContents(...ingredients: Ingredient[]) {
+  setIngredientInTheContents(...ingredients: IIngredient[]) {
     for (const current of ingredients) {
-      console.log(current);
+      console.log(current.describe);
     }
     // Vai setar no html o elemento.
     /* 
@@ -42,21 +47,12 @@ export class TableOfIngredients {
     */
   }
 
-  setPartialValueOfRecipe(...ingredients: Ingredient[]): void {
-    const partialValue = ingredients.reduce(
-      (prev: number, current: Ingredient) => {
-        if ('_realAmount' in current) {
-          if (current._realAmount) return prev + current._realAmount;
-        }
-        return prev;
-      },
-      0
-    );
-    console.log(partialValue);
+  setPartialValueOfRecipe(realAmount: number): void {
+    this._valuePartialOfRecipe += realAmount;
   }
 }
 
-export class Ingredient {
+export class Ingredient implements IIngredient {
   constructor(
     public describe: string,
     public marketWeight: number,
@@ -73,9 +69,11 @@ export class Ingredient {
 export class TableCostUnit {
   private _servings: number = 0;
   private _packaging: number = 0;
+  public _costUnit: number = 0;
 
   set servings(value: number) {
     this._servings = value;
+    // chamar o custo unitario novamente
   }
 
   get servings(): number {
@@ -88,6 +86,14 @@ export class TableCostUnit {
 
   get packaging(): number {
     return this._packaging;
+  }
+
+  set costUnit(value: number) {
+    this._costUnit = value;
+  }
+
+  get costUnit(): number {
+    return this._costUnit;
   }
 
   addCostUnit() {}

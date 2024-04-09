@@ -1,3 +1,4 @@
+import { IIngredient } from './interfaces';
 import {
   getValueInput,
   formatNumber,
@@ -5,23 +6,18 @@ import {
   setResultInDiv
 } from './utils';
 
-export const totalAmountPerIngredient = (
-  marketWeight: number,
-  marketPrice: number,
-  grossWeight: number
-): number => (marketWeight / grossWeight) * marketPrice;
+export const totalAmountPerIngredient = (ingredient: IIngredient): number =>
+  (ingredient.marketPrice * ingredient.grossWeight) / ingredient.marketWeight;
 
-export const custoUni = () => {
-  const unitValue = getValueInput('#inputUnit', Number);
-  const packetValue = getValueInput('#packetValue', Number);
-
-  if (!unitValue || !temporaryObj.valueTot) return 'R$ 0,00';
-  if (typeof unitValue === 'number' && typeof packetValue === 'number') {
-    const result = temporaryObj.valueTot / unitValue + packetValue;
-    temporaryObj.valueUnit = result;
-    return formatNumber(result);
-  }
-  return '0,00';
+export const costUnit = (
+  partialValueOfRecipe: number,
+  servings: number,
+  packaging: number
+): number => {
+  if (!servings || !packaging) return 0;
+  // eslint-disable-next-line prettier/prettier
+  const valueCostUnit = partialValueOfRecipe / servings + packaging;
+  return valueCostUnit;
 };
 
 export const valorGastosFixo = () => {
@@ -56,10 +52,10 @@ export const valorFinal = () => {
   return '0,00';
 };
 
-export const addCustoUni = () => {
-  const value = custoUni();
+/* export const addCustoUni = () => {
+  const value = costUnit();
   setResultInDiv('#divCostUnit', value);
-};
+}; */
 
 export const addCustosFixos = () => {
   const value = valorGastosFixo();
