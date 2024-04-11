@@ -1,4 +1,4 @@
-import { totalAmountPerIngredient } from './business';
+import { costUnit, totalAmountPerIngredient } from './business';
 import { IIngredient } from './interfaces';
 
 export class TableOfIngredients {
@@ -15,7 +15,7 @@ export class TableOfIngredients {
     } */
     ingredient._realAmount = totalAmountPerIngredient(ingredient);
     this.setIngredientInTheContents(...this._ingredients);
-    this.setPartialValueOfRecipe(ingredient._realAmount);
+    this.valuePartialOfRecipe = ingredient._realAmount;
   }
 
   get ingredients(): IIngredient[] {
@@ -23,16 +23,12 @@ export class TableOfIngredients {
   }
 
   set valuePartialOfRecipe(value: number) {
-    this._valuePartialOfRecipe = value;
+    this._valuePartialOfRecipe += value;
   }
 
   getValuePartialOfRecipe(): number {
     return this._valuePartialOfRecipe;
   }
-
-  /*  costPerIngredient(ingredient: Ingredient): void {
-    ingredient.totalAmount = 1000;
-  } */
 
   setIngredientInTheContents(...ingredients: IIngredient[]) {
     for (const current of ingredients) {
@@ -45,10 +41,6 @@ export class TableOfIngredients {
       Ou em uma lista/tabela de 0 1 2 3 4 5 6 7 8 9 10 | e toda vez que chamada ele seta os valores novamente.
       Atualizando sempre do índice 0.
     */
-  }
-
-  setPartialValueOfRecipe(realAmount: number): void {
-    this._valuePartialOfRecipe += realAmount;
   }
 }
 
@@ -71,6 +63,10 @@ export class TableCostUnit {
   private _packaging: number = 0;
   public _costUnit: number = 0;
 
+  // isso é uma injeção de dependencia => é uma forma mais "fechada".
+  // Pq a costUnit depende de outra class, o melhor seria criar uma abstração da classe
+  constructor(private readonly tableOfIngredients: TableOfIngredients) {}
+
   set servings(value: number) {
     this._servings = value;
     // chamar o custo unitario novamente
@@ -88,8 +84,12 @@ export class TableCostUnit {
     return this._packaging;
   }
 
-  set costUnit(value: number) {
-    this._costUnit = value;
+  setCostUnit(): void {
+    this._costUnit = costUnit(
+      this.tableOfIngredients._valuePartialOfRecipe,
+      this.servings,
+      this.packaging
+    );
   }
 
   get costUnit(): number {

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "npx ts-node --files --transpile-only",
     "build:backend": "tsc",
     "build:frontend": "webpack -w",
     "preview": "vite preview"

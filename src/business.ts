@@ -15,7 +15,6 @@ export const costUnit = (
   packaging: number
 ): number => {
   if (!servings || !packaging) return 0;
-  // eslint-disable-next-line prettier/prettier
   const valueCostUnit = partialValueOfRecipe / servings + packaging;
   return valueCostUnit;
 };
