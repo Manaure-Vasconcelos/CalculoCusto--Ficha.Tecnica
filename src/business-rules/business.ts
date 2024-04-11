@@ -1,12 +1,14 @@
-import { IIngredient } from './interfaces';
+import { IngredientProtocol } from '../interfaces/ingredient';
 import {
   getValueInput,
   formatNumber,
   temporaryObj,
   setResultInDiv
-} from './utils';
+} from '../utils/utils';
 
-export const totalAmountPerIngredient = (ingredient: IIngredient): number =>
+export const totalAmountPerIngredient = (
+  ingredient: IngredientProtocol
+): number =>
   (ingredient.marketPrice * ingredient.grossWeight) / ingredient.marketWeight;
 
 export const costUnit = (

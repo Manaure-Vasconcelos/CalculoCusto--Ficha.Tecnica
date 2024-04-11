@@ -1,36 +1,36 @@
-import { costUnit, totalAmountPerIngredient } from './business';
-import { IIngredient } from './interfaces';
+import { IngredientProtocol } from '../interfaces/ingredient';
+import { TableOfIngredientsProtocol } from './../interfaces/table-ingredients';
 
-export class TableOfIngredients {
-  private readonly _ingredients: IIngredient[] = [];
+export class TableOfIngredients implements TableOfIngredientsProtocol {
+  private readonly _ingredients: IngredientProtocol[] = [];
   public _valuePartialOfRecipe: number = 0;
   // valor parcial da receita e usar pela intancia no arquivo index.
+  constructor(private readonly ingredientService: IngredientProtocol) {}
 
-  set ingredients(ingredient: IIngredient) {
-    // addIngredient
+  setIngredient(ingredient: IngredientProtocol) {
     this._ingredients.push(ingredient);
-    /* Outra forma => Caso queira inserir todos os elementos novamente substituindo todos os anteriores.
-      for (const currentIngredient of ingredients) {
-      this._ingredients.push(currentIngredient);
-    } */
-    ingredient._realAmount = totalAmountPerIngredient(ingredient);
+    ingredient._realAmount =
+      this.ingredientService.totalAmountPerIngredient(ingredient);
+    this.setValuePartialOfRecipe();
     this.setIngredientInTheContents(...this._ingredients);
-    this.valuePartialOfRecipe = ingredient._realAmount;
   }
 
-  get ingredients(): IIngredient[] {
+  getIngredient(): IngredientProtocol[] {
     return this._ingredients;
   }
 
-  set valuePartialOfRecipe(value: number) {
-    this._valuePartialOfRecipe += value;
+  setValuePartialOfRecipe(): void {
+    this._valuePartialOfRecipe = this._ingredients.reduce(
+      (prev, next) => prev + (next._realAmount ?? 0),
+      0
+    );
   }
 
   getValuePartialOfRecipe(): number {
     return this._valuePartialOfRecipe;
   }
 
-  setIngredientInTheContents(...ingredients: IIngredient[]) {
+  setIngredientInTheContents(...ingredients: IngredientProtocol[]): void {
     for (const current of ingredients) {
       console.log(current.describe);
     }
@@ -42,107 +42,6 @@ export class TableOfIngredients {
       Atualizando sempre do índice 0.
     */
   }
-}
-
-export class Ingredient implements IIngredient {
-  constructor(
-    public describe: string,
-    public marketWeight: number,
-    public marketPrice: number,
-    public grossWeight: number,
-    public _realAmount?: number
-  ) {}
-
-  set realAmount(value: number) {
-    this._realAmount = value;
-  }
-}
-
-export class TableCostUnit {
-  private _servings: number = 0;
-  private _packaging: number = 0;
-  public _costUnit: number = 0;
-
-  // isso é uma injeção de dependencia => é uma forma mais "fechada".
-  // Pq a costUnit depende de outra class, o melhor seria criar uma abstração da classe
-  constructor(private readonly tableOfIngredients: TableOfIngredients) {}
-
-  set servings(value: number) {
-    this._servings = value;
-    // chamar o custo unitario novamente
-  }
-
-  get servings(): number {
-    return this._servings;
-  }
-
-  set packaging(value: number) {
-    this._packaging = value;
-  }
-
-  get packaging(): number {
-    return this._packaging;
-  }
-
-  setCostUnit(): void {
-    this._costUnit = costUnit(
-      this.tableOfIngredients._valuePartialOfRecipe,
-      this.servings,
-      this.packaging
-    );
-  }
-
-  get costUnit(): number {
-    return this._costUnit;
-  }
-
-  addCostUnit() {}
-}
-
-export class TableFixedCosts {
-  private _daysWorked: number = 0;
-  private _salesPerDay: number = 0;
-  private _fixedCosts: number = 0;
-
-  set daysWorked(value: number) {
-    this._daysWorked;
-  }
-
-  get daysWorked(): number {
-    return this._daysWorked;
-  }
-
-  set salesPerDay(value: number) {
-    this._salesPerDay = value;
-  }
-
-  get salesPerDay(): number {
-    return this._salesPerDay;
-  }
-
-  set fixedCosts(value: number) {
-    this._fixedCosts = value;
-  }
-
-  get fixedCosts(): number {
-    return this._fixedCosts;
-  }
-
-  addFixedCosts() {}
-}
-
-export class TableProfitMargin {
-  private _profitMargin: number = 0;
-
-  set profitMargin(value: number) {
-    this._profitMargin = value;
-  }
-
-  get profitMargin() {
-    return this._profitMargin;
-  }
-
-  addProfitMargin() {}
 }
 
 /* -------------------------------------------------------------------------------- */

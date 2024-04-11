@@ -407,6 +407,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* import { addCustoUni, addCustosFixos, addValorFinal } from './business';
 import { selectElement, formatNumber, temporaryObj } from './utils'; */
 const class_1 = __webpack_require__(/*! ./class */ "./src/class.ts");
+// Ja inicia o programa com a instrancias criadas e passadas como props.
+// Assim fica uma dependencia muito forte.
+// Fazer abstração
 const tableOfIngredients = new class_1.TableOfIngredients();
 const comida1 = new class_1.Ingredient('comida1', 6, 10, 3);
 const comida2 = new class_1.Ingredient('comida2', 6, 10, 3);
