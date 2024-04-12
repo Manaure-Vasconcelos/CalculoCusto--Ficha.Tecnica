@@ -9,14 +9,14 @@ export class Ingredient implements IngredientProtocol {
     public _realAmount?: number
   ) {}
 
-  totalAmountPerIngredient(ingredient: IngredientProtocol): number {
+  setRealAmount(): void {
+    this._realAmount =
+      (this.marketPrice * this.grossWeight) / this.marketWeight;
+  }
+  /*   totalAmountPerIngredient(ingredient: IngredientProtocol): number {
     return (
       (ingredient.marketPrice * ingredient.grossWeight) /
       ingredient.marketWeight
     );
-  }
-
-  set realAmount(value: number) {
-    this._realAmount = value;
-  }
+  } */
 }

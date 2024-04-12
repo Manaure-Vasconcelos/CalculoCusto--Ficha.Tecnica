@@ -4,6 +4,5 @@ export interface IngredientProtocol {
   marketPrice: number;
   grossWeight: number;
   _realAmount?: number;
-  totalAmountPerIngredient(ingredient: IngredientProtocol): number;
-  realAmount: number;
+  setRealAmount(): void;
 }

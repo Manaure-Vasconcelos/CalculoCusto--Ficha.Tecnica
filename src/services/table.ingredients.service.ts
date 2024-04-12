@@ -9,8 +9,7 @@ export class TableOfIngredients implements TableOfIngredientsProtocol {
 
   setIngredient(ingredient: IngredientProtocol) {
     this._ingredients.push(ingredient);
-    ingredient._realAmount =
-      this.ingredientService.totalAmountPerIngredient(ingredient);
+    ingredient.setRealAmount();
     this.setValuePartialOfRecipe();
     this.setIngredientInTheContents(...this._ingredients);
   }
