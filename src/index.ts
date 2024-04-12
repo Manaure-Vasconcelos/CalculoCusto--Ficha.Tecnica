@@ -6,6 +6,7 @@ import { TableCostUnit } from './services/table.costUnit.service';
 const comida1 = new Ingredient('comida1', 6, 10, 3);
 const comida2 = new Ingredient('comida2', 6, 10, 3);
 const tableOfIngredients = new TableOfIngredients(comida1);
+console.log(tableOfIngredients.getIngredient());
 tableOfIngredients.setIngredient(comida1);
 tableOfIngredients.setIngredient(comida2);
 

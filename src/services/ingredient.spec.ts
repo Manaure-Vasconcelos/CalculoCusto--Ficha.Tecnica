@@ -6,15 +6,8 @@ const createSut = (
   marketPrice: number,
   grossWeight: number,
   _realAmount?: number
-): Ingredient => {
-  return new Ingredient(
-    describe,
-    marketWeight,
-    marketPrice,
-    grossWeight,
-    _realAmount
-  );
-};
+): Ingredient =>
+  new Ingredient(describe, marketWeight, marketPrice, grossWeight, _realAmount);
 
 describe('Testing Ingredient class', () => {
   afterEach(() => jest.clearAllMocks());
