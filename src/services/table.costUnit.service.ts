@@ -12,6 +12,7 @@ export class TableCostUnit implements TableCostUnitProtocol {
 
   setServings(value: number): void {
     this._servings = value;
+    this.setCostUnit();
     // chamar o custo unitario novamente
   }
 
@@ -21,6 +22,7 @@ export class TableCostUnit implements TableCostUnitProtocol {
 
   setPackaging(value: number): void {
     this._packaging = value;
+    this.setCostUnit();
   }
 
   getPackaging(): number {
