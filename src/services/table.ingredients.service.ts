@@ -5,7 +5,7 @@ export class TableOfIngredients implements TableOfIngredientsProtocol {
   private readonly _ingredients: IngredientProtocol[] = [];
   public _valuePartialOfRecipe: number = 0;
   // valor parcial da receita e usar pela intancia no arquivo index.
-  constructor(private readonly ingredientService: IngredientProtocol) {}
+  constructor(public readonly ingredientService: IngredientProtocol) {}
 
   setIngredient(ingredient: IngredientProtocol) {
     this._ingredients.push(ingredient);

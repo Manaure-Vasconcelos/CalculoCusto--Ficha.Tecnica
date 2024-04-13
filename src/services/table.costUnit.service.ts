@@ -1,44 +1,51 @@
-import { costUnit } from '../business-rules/business';
 import { TableOfIngredientsProtocol } from '../interfaces/table-ingredients';
+import { TableCostUnitProtocol } from './../interfaces/table-costUnit';
 
-export class TableCostUnit {
+export class TableCostUnit implements TableCostUnitProtocol {
   private _servings: number = 0;
   private _packaging: number = 0;
   public _costUnit: number = 0;
 
   // isso é uma injeção de dependencia => é uma forma mais "fechada".
   // Pq a costUnit depende de outra class, o melhor seria criar uma abstração da classe
-  constructor(
-    private readonly tableOfIngredients: TableOfIngredientsProtocol
-  ) {}
+  constructor(public readonly tableOfIngredients: TableOfIngredientsProtocol) {}
 
-  set servings(value: number) {
+  setServings(value: number): void {
     this._servings = value;
     // chamar o custo unitario novamente
   }
 
-  get servings(): number {
+  getServings(): number {
     return this._servings;
   }
 
-  set packaging(value: number) {
+  setPackaging(value: number): void {
     this._packaging = value;
   }
 
-  get packaging(): number {
+  getPackaging(): number {
     return this._packaging;
   }
 
   setCostUnit(): void {
-    this._costUnit = costUnit(
-      this.tableOfIngredients.getValuePartialOfRecipe(),
-      this.servings,
-      this.packaging
-    );
+    this._costUnit = this.costUnit();
   }
 
-  get costUnit(): number {
+  getCostUnit(): number {
     return this._costUnit;
+  }
+
+  costUnit(): number {
+    if (
+      !this._servings ||
+      !this._packaging ||
+      !this.tableOfIngredients.getValuePartialOfRecipe()
+    )
+      return 0;
+    const valueCostUnit =
+      this.tableOfIngredients.getValuePartialOfRecipe() / this._servings +
+      this._packaging;
+    return valueCostUnit;
   }
 
   addCostUnit() {}
