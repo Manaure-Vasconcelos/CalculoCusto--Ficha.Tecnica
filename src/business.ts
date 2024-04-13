@@ -1,27 +1,30 @@
+import { IngredientProtocol } from '../interfaces/ingredient';
 import {
   getValueInput,
   formatNumber,
   temporaryObj,
   setResultInDiv
-} from './utils';
+} from '../utils/utils';
 
-export const custoUni = () => {
-  const unitValue = getValueInput('#inputUnit');
-  const packetValue = getValueInput('#packetValue');
+export const totalAmountPerIngredient = (
+  ingredient: IngredientProtocol
+): number =>
+  (ingredient.marketPrice * ingredient.grossWeight) / ingredient.marketWeight;
 
-  if (!unitValue || !temporaryObj.valueTot) return 'R$ 0,00';
-  if (typeof unitValue === 'number' && typeof packetValue === 'number') {
-    const result = temporaryObj.valueTot / unitValue + packetValue;
-    temporaryObj.valueUnit = result;
-    return formatNumber(result);
-  }
-  return '0,00';
+export const costUnit = (
+  partialValueOfRecipe: number,
+  servings: number,
+  packaging: number
+): number => {
+  if (!servings || !packaging) return 0;
+  const valueCostUnit = partialValueOfRecipe / servings + packaging;
+  return valueCostUnit;
 };
 
 export const valorGastosFixo = () => {
-  const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho');
-  const vendasPorDia = getValueInput('#inputVendasPorDia');
-  const gastosFixos = getValueInput('#inputGastosFixos');
+  const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
+  const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
+  const gastosFixos = getValueInput('#inputGastosFixos', Number);
 
   if (vendasPorDia === undefined || gastosFixos === undefined) return '0,00';
   if (
@@ -40,7 +43,7 @@ export const valorGastosFixo = () => {
 };
 
 export const valorFinal = () => {
-  const rangeValue = getValueInput('#rangeLucro');
+  const rangeValue = getValueInput('#rangeLucro', Number);
   const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
   if (typeof rangeValue === 'number') {
     const resultFinal =
@@ -50,10 +53,10 @@ export const valorFinal = () => {
   return '0,00';
 };
 
-export const addCustoUni = () => {
-  const value = custoUni();
+/* export const addCustoUni = () => {
+  const value = costUnit();
   setResultInDiv('#divCostUnit', value);
-};
+}; */
 
 export const addCustosFixos = () => {
   const value = valorGastosFixo();
