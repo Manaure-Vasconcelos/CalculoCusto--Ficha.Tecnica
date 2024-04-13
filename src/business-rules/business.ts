@@ -1,25 +1,9 @@
-import { IngredientProtocol } from '../interfaces/ingredient';
 import {
   getValueInput,
   formatNumber,
   temporaryObj,
   setResultInDiv
 } from '../utils/utils';
-
-export const totalAmountPerIngredient = (
-  ingredient: IngredientProtocol
-): number =>
-  (ingredient.marketPrice * ingredient.grossWeight) / ingredient.marketWeight;
-
-export const costUnit = (
-  partialValueOfRecipe: number,
-  servings: number,
-  packaging: number
-): number => {
-  if (!servings || !packaging) return 0;
-  const valueCostUnit = partialValueOfRecipe / servings + packaging;
-  return valueCostUnit;
-};
 
 export const valorGastosFixo = () => {
   const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
