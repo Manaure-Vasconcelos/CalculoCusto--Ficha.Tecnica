@@ -1,15 +1,4 @@
-import {
-  getValueInput,
-  formatNumber,
-  temporaryObj,
-  setResultInDiv
-} from '../utils/utils';
-
 export const valorGastosFixo = () => {
-  const diasTrabalhados = getValueInput('#rangeDiasDeTrabalho', Number);
-  const vendasPorDia = getValueInput('#inputVendasPorDia', Number);
-  const gastosFixos = getValueInput('#inputGastosFixos', Number);
-
   if (vendasPorDia === undefined || gastosFixos === undefined) return '0,00';
   if (
     typeof gastosFixos === 'number' &&
@@ -25,28 +14,24 @@ export const valorGastosFixo = () => {
   }
   return '0,00';
 };
+/* 
+  Refatorar gastos fixos.
 
-export const valorFinal = () => {
-  const rangeValue = getValueInput('#rangeLucro', Number);
-  const valorFinalProduto = temporaryObj.valueUnit + temporaryObj.valueGF;
-  if (typeof rangeValue === 'number') {
-    const resultFinal =
-      valorFinalProduto + valorFinalProduto * (rangeValue / 100);
-    return formatNumber(resultFinal);
-  }
-  return '0,00';
-};
+  Fazer o valor medio de agua, luz e gas. => Dar dicar para pequeno empreendedor. A fazer um valor medio para colocar nos gastos.
+  Ex: Se o usuario trabalha em casa e o gasto das contas são divididas entre casa e empresa.
+  - Fazer os dias trabalhados no mes => diasTrabalhados * 4 
+  - De acordo com a quantidade de dias é estipulado o valor medio => 1/3 ou 1/2
+  - Pegar o valor total dos gastos somados e dividir proporcionalmente de acordo com os dias trabalhados
 
-/* export const addCustoUni = () => {
-  const value = costUnit();
-  setResultInDiv('#divCostUnit', value);
-}; */
+  Ou Realmente usar esse metodo aqui. 
+  Pq pega os dias trabalhados e a media de vendas por dia. => ensina a fazer media.
+  E divide os valores dos gastos.
+  Se o usuario tiver mais de um produto no cardapio => outro valor de gasto fixos.
+  const result = gastosFixos / (diasTrabalhados * 4 * vendasPorDia);
 
-export const addCustosFixos = () => {
-  const value = valorGastosFixo();
-  setResultInDiv('#divCustoFixo', value);
-};
-export const addValorFinal = () => {
-  const value = valorFinal();
-  setResultInDiv('#divLucro', value);
-};
+  Ou aqui é um ademais. usa-se em outra tabela a parte.
+  - Realmente uso o primeiro metodo dos gastos fixos convencional
+  - Depois uso o segundo metodo calculando o numero de vendas por dias e os dias trabalhados
+  - O numero de vendas por dia seria não só do produto em si, e sim de todos os seus produtos disponiveis.
+  - Assim tiraria o valor fixo real.
+*/

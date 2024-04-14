@@ -3,15 +3,15 @@ export class TableFixedCosts {
   private _salesPerDay: number = 0;
   private _fixedCosts: number = 0;
 
-  setDaysWorked(value: number) {
-    this._daysWorked;
+  setDaysWorked(value: number): void {
+    this._daysWorked = value;
   }
 
   getDaysWorked(): number {
     return this._daysWorked;
   }
 
-  setSalesPerDay(value: number) {
+  setSalesPerDay(value: number): void {
     this._salesPerDay = value;
   }
 
@@ -19,7 +19,7 @@ export class TableFixedCosts {
     return this._salesPerDay;
   }
 
-  setFixedCosts(value: number) {
+  setFixedCosts(value: number): void {
     this._fixedCosts = value;
   }
 
